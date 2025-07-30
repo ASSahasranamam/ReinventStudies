@@ -74,8 +74,8 @@ flow.connect_all(
 )
 
 
-grid = Path("/home/a/REINVENT4/ReinventStudies/mols/test/1stp/1stp_protein.maps.fld")
-ref = Path("mols/test/1UYD_ligand.sdf")
+grid = Path("mols/Rad51/rad51_receptor.maps.fld")
+ref = Path("mols/Rad51/Cam833HMdsRad51Docked_Cam833-Acid_3.sdf")
 rnv_config = Path("configs/REINVENT/staged_learning_maize_mol2mol.toml")
 prior = Path("priors/reinvent.prior")
 
