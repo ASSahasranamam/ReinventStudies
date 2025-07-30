@@ -1,0 +1,23 @@
+### Stage 2 scoring components
+[[component]]
+[component.MAIZE]
+[[component.MAIZE.endpoint]]
+weight = 1.0  # user chosen name for output
+name = "MaizeScores"
+
+params.executable = "/home/a/anaconda3/envs/maize-dev/bin/python"
+params.workflow = "maizeFlowForReinvent.py"
+params.config = "configs/Maize/maize-mol2mol-config.toml"  # optional
+params.debug = true
+params.keep = false
+params.log = "maizeLogs.log"  # optional
+#params.parameters = {}  # optional dictionary
+
+# Transform the raw score to 0-1 range
+transform.type = "sigmoid"
+transform.high = 10.0
+transform.low = -10.0
+transform.k = 1.0
+# weight to fine-tune the relevance of this component
+
+

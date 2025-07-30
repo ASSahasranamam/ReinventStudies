@@ -1,39 +1,21 @@
 from pathlib import Path
+
 from maize.core.workflow import Workflow
 from maize.steps.io import LoadData, LogResult, Return, Void
+from maize.steps.plumbing import MergeLists
+from maize.steps.mai.cheminformatics import RMSD, ExtractScores, TagIndex, SortByTag, TagSorter, LogTags
 from maize.steps.mai.docking.adv import AutoDockGPU
 from maize.steps.mai.molecule import Gypsum, LoadMolecule
-from maize.utilities.chem import IsomerCollection
 from maize.steps.mai.misc import ReInvent
-from maize.steps.mai.cheminformatics import RMSD, ExtractScores, TagIndex, SortByTag, TagSorter, LogTags
-from maize.steps.plumbing import MergeLists
+from maize.utilities.chem import IsomerCollection
 
-import numpy as np
-from numpy.typing import NDArray
+# Workflow
 
-from maize.core.interface import Input
-from maize.core.node import Node
-import json
-
-class ScoreLog(Node):
-    """Logs scores in the form of NDArrays"""
-
-    inp: Input[NDArray[np.float32]] = Input()
-
-    def run(self) -> None:
-        scores = self.inp.receive()
-        # Format the output as expected by REINVENT
-        output = {
-            "version": 1,
-            "payload": {
-                "score": scores.tolist()  # Convert numpy array to list
-            }
-        }
-        print(json.dumps(output))  # Print JSON formatted output
-        self.logger.info("Received scores: %s", scores)
 
 flow = Workflow(name="dock", level="info", cleanup_temp=False)
-flow.config.update(Path("test-config.toml"))
+flow.config.update(Path("configs/Maize/maize-mol2mol-config.toml"))
+
+# We begin by creating all the required nodes. The workflow will be circular, with the ReInvent node creating SMILES and accepting scores. Because our list of molecules will be split after the first docking and later re-merged, we need to keep track of the order of molecules. We do this by setting the index for each molecule as a tag (TagIndex), and later sorting the final list based on this tag (SortByTag). The RMSD, with which we determine if a molecule should be sent to a more accurate docking node, essentially acts as a scoring function. TagSorter can then decide where to send subsets of the molecules. Finally, the lists of molecules are merged (MergeLists) and sorted (SortByTag) to restore the original order given by Reinvent.
 
 rnve = flow.add(ReInvent)
 embe = flow.add(Gypsum, loop=True)
@@ -49,6 +31,8 @@ void_hp = flow.add(Void, name="void-hp", loop=True)
 merg = flow.add(MergeLists[IsomerCollection])
 sort_id = flow.add(SortByTag, loop=True)
 scor = flow.add(ExtractScores, loop=True)
+
+# Three separate calls to flow.connect_all() are required to get static typing on inputs and outputs. If you don't care about this you can just make a single call. This is an unfortunate limitation of the python typing system and may be resolved in the future.
 
 flow.connect_all(
     (rnve.out, embe.inp),
@@ -66,45 +50,35 @@ flow.connect_all(
     (dock_hp.out_scores, void_hp.inp),
     (dock_hp.out, merg.inp),
 )
-
 flow.connect_all(
     (merg.out, sort_id.inp),
     (sort_id.out, scor.inp),
     (scor.out, rnve.inp),
 )
 
+# Parameters
+#
+# Parameters required for this workflow are the Reinvent configuration, the docking grid, and the reference pose.
 
 grid = Path("/home/a/REINVENT4/ReinventStudies/mols/test/1stp/1stp_protein.maps.fld")
 ref = Path("mols/test/1UYD_ligand.sdf")
 rnv_config = Path("configs/REINVENT/staged_learning_maize_mol2mol.toml")
 prior = Path("priors/reinvent.prior")
 
-# Make sure these files exist and are readable
-assert rnv_config.exists(), f"Config file not found: {rnv_config}"
-assert prior.exists(), f"Prior model not found: {prior}"
-
-# grid = Path("../maize/steps/mai/docking/data/1uyd.tar")
-
-
-rnve.configuration.set(rnv_config)
-rnve.prior.set(prior)
-rnve.agent.set(prior)
-
-# The maximum number of RL epochs
-rnve.max_epoch.set(10)
 # The REINVENT configuration, excluding any entries for maize (these will be added automatically)
 rnve.configuration.set(rnv_config)
 rnve.prior.set(prior)
 rnve.agent.set(prior)
+#
+# # The maximum number of RL epochs
+# rnve.max_epoch.set(10)
+#
+# # Settings to transform the docking score to a value between 0 and 1, with 1 being favourable, using a sigmoid
+# rnve.low.set(-10.0)
+# rnve.high.set(-5.0)
+# rnve.reverse.set(True)
 
-# The maximum number of RL epochs
-rnve.max_epoch.set(10)
-
-# Settings to transform the docking score to a value between 0 and 1, with 1 being favourable, using a sigmoid
-rnve.low.set(-10.0)
-rnve.high.set(-5.0)
-rnve.reverse.set(True)
-
+rnve.maize_backend.set(True)
 # Number of molecules to generate each epoch
 rnve.batch_size.set(32)
 
@@ -132,9 +106,16 @@ dock_hp.lsit.set(500)
 # Deactivate constraints from the grid
 dock.constraints.set(False)
 dock_hp.constraints.set(False)
-
+#
+# Check
+#
+# If this method doesn't throw an exception, we have connected everything correctly and set all required parameters.
 
 flow.check()
+
+# Topology
+#
+# We can visualize our workflow by simply showing the workflow object representation (or using flow.visualize() outside of notebooks).
+
 flow.execute()
-# mols = retu.get()
-# print(mols)
+

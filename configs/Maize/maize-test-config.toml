@@ -1,0 +1,37 @@
+# Test configuration for maize
+
+# Various options for general configuration
+scratch = "./tmp"
+packages = [
+    "maize.steps.mai"
+]
+
+# Default batch system options for job scheduling
+[batch]
+system = "local"
+walltime = "24:00:00"
+
+# Autodock Vina configuration settings
+[vina]
+commands.vina = "./autodock_vina_1_1_2_linux_x86/bin/vina"
+
+# Vina scoring configuration settings
+[vinascore]
+commands.vina = "./autodock_vina_1_1_2_linux_x86/bin/vina"
+
+# Gypsum-DL configuration settings
+[gypsum]
+scripts.gypsum.interpreter = "/home/a/anaconda3/envs/gypsum_dl_env/bin/python"
+scripts.gypsum.location = "/home/a/anaconda3/envs/gypsum_dl_env/bin/gypsum-dl"
+
+
+[reinvent]
+scripts.reinvent.interpreter = "/home/a/anaconda3/envs/reinvent4/bin/python"
+scripts.reinvent.location = "/home/a/anaconda3/envs/reinvent4/bin/reinvent"
+
+# AutoDock-GPU configuration settings
+[autodockgpu]
+python = "/home/a/anaconda3/envs/maize-dev/bin/python"
+modules = ["CUDA", "GCC"]
+commands.autodock_gpu = "/home/a/REINVENT4/adgpu-v1.6_linux_x64_cuda12_128wi"
+

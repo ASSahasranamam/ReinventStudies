@@ -15,8 +15,7 @@ def smiles_1uyd() -> str:
 
 @pytest.fixture
 def receptor_path(shared_datadir: Path) -> Path:
-    return shared_datadir / "1UYD_fixed.pdbqt"
-
+    return Path("/1UYD_fixed.pdbqt")
 
 @pytest.fixture
 def search_center() -> tuple[float, float, float]:
@@ -25,7 +24,7 @@ def search_center() -> tuple[float, float, float]:
 
 @pytest.fixture
 def test_config() -> Path:
-    return Path("devtools/test-config.toml")
+    return Path("configs/Maize/maize-test-config.toml")
 
 
 def test_dock_single(
