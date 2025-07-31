@@ -1,3 +1,4 @@
+import time
 from pathlib import Path
 from maize.core.workflow import Workflow
 from maize.steps.io import LoadData, LogResult, Return, Void
@@ -15,6 +16,7 @@ from maize.core.interface import Input
 from maize.core.node import Node
 import json
 
+
 class ScoreLog(Node):
     """Logs scores in the form of NDArrays"""
 
@@ -29,11 +31,12 @@ class ScoreLog(Node):
                 "score": scores.tolist()  # Convert numpy array to list
             }
         }
-        print(json.dumps(output))  # Print JSON formatted output
+        (json.dumps(output))  # Print JSON formatted output
         self.logger.info("Received scores: %s", scores)
 
-flow = Workflow(name="dock", level="info", cleanup_temp=False)
-flow.config.update(Path("test-config.toml"))
+
+flow = Workflow(name="dock", level="debug", cleanup_temp=False)
+flow.config.update(Path("configs/Maize/maize-mol2mol-config.toml"))
 
 rnve = flow.add(ReInvent)
 embe = flow.add(Gypsum, loop=True)
@@ -49,7 +52,7 @@ void_hp = flow.add(Void, name="void-hp", loop=True)
 merg = flow.add(MergeLists[IsomerCollection])
 sort_id = flow.add(SortByTag, loop=True)
 scor = flow.add(ExtractScores, loop=True)
-
+# save = flow.add(ScoreLog)
 flow.connect_all(
     (rnve.out, embe.inp),
     (embe.out, indx.inp),
@@ -73,8 +76,8 @@ flow.connect_all(
     (scor.out, rnve.inp),
 )
 
-
 grid = Path("mols/Rad51/rad51_receptor.maps.fld")
+ref = Path("mols/Rad51/Cam833HMdsRad51Docked_Cam833-Acid_3.sdf")
 ref = Path("mols/Rad51/Cam833HMdsRad51Docked_Cam833-Acid_3.sdf")
 rnv_config = Path("configs/REINVENT/staged_learning_maize_mol2mol.toml")
 prior = Path("priors/reinvent.prior")
@@ -87,18 +90,17 @@ assert prior.exists(), f"Prior model not found: {prior}"
 
 
 rnve.configuration.set(rnv_config)
+
 rnve.prior.set(prior)
 rnve.agent.set(prior)
+# rnve.args.set("----loglevel DEBUG")
 
 # The maximum number of RL epochs
-rnve.max_epoch.set(10)
+rnve.max_epoch.set(3)
 # The REINVENT configuration, excluding any entries for maize (these will be added automatically)
 rnve.configuration.set(rnv_config)
 rnve.prior.set(prior)
 rnve.agent.set(prior)
-
-# The maximum number of RL epochs
-rnve.max_epoch.set(10)
 
 # Settings to transform the docking score to a value between 0 and 1, with 1 being favourable, using a sigmoid
 rnve.low.set(-10.0)
@@ -109,7 +111,9 @@ rnve.reverse.set(True)
 rnve.batch_size.set(32)
 
 # Number of isomers to generate for each SMILES
+embe.use_filters.set(False)
 embe.n_variants.set(4)
+
 
 # Docking grid for 1UYD
 dock.grid_file.set(grid)
@@ -132,7 +136,6 @@ dock_hp.lsit.set(500)
 # Deactivate constraints from the grid
 dock.constraints.set(False)
 dock_hp.constraints.set(False)
-
 
 flow.check()
 flow.execute()

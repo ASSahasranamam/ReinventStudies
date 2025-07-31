@@ -21,7 +21,7 @@ json_out_config = "_staged_learning.json"  # write this TOML to JSON
 # with the checkpoint file.
 
 summary_csv_prefix = "staged_learning"  # prefix for the CSV file
-use_checkpoint = false  # if true read diversity filter from agent_file
+use_checkpoint = true  # if true read diversity filter from agent_file
 purge_memories = false  # if true purge all diversity filter memories after each stage
 
 ### Reinvent
@@ -106,7 +106,7 @@ max_steps = 100  # terminate entire run when exceeded
 
 [stage.scoring]
 type = "geometric_mean"  # aggregation function
-
+parallel = true  #
 [[stage.scoring.component]]
 # Custom alerts if used in a custom_product filter out unwanted groups
 [stage.scoring.component.custom_alerts]
