@@ -24,7 +24,7 @@ def search_center() -> tuple[float, float, float]:
 
 @pytest.fixture
 def test_config() -> Path:
-    return Path("configs/Maize/maize-test-config.toml")
+    return Path("../configs/Maize/maize-test-config.toml")
 
 
 def test_dock_single(
