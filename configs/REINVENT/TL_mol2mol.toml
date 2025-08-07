@@ -1,0 +1,23 @@
+# Transfer learning on a set of related active compounds
+
+run_type = "transfer_learning"
+device = "cuda:0"  # set torch device e.g. "cpu"
+tb_logdir = "tb_TL"  # name of the TensorBoard logging directory
+json_out_config = "json_transfer_learning.json"  # write this TOML to JSON
+
+
+[parameters]
+
+num_epochs = 10  # number of steps to run
+save_every_n_epochs = 3  # save checkpoint model file very N steps
+batch_size = 50
+num_refs = 100  # number of reference molecules randomly chosen for similarity
+                # set this to zero for large datasets (>200 molecules)!
+sample_batch_size = 128  # number of sampled molecules to compute sample loss
+# Uncomment one of the comment blocks below.  Each generator needs a model
+# file and possibly a SMILES file with seed structures.
+
+input_model_file = "priors/mol2mol_similarity.prior"
+smiles_file = "mols/Rad51/bdb.smi"
+output_model_file = "priors/Rad51_bdb_mol2mol.model"
+validation_smiles_file = "mols/Rad51/bdb.smi"

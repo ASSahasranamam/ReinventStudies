@@ -36,7 +36,7 @@ class ScoreLog(Node):
 
 
 flow = Workflow(name="dock", level="debug", cleanup_temp=False)
-flow.config.update(Path("configs/Maize/maize-mol2mol-config.toml"))
+flow.config.update(Path("configs/Maize/maize-reinvent-config.toml"))
 
 rnve = flow.add(ReInvent)
 embe = flow.add(Gypsum, loop=True)

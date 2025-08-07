@@ -143,22 +143,28 @@ params.smarts = [
     "[#16;!s][C;!$(C(=[O,N])[N,O])][#16;!s]"
 ]
 
+#[[stage.scoring.component]]
+#[stage.scoring.component.MolecularWeight]
+#
+#[[stage.scoring.component.MolecularWeight.endpoint]]
+#name = "Molecular weight"  # user chosen name for output
+#weight = 0.31  # weight to fine-tune the relevance of this component
+#
+## A transform ensures that the output from the scoring component ranges
+## from 0 to 1 to serve as a proper score.  Here we use a double sigmoid
+## to transform weights into the range 200-500 a.u.
+#transform.type = "double_sigmoid"
+#transform.high = 500.0
+#transform.low = 200.0
+#transform.coef_div = 500.0
+#transform.coef_si = 20.0
+#transform.coef_se = 20.0
+
 [[stage.scoring.component]]
-[stage.scoring.component.MolecularWeight]
-
-[[stage.scoring.component.MolecularWeight.endpoint]]
-name = "Molecular weight"  # user chosen name for output
-weight = 0.31  # weight to fine-tune the relevance of this component
-
-# A transform ensures that the output from the scoring component ranges
-# from 0 to 1 to serve as a proper score.  Here we use a double sigmoid
-# to transform weights into the range 200-500 a.u.
-transform.type = "double_sigmoid"
-transform.high = 500.0
-transform.low = 200.0
-transform.coef_div = 500.0
-transform.coef_si = 20.0
-transform.coef_se = 20.0
+[stage.scoring.component.QED]
+[[stage.scoring.component.QED.endpoint]]
+name = "QED"
+weight = 1
 
 #[[stage]]
 #chkpt_file = 'test2.chkpt'
@@ -173,25 +179,25 @@ transform.coef_se = 20.0
 #filetype = "toml"  # file format: TOML or JSON, no default, must be present
 #
 #### Stage 2 scoring components
-#[[stage.scoring.component]]
-#[stage.scoring.component.MAIZE]
-#[[stage.scoring.component.MAIZE.endpoint]]
-#weight = 1.0  # user chosen name for output
-#name = "MaizeScores"
-#
-## Score transformation settings - lower is better in this case
-#transform.type = "reverse_sigmoid"
-#transform.high = -15.0
-#transform.low = -22.0
-#transform.k = 0.5
-#
-#
-#params.executable = "/home/a/anaconda3/envs/maize-dev/bin/python"
-#params.workflow = "run_maize_reinvent.py"
-#params.config = "configs/Maize/maize-mol2mol-config.toml"  # optional
-#params.debug = true
-#params.keep = false
-#params.log = "maizeLogs.log"  # optional
+[[stage.scoring.component]]
+[stage.scoring.component.MAIZE]
+[[stage.scoring.component.MAIZE.endpoint]]
+weight = 1.0  # user chosen name for output
+name = "MaizeScores"
+
+# Score transformation settings - lower is better in this case
+transform.type = "reverse_sigmoid"
+transform.high = -5.0
+transform.low = -15.0
+transform.k = 0.5
+
+
+params.executable = "/home/adi_sahasranamam/miniconda3/envs/maize-dev/bin/python"
+params.workflow = "run_maize_reinvent.py"
+params.config = "configs/Maize/maize-mol2mol-config.toml"  # optional
+params.debug = true
+params.keep = false
+params.log = "maizeLogs.log"  # optional
 #params.property = "score"
 #params.parameters = {}  # optional dictionary
 #

@@ -41,7 +41,7 @@ purge_memories = false  # if true purge all diversity filter memories after each
 ## Mol2Mol
 prior_file = "priors/mol2mol_similarity.prior"
 agent_file = "priors/mol2mol_similarity.prior"
-smiles_file = "/home/adi_sahasranamam/workspace/reinventstudies/mols/Rad51/cam833.smi"  # 1 compound per line
+smiles_file = "mols/Rad51/cam833.smi"
 sample_strategy = "multinomial"  # multinomial or beamsearch (deterministic)
 distance_threshold = 100
 
@@ -56,7 +56,7 @@ batch_size = 64          # network
 unique_sequences = true  # if true remove all duplicates raw sequences in each step
                          # only here for backward compatibility
 randomize_smiles = true  # if true shuffle atoms in SMILES randomly
-tb_isim = false  # track iSIM similarity in TensorBoard
+tb_isim = true  # track iSIM similarity in TensorBoard
 
 
 [learning_strategy]
@@ -87,121 +87,133 @@ penalty_multiplier = 0.5         # penalty factor for PenalizeSameSmiles
 
 ### Stage 1
 ### Note that stages must always be a list i.e. double brackets
-[[stage]]
-
-chkpt_file = 'test1.chkpt'  # name of the checkpoint file, can be reused as agent
-
-termination = "simple"  # termination criterion fot this stage
-max_score = 0.6  # terminate if this total score is exceeded
-min_steps = 25  # run for at least this number of steps
-max_steps = 100  # terminate entire run when exceeded
-
-# Optionally, a DF can be set for each stage but note that the global DF
-# section above will always overwrite the stage section and you need to
-# delete [diversity_filter] to avoid this
-#
-#[stage.diversity_filter]
-#type = "IdenticalMurckoScaffold"
-# etc.
-
-[stage.scoring]
-type = "geometric_mean"  # aggregation function
-parallel = true  #
-[[stage.scoring.component]]
-# Custom alerts if used in a custom_product filter out unwanted groups
-[stage.scoring.component.custom_alerts]
-
-[[stage.scoring.component.custom_alerts.endpoint]]
-name = "Unwanted SMARTS"  # user chosen name for output
-weight = 0.79  # weight to fine-tune the relevance of this component
-
-# parameters for the component:
-# a list of unwanted SMARTS(!) to be scored as zero
-params.smarts = [
-    "[*;r8]",
-    "[*;r9]",
-    "[*;r10]",
-    "[*;r11]",
-    "[*;r12]",
-    "[*;r13]",
-    "[*;r14]",
-    "[*;r15]",
-    "[*;r16]",
-    "[*;r17]",
-    "[#8][#8]",
-    "[#6;+]",
-    "[#16][#16]",
-    "[#7;!n][S;!$(S(=O)=O)]",
-    "[#7;!n][#7;!n]",
-    "C#C",
-    "C(=[O,S])[O,S]",
-    "[#7;!n][C;!$(C(=[O,N])[N,O])][#16;!s]",
-    "[#7;!n][C;!$(C(=[O,N])[N,O])][#7;!n]",
-    "[#7;!n][C;!$(C(=[O,N])[N,O])][#8;!o]",
-    "[#8;!o][C;!$(C(=[O,N])[N,O])][#16;!s]",
-    "[#8;!o][C;!$(C(=[O,N])[N,O])][#8;!o]",
-    "[#16;!s][C;!$(C(=[O,N])[N,O])][#16;!s]"
-]
-
-[[stage.scoring.component]]
-[stage.scoring.component.MolecularWeight]
-
-[[stage.scoring.component.MolecularWeight.endpoint]]
-name = "Molecular weight"  # user chosen name for output
-weight = 0.31  # weight to fine-tune the relevance of this component
-
-# A transform ensures that the output from the scoring component ranges
-# from 0 to 1 to serve as a proper score.  Here we use a double sigmoid
-# to transform weights into the range 200-500 a.u.
-transform.type = "double_sigmoid"
-transform.high = 500.0
-transform.low = 200.0
-transform.coef_div = 500.0
-transform.coef_si = 20.0
-transform.coef_se = 20.0
-
 #[[stage]]
-#chkpt_file = 'test2.chkpt'
 #
-#termination = "simple"
-#min_steps = 10
-#max_steps = 100
+#chkpt_file = 'test1.chkpt'  # name of the checkpoint file, can be reused as agent
 #
-#[stage.scoring]  # the scoring components can be read from a score file
+#termination = "simple"  # termination criterion fot this stage
+#max_score = 0.5  # terminate if this total score is exceeded
+##min_steps = 25  # run for at least this number of steps
+#max_steps = 100  # terminate entire run when exceeded
+#
+## Optionally, a DF can be set for each stage but note that the global DF
+## section above will always overwrite the stage section and you need to
+## delete [diversity_filter] to avoid this
+##
+##[stage.diversity_filter]
+##type = "IdenticalMurckoScaffold" # IdenticalTopologicalScaffold,
+##                                 # ScaffoldSimilarity, PenalizeSameSmiles
+##bucket_size = 25                 # memory size in number of compounds
+##minscore = 0.4                   # only memorize if this threshold is exceeded
+##minsimilarity = 0.4              # minimum similarity for ScaffoldSimilarity
+##penalty_multiplier = 0.5         # penalty factor for PenalizeSameSmiles
+#
+#[stage.scoring]
 #type = "geometric_mean"  # aggregation function
+#parallel = true  #
+#[[stage.scoring.component]]
+## Custom alerts if used in a custom_product filter out unwanted groups
+#[stage.scoring.component.custom_alerts]
+#
+#[[stage.scoring.component.custom_alerts.endpoint]]
+#name = "Unwanted SMARTS"  # user chosen name for output
+#weight = 1  # weight to fine-tune the relevance of this component
+#
+## parameters for the component:
+## a list of unwanted SMARTS(!) to be scored as zero
+#params.smarts = [
+#    "[*;r8]",
+#    "[*;r9]",
+#    "[*;r10]",
+#    "[*;r11]",
+#    "[*;r12]",
+#    "[*;r13]",
+#    "[*;r14]",
+#    "[*;r15]",
+#    "[*;r16]",
+#    "[*;r17]",
+#    "[#8][#8]",
+#    "[#6;+]",
+#    "[#16][#16]",
+#    "[#7;!n][S;!$(S(=O)=O)]",
+#    "[#7;!n][#7;!n]",
+#    "C#C",
+#    "C(=[O,S])[O,S]",
+#    "[#7;!n][C;!$(C(=[O,N])[N,O])][#16;!s]",
+#    "[#7;!n][C;!$(C(=[O,N])[N,O])][#7;!n]",
+#    "[#7;!n][C;!$(C(=[O,N])[N,O])][#8;!o]",
+#    "[#8;!o][C;!$(C(=[O,N])[N,O])][#16;!s]",
+#    "[#8;!o][C;!$(C(=[O,N])[N,O])][#8;!o]",
+#    "[#16;!s][C;!$(C(=[O,N])[N,O])][#16;!s]"
+#]
+#
+#[[stage.scoring.component]]
+#[stage.scoring.component.QED]
+#[[stage.scoring.component.QED.endpoint]]
+#name = "QED"
+#weight = 1
+#
+#[[stage.scoring.component]]
+#
+#[stage.scoring.component.SAScore]
+#
+#[[stage.scoring.component.SAScore.endpoint]]
+#
+#name = "SA_Score"
+#
+#weight = 1.00
+#
+#transform.type = "Reverse_Sigmoid"
+#
+#transform.low = 50.0
+#
+#transform.high = 100.0
+#
+#transform.k = 0.50
+
+[[stage]]
+chkpt_file = 'test2.chkpt'
+
+termination = "simple"
+min_steps = 10
+max_steps = 100
+max_score = 0.7  # terminate if this total score is exceeded
+
+
+[stage.scoring]  # the scoring components can be read from a score file
+type = "geometric_mean"  # aggregation function
 #filename = "configs/REINVENT/stage2_scoring.toml"  # file with scoring setup for this stage
 #filetype = "toml"  # file format: TOML or JSON, no default, must be present
-#
-#### Stage 2 scoring components
-#[[stage.scoring.component]]
-#[stage.scoring.component.MAIZE]
-#[[stage.scoring.component.MAIZE.endpoint]]
-#weight = 1.0  # user chosen name for output
-#name = "MaizeScores"
-#
-## Score transformation settings - lower is better in this case
-#transform.type = "reverse_sigmoid"
-#transform.high = -15.0
-#transform.low = -22.0
-#transform.k = 0.5
-#
-#
-#params.executable = "/home/a/anaconda3/envs/maize-dev/bin/python"
-#params.workflow = "run_maize_reinvent.py"
-#params.config = "configs/Maize/maize-mol2mol-config.toml"  # optional
-#params.debug = true
-#params.keep = false
+
+### Stage 2 scoring components
+[[stage.scoring.component]]
+[stage.scoring.component.MAIZE]
+[[stage.scoring.component.MAIZE.endpoint]]
+weight = 1.0  # user chosen name for output
+name = "DockingScores"
+
+# Score transformation settings - lower is better in this case
+transform.type = "reverse_sigmoid"
+transform.high = -3.0
+transform.low = -15.0
+transform.k = 0.5
+
+
+params.executable = "/home/adi_sahasranamam/miniconda3/envs/maize-dev/bin/python"
+params.workflow = "run_maize_reinvent.py"
+params.config = "configs/Maize/maize-mol2mol-config.toml"  # optional
+params.debug = true
+params.keep = true
+params.distance_threshold =100
+#params.smiles_file = "mols/Rad51/cam833.smi"
+#params.sample_strategy = "multinomial"  # multinomial or beamsearch (deterministic) =100
+
 #params.log = "maizeLogs.log"  # optional
-#params.property = "score"
+#params.property = "predictions"
 #params.parameters = {}  # optional dictionary
 #
 ## Transform the raw score to 0-1 range
-#transform.type = "sigmoid"
-#transform.high = 10.0
-#transform.low = -10.0
-#transform.k = 1.0
-## weight to fine-tune the relevance of this component
-#
+
 
 
 
