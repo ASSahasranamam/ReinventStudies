@@ -7,7 +7,6 @@
 # during the run (manual CL).  Currently checkpoints are written at the end
 # of a run also when the run is forcefully terminated with Ctrl-C.
 
-
 run_type = "staged_learning"
 device = "cuda"  # set torch device e.g. "cpu"
 tb_logdir = "tb_logs"  # name of the TensorBoard logging directory
@@ -144,7 +143,7 @@ params.smarts = [
 ]
 
 [[stage.scoring.component]]
-[stage.scoring.component.MolecularWeight]
+[stage.scoring.component.QED]
 
 [[stage.scoring.component.MolecularWeight.endpoint]]
 name = "Molecular weight"  # user chosen name for output

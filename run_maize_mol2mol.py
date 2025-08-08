@@ -4,7 +4,7 @@ from maize.core.workflow import Workflow
 from maize.steps.io import LoadData, LogResult, Return, Void
 from maize.steps.mai.docking.adv import AutoDockGPU
 from maize.steps.mai.molecule import Gypsum, LoadMolecule
-from maize.utilities.chem import IsomerCollection
+from maize.utilities.chem import IsomerCollection, save_sdf_library
 from maize.steps.mai.misc import ReInvent
 from maize.steps.mai.cheminformatics import RMSD, ExtractScores, TagIndex, SortByTag, TagSorter, LogTags
 from maize.steps.plumbing import MergeLists
@@ -12,27 +12,69 @@ from maize.steps.plumbing import MergeLists
 import numpy as np
 from numpy.typing import NDArray
 
-from maize.core.interface import Input
+from maize.core.interface import Input, Output
 from maize.core.node import Node
 import json
 
+# NEW: imports for saving artifacts
+import shutil
+from datetime import datetime
+from typing import Any
 
-class ScoreLog(Node):
-    """Logs scores in the form of NDArrays"""
 
-    inp: Input[NDArray[np.float32]] = Input()
+# NEW: Pass-through node that writes docked structures to an SDF library
+class SaveDockSDF(Node):
+    """Saves the incoming docked payload to a timestamped SDF library and forwards it unchanged."""
+
+    inp: Input[Any] = Input()
+    out: Output[Any] = Output()
 
     def run(self) -> None:
-        scores = self.inp.receive()
-        # Format the output as expected by REINVENT
-        output = {
-            "version": 1,
-            "payload": {
-                "score": scores.tolist()  # Convert numpy array to list
-            }
-        }
-        (json.dumps(output))  # Print JSON formatted output
-        self.logger.info("Received scores: %s", scores)
+        payload = self.inp.receive()
+
+        out_dir = "./dock_outputs"
+        out_dir_abs = Path(out_dir).resolve()
+
+        # Check and print/log directory existence/creation
+        if Path(out_dir).exists():
+            msg = f"Output directory already exists: {out_dir_abs}"
+            print(msg)
+            self.logger.info(msg)
+        else:
+            msg = f"Creating output directory at: {out_dir_abs}"
+            print(msg)
+            self.logger.info(msg)
+            Path(out_dir).mkdir(parents=True, exist_ok=True)
+
+        ts = time.strftime("%Y%m%d-%H%M%S")
+        out_sdf = out_dir / f"dock_{ts}.sdf"
+        out_sdf_abs = out_sdf
+
+        # Attempt to determine number of records to be written (best-effort)
+        n_records = None
+        try:
+            n_records = len(payload)  # works if payload is list-like
+        except Exception:
+            pass
+
+        # Log the intended file write operation
+        if n_records is not None:
+            self.logger.info("Writing SDF library (%d record(s)) to %s", n_records, out_sdf_abs)
+        else:
+            self.logger.info("Writing SDF library to %s", out_sdf_abs)
+
+        try:
+            save_sdf_library(payload, out_sdf)
+            # Post-write logging
+            try:
+                size_bytes = out_sdf.stat().st_size
+                self.logger.info("Saved docked library to %s (size: %d bytes)", out_sdf, size_bytes)
+            except Exception:
+                self.logger.info("Saved docked library to %s", out_sdf)
+        except Exception as e:
+            self.logger.warning("Failed to save SDF library to %s: %s", out_sdf, e)
+
+        self.out.send(payload)
 
 
 flow = Workflow(name="dock", level="debug", cleanup_temp=False)
@@ -53,12 +95,18 @@ logt = flow.add(LogTags, loop=True)
 # sort_id = flow.add(SortByTag, loop=True)
 scor = flow.add(ExtractScores, loop=True)
 # save = flow.add(ScoreLog)
+
+# NEW: add SDF saver between docking and RMSD
+saver = flow.add(SaveDockSDF, loop=True)
+
 flow.connect_all(
     (rnve.out, embe.inp),
     (embe.out, indx.inp),
     (indx.out, dock.inp),
     (dock.out_scores, void.inp),
-    (dock.out, rmsd.inp),
+    # Modified: dock.out -> saver.inp -> rmsd.inp
+    (dock.out, saver.inp),
+    (saver.out, rmsd.inp),
     (load.out, rmsd.inp_ref),
 )
 flow.connect_all(
@@ -86,8 +134,8 @@ rnve.agent.set(prior)
 # rnve.args.set("----loglevel DEBUG")
 
 # The maximum number of RL epochs
-rnve.max_epoch.set(3)
-# rnve.max_epoch.set(3)
+rnve.max_epoch.set(2)
+rnve.max_score.set(0.9)
 
 # The REINVENT configuration, excluding any entries for maize (these will be added automatically)
 rnve.configuration.set(rnv_config)
@@ -131,8 +179,12 @@ logt.tag.set("rmsd")
 # Deactivate constraints from the grid
 dock.constraints.set(False)
 # dock_hp.constraints.set(False)
-
+# try:
 flow.check()
 flow.execute()
+# except Exception as e:
+    # flow.logger.error(e)
+    # flow._cleanup()
+
 # mols = retu.get()
 # print(mols)
