@@ -9,7 +9,7 @@ from maize.utilities.io import setup_workflow
 from maize.steps.mai.misc import ReInvent
 from maize.steps.mai.cheminformatics import RMSD, ExtractScores, TagIndex, SortByTag, TagSorter, LogTags
 from maize.steps.plumbing import MergeLists
-
+import os
 import numpy as np
 from numpy.typing import NDArray
 
@@ -36,12 +36,22 @@ class SaveDockSDF(Node):
         ts = time.strftime("%Y%m%d-%H%M%S")
         print(self.payload)
 
+        wd = f"/tmp/MC_R4_notebooks_output_{ts}"
+
+        # ### Delete existing working directory and create a new one
+        #
+        # If the working directory already exists, it will be reused
+
+        # +
+        if not os.path.isdir(wd):
+            shutil.rmtree(wd, ignore_errors=True)
+            os.mkdir(wd)
+
         out_loc_name = f"dock_outputs_{ts}.sdf"
         out_loc = Path(out_loc_name)
 
         totalIsomerCollection.extend(self.payload)
         print(totalIsomerCollection)
-        ts = time.strftime("%Y%m%d-%H%M%S")
 
         try:
             save_sdf_library(mols=totalIsomerCollection, file=Path(f"dock_outputs_{ts}.sdf"))
@@ -49,7 +59,7 @@ class SaveDockSDF(Node):
             if Path(f"dock_outputs_{ts}.sdf").is_file():
                 self.logger.info(Path(f"dock_outputs_{ts}.sdf").absolute())
                 self.logger.info(Path(f"dock_outputs_{ts}.sdf").resolve())
-                shutil.copy(f"dock_outputs_{ts}.sdf", Path("/home/adi_sahasranamam/"))
+                shutil.copy(f"dock_outputs_{ts}.sdf", Path("/home/a/"+wd))
 
                 self.logger.info(f"dock_outputs_{ts}.sdf moved to {out_loc}")
         except Exception as e:
@@ -100,7 +110,7 @@ rnv_config = Path("configs/REINVENT/staged_learning_maize_mol2mol.toml")
 prior = Path("priors/mol2mol_similarity.prior")
 rnve.distance_threshold.set(100)
 rnve.sample_strategy.set("beamsearch")  # multinomial or beamsearch (deterministic)
-rnve.input_smi.set("/home/adi_sahasranamam/workspace/reinventstudies/mols/Rad51/bdb_2.smi")  # multinomial or beamsearch (deterministic)
+rnve.input_smi.set("mols/Rad51/cam833.smi")  # multinomial or beamsearch (deterministic)
 
 # Make sure these files exist and are readable
 assert rnv_config.exists(), f"Config file not found: {rnv_config}"
