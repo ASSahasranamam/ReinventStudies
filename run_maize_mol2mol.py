@@ -1,9 +1,14 @@
 import time
 from pathlib import Path
+from rdkit import Chem
+from rdkit.Chem.ChemUtils.SDFToCSV import Convert
+from rdkit.Chem import PandasTools
+from rdkit import RDConfig
+from exceptiongroup import catch
 from maize.core.workflow import Workflow
 from maize.steps.io import LoadData, LogResult, Return, Void
 from maize.steps.mai.docking.adv import AutoDockGPU
-from maize.steps.mai.molecule import Gypsum, LoadMolecule
+from maize.steps.mai.molecule import Gypsum, LoadMolecule,SaveCSV,IsomerCollectionSaving
 from maize.utilities.chem import IsomerCollection, save_sdf_library
 from maize.utilities.io import setup_workflow
 from maize.steps.mai.misc import ReInvent
@@ -29,23 +34,25 @@ class SaveDockSDF(Node):
     """Saves the incoming docked payload to a timestamped SDF library and forwards it unchanged."""
 
     inp: Input[list[IsomerCollection]] = Input()
-    out: Output[list[IsomerCollection]] = Output(optional=True)
+    out: Output[list[IsomerCollection]] = Output()
+    out2: Output[list[IsomerCollection]] = Output()
+
     payload: Parameter[list[IsomerCollection]] = Parameter(optional=True)
     def run(self) -> None:
         self.payload = self.inp.receive()
-        ts = time.strftime("%Y%m%d-%H%M%S")
+        ts = time.strftime("%m%d-%H%M%S")
         print(self.payload)
 
-        wd = f"/tmp/MC_R4_notebooks_output_{ts}"
+        # wd = f"/tmp/MC_R4_notebooks_output_{ts}"
 
         # ### Delete existing working directory and create a new one
         #
         # If the working directory already exists, it will be reused
 
         # +
-        if not os.path.isdir(wd):
-            shutil.rmtree(wd, ignore_errors=True)
-            os.mkdir(wd)
+        # if not os.path.isdir(wd):
+        #     shutil.rmtree(wd, ignore_errors=True)
+        #     os.mkdir(wd)
 
         out_loc_name = f"dock_outputs_{ts}.sdf"
         out_loc = Path(out_loc_name)
@@ -59,8 +66,15 @@ class SaveDockSDF(Node):
             if Path(f"dock_outputs_{ts}.sdf").is_file():
                 self.logger.info(Path(f"dock_outputs_{ts}.sdf").absolute())
                 self.logger.info(Path(f"dock_outputs_{ts}.sdf").resolve())
-                shutil.copy(f"dock_outputs_{ts}.sdf", Path("/home/a/"+wd))
+                # shutil.copy(f"dock_outputs_{ts}.sdf", Path(f"home/a/REINVENT4/ReinventStudies/RESULTS/dock_outputs_{ts}.sdf"))
+                shutil.copy(f"dock_outputs_{ts}.sdf", Path(f"/home/a/REINVENT4/ReinventStudies/RESULTS/"))
 
+                sdfFile = os.path.join(RDConfig.RDDataDir, f'/home/a/REINVENT4/ReinventStudies/RESULTS/dock_outputs_{ts}.sdf')
+
+                frame = PandasTools.LoadSDF(sdfFile, smilesName='SMILES', molColName='Molecule',
+                                            includeFingerprints=True)
+
+                print(frame.info)
                 self.logger.info(f"dock_outputs_{ts}.sdf moved to {out_loc}")
         except Exception as e:
             self.logger.error(e)
@@ -69,6 +83,7 @@ class SaveDockSDF(Node):
 flow = Workflow(name="dock", level="debug", cleanup_temp=False)
 flow.config.update(Path("configs/Maize/maize-mol2mol-config.toml"))
 
+# retu = flow.add(Return[list[IsomerCollection]])
 rnve = flow.add(ReInvent)
 embe = flow.add(Gypsum, loop=True)
 indx = flow.add(TagIndex, loop=True)
@@ -77,6 +92,7 @@ void = flow.add(Void)
 load = flow.add(LoadMolecule)
 rmsd = flow.add(RMSD, loop=True)
 logt = flow.add(LogTags, loop=True)
+isoSave = flow.add(IsomerCollectionSaving)
 # sort = flow.add(TagSorter, loop=True)
 # dock_hp = flow.add(AutoDockGPU, name="dock-hp", loop=True)
 # void_hp = flow.add(Void, name="void-hp", loop=True)
@@ -94,12 +110,13 @@ flow.connect_all(
     (indx.out, dock.inp),
     (dock.out_scores, void.inp),
     # Modified: dock.out -> saver.inp -> rmsd.inp
-    (dock.out, saver.inp),
-    (saver.out, rmsd.inp),
+    (dock.out, rmsd.inp),
     (load.out, rmsd.inp_ref),
 )
 flow.connect_all(
-    (rmsd.out, logt.inp),
+    (rmsd.out, saver.inp),
+    (saver.out, logt.inp),
+    (saver.out2, isoSave.inp),
     (logt.out, scor.inp),
     (scor.out, rnve.inp),
 )
@@ -107,11 +124,12 @@ flow.connect_all(
 grid = Path("mols/Rad51/rad51_receptor.maps.fld")
 ref = Path("mols/Rad51/Cam833HMdsRad51Docked_Cam833-Acid_3.sdf")
 rnv_config = Path("configs/REINVENT/staged_learning_maize_mol2mol.toml")
-prior = Path("priors/mol2mol_similarity.prior")
+prior = Path("priors/mol2mol_mmp.prior")
 rnve.distance_threshold.set(100)
-rnve.sample_strategy.set("beamsearch")  # multinomial or beamsearch (deterministic)
+rnve.sample_strategy.set("multinomial")  # multinomial or beamsearch (deterministic)
 rnve.input_smi.set("mols/Rad51/cam833.smi")  # multinomial or beamsearch (deterministic)
-
+isoSave.isomer_output_location.set(Path("results"))
+rnve.weight.set(1)
 # Make sure these files exist and are readable
 assert rnv_config.exists(), f"Config file not found: {rnv_config}"
 assert prior.exists(), f"Prior model not found: {prior}"
@@ -126,19 +144,18 @@ rnve.agent.set(prior)
 # rnve.args.set("----loglevel DEBUG")
 
 # The maximum number of RL epochs
-# rnve.min_epoch.set(25)
-rnve.max_epoch.set(1)
-# rnve.max_score.set(0.85)
+rnve.min_epoch.set(25)
+rnve.max_epoch.set(50)
 
 
 
 # Settings to transform the docking score to a value between 0 and 1, with 1 being favourable, using a sigmoid
-rnve.low.set(-10.0)
-rnve.high.set(-5.0)
+rnve.low.set(-12.0)
+rnve.high.set(-3.0)
 rnve.reverse.set(True)
 
 # Number of molecules to generate each epoch
-rnve.batch_size.set(4)
+rnve.batch_size.set(64)
 
 # Number of isomers to generate for each SMILES
 embe.use_filters.set(False)
@@ -170,22 +187,20 @@ dock.constraints.set(False)
 
 
 flow.check()
+try:
+    flow.execute()
+except Exception as e:
+    print("e")
+    print(e)
 
 
-
-setup_workflow(flow)
-
+flow.to_file("run_maize_mol2mol.yml")
 
 ts = time.strftime("%Y%m%d-%H%M%S")
 
-
-print("HII, ", len(totalIsomerCollection))
-print((totalIsomerCollection))
 
 # save_sdf_library(mols=totalIsomerCollection,file=Path( f"dock_outputs_{ts}.sdf"))
 # except Exception as e:
     # flow.logger.error(e)
     # flow._cleanup()
 
-# mols = retu.get()
-# print(mols)

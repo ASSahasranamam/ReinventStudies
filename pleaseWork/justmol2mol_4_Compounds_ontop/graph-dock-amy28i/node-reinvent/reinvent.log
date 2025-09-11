@@ -1,0 +1,269 @@
+01:49:05 <INFO> Started REINVENT 4.6.22 (C) AstraZeneca 2017, 2023 on 2025-09-03
+01:49:05 <INFO> Command line: /home/a/miniconda3/envs/reinvent4/bin/reinvent --log-filename reinvent.log -f toml config.toml
+01:49:05 <INFO> Reading run configuration from /home/a/REINVENT4/ReinventStudies/pleaseWork/justmol2mol_4_Compounds_ontop/graph-dock-amy28i/node-reinvent/config.toml using format toml
+01:49:05 <INFO> User a on host l4-redo
+01:49:05 <INFO> Python version 3.10.18
+01:49:05 <INFO> PyTorch version 2.7.1+cu128, git e2d141dbde55c2a4370fac5165b0561b6af4798b
+01:49:05 <INFO> PyTorch compiled with CUDA version 12.8
+01:49:05 <INFO> RDKit version 2025.03.5
+01:49:05 <INFO> Platform Linux-6.1.0-38-cloud-amd64-x86_64-with-glibc2.36
+01:49:05 <INFO> CUDA driver version 570.86.10
+01:49:05 <INFO> Number of PyTorch CUDA devices 1
+01:49:05 <WARN> 'use_cuda' is deprecated, use 'device' instead
+01:49:05 <INFO> Using CUDA device:0 NVIDIA L4
+01:49:05 <INFO> GPU memory: 22381 MiB free, 22574 MiB total
+01:49:05 <INFO> Writing TensorBoard summary to /home/a/REINVENT4/ReinventStudies/pleaseWork/justmol2mol_4_Compounds_ontop/graph-dock-amy28i/node-reinvent/tb_logs
+01:49:05 <INFO> Writing JSON config file to /home/a/REINVENT4/ReinventStudies/pleaseWork/justmol2mol_4_Compounds_ontop/graph-dock-amy28i/node-reinvent/justmol2mol_4_Compounds_staged_2_learning.json
+01:49:05 <INFO> Starting 1 stage of Reinforcement Learning
+01:49:06 <ERRO> /home/a/REINVENT4/ReinventStudies/priors/mol2mol_similarity.prior has invalid hash:
+{ 'comments': [],
+  'creation_date': 0,
+  'date_format': 'UNIX epoch',
+  'hash_id': '3c6a77904318ad22c299806d686463f5',
+  'hash_id_format': 'xxhash.xxh3_128_hex 3.4.1',
+  'model_id': '595a7122492447e0b10b11b6cf47b2ae',
+  'model_id_format': 'uuid.uuid4 3.10.12',
+  'origina_data_source': 'ChEMBL 28',
+  'updates': []}
+01:49:06 <INFO> Number of network parameters: 17,462,400
+01:49:06 <INFO> Network architecture:
+EncoderDecoder(
+  (encoder): Encoder(
+    (layers): ModuleList(
+      (0-5): 6 x EncoderLayer(
+        (self_attn): MultiHeadedAttention(
+          (linears): ModuleList(
+            (0-3): 4 x Linear(in_features=256, out_features=256, bias=True)
+          )
+          (dropout): Dropout(p=0.1, inplace=False)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=2048, bias=True)
+          (w_2): Linear(in_features=2048, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+        )
+        (sublayer): ModuleList(
+          (0-1): 2 x SublayerConnection(
+            (norm): LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+    )
+    (norm): LayerNorm()
+  )
+  (decoder): Decoder(
+    (layers): ModuleList(
+      (0-5): 6 x DecoderLayer(
+        (self_attn): MultiHeadedAttention(
+          (linears): ModuleList(
+            (0-3): 4 x Linear(in_features=256, out_features=256, bias=True)
+          )
+          (dropout): Dropout(p=0.1, inplace=False)
+        )
+        (src_attn): MultiHeadedAttention(
+          (linears): ModuleList(
+            (0-3): 4 x Linear(in_features=256, out_features=256, bias=True)
+          )
+          (dropout): Dropout(p=0.1, inplace=False)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=2048, bias=True)
+          (w_2): Linear(in_features=2048, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+        )
+        (sublayer): ModuleList(
+          (0-2): 3 x SublayerConnection(
+            (norm): LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+    )
+    (norm): LayerNorm()
+  )
+  (src_embed): Sequential(
+    (0): Embeddings(
+      (lut): Embedding(128, 256)
+    )
+    (1): PositionalEncoding(
+      (dropout): Dropout(p=0.1, inplace=False)
+    )
+  )
+  (tgt_embed): Sequential(
+    (0): Embeddings(
+      (lut): Embedding(128, 256)
+    )
+    (1): PositionalEncoding(
+      (dropout): Dropout(p=0.1, inplace=False)
+    )
+  )
+  (generator): Generator(
+    (proj): Linear(in_features=256, out_features=128, bias=True)
+  )
+)
+01:49:06 <INFO> /home/a/REINVENT4/ReinventStudies/priors/justmol2mol_4_compounds_staged_learning_1.chkpt has valid hash:
+{ 'comments': ['RL'],
+  'creation_date': 0,
+  'date_format': 'UNIX epoch',
+  'hash_id': '66b6060b35f3fc3eb2943f10d519c62d',
+  'hash_id_format': 'xxhash.xxh3_128_hex 3.5.0',
+  'model_id': '595a7122492447e0b10b11b6cf47b2ae',
+  'model_id_format': 'uuid.uuid4 3.10.12',
+  'origina_data_source': 'ChEMBL 28',
+  'updates': [1756708181.2555985]}
+01:49:06 <INFO> Number of network parameters: 17,462,400
+01:49:06 <INFO> Network architecture:
+EncoderDecoder(
+  (encoder): Encoder(
+    (layers): ModuleList(
+      (0-5): 6 x EncoderLayer(
+        (self_attn): MultiHeadedAttention(
+          (linears): ModuleList(
+            (0-3): 4 x Linear(in_features=256, out_features=256, bias=True)
+          )
+          (dropout): Dropout(p=0.1, inplace=False)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=2048, bias=True)
+          (w_2): Linear(in_features=2048, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+        )
+        (sublayer): ModuleList(
+          (0-1): 2 x SublayerConnection(
+            (norm): LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+    )
+    (norm): LayerNorm()
+  )
+  (decoder): Decoder(
+    (layers): ModuleList(
+      (0-5): 6 x DecoderLayer(
+        (self_attn): MultiHeadedAttention(
+          (linears): ModuleList(
+            (0-3): 4 x Linear(in_features=256, out_features=256, bias=True)
+          )
+          (dropout): Dropout(p=0.1, inplace=False)
+        )
+        (src_attn): MultiHeadedAttention(
+          (linears): ModuleList(
+            (0-3): 4 x Linear(in_features=256, out_features=256, bias=True)
+          )
+          (dropout): Dropout(p=0.1, inplace=False)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=2048, bias=True)
+          (w_2): Linear(in_features=2048, out_features=256, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+        )
+        (sublayer): ModuleList(
+          (0-2): 3 x SublayerConnection(
+            (norm): LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+    )
+    (norm): LayerNorm()
+  )
+  (src_embed): Sequential(
+    (0): Embeddings(
+      (lut): Embedding(128, 256)
+    )
+    (1): PositionalEncoding(
+      (dropout): Dropout(p=0.1, inplace=False)
+    )
+  )
+  (tgt_embed): Sequential(
+    (0): Embeddings(
+      (lut): Embedding(128, 256)
+    )
+    (1): PositionalEncoding(
+      (dropout): Dropout(p=0.1, inplace=False)
+    )
+  )
+  (generator): Generator(
+    (proj): Linear(in_features=256, out_features=128, bias=True)
+  )
+)
+01:49:06 <INFO> Using generator Mol2Mol
+01:49:06 <INFO> Prior read from /home/a/REINVENT4/ReinventStudies/priors/mol2mol_similarity.prior
+01:49:06 <INFO> Agent read from /home/a/REINVENT4/ReinventStudies/priors/justmol2mol_4_compounds_staged_learning_1.chkpt
+01:49:06 <INFO> Input molecules/fragments read from file /home/a/REINVENT4/ReinventStudies/mols/Rad51/cam833.smi
+01:49:06 <WARN> randomize_smiles was set to True but the model was not trained with randomized SMILES.  Setting randomize_smiles to False.
+01:49:06 <INFO> Using reward strategy dap
+01:49:06 <INFO> Using diversity filter from /home/a/REINVENT4/ReinventStudies/priors/justmol2mol_4_compounds_staged_learning_1.chkpt
+01:49:06 <INFO> Diversity filter memories are retained between stages
+01:49:06 <INFO> Registered scoring component ROCSSimilarity
+01:49:06 <INFO> Registered scoring component GroupCount
+01:49:06 <INFO> Registered scoring component FragmentQed
+01:49:06 <INFO> Registered scoring component FragmentSlogP
+01:49:06 <INFO> Registered scoring component FragmentMolecularWeight
+01:49:06 <INFO> Registered scoring component FragmentTPSA
+01:49:06 <INFO> Registered scoring component FragmentDistanceMatrix
+01:49:06 <INFO> Registered scoring component FragmentNumAtomStereoCenters
+01:49:06 <INFO> Registered scoring component FragmentHBondAcceptors
+01:49:06 <INFO> Registered scoring component FragmentHBondDonors
+01:49:06 <INFO> Registered scoring component FragmentNumRotBond
+01:49:06 <INFO> Registered scoring component FragmentCsp3
+01:49:06 <INFO> Registered scoring component Fragmentnumsp
+01:49:06 <INFO> Registered scoring component Fragmentnumsp2
+01:49:06 <INFO> Registered scoring component Fragmentnumsp3
+01:49:06 <INFO> Registered scoring component FragmentEffectiveLength
+01:49:06 <INFO> Registered scoring component FragmentGraphLength
+01:49:06 <INFO> Registered scoring component FragmentLengthRatio
+01:49:06 <INFO> Registered scoring component FragmentNumHeavyAtoms
+01:49:06 <INFO> Registered scoring component FragmentNumHeteroAtoms
+01:49:06 <INFO> Registered scoring component FragmentNumRings
+01:49:06 <INFO> Registered scoring component FragmentNumAromaticRings
+01:49:06 <INFO> Registered scoring component FragmentNumAliphaticRings
+01:49:06 <INFO> Registered scoring component FragmentSlogP
+01:49:06 <INFO> Registered scoring component MatchingSubstructure
+01:49:06 <INFO> Registered scoring component MolVolume
+01:49:06 <INFO> Registered scoring component Qed
+01:49:06 <INFO> Registered scoring component LargestRingSize
+01:49:06 <INFO> Registered scoring component MolecularWeight
+01:49:06 <INFO> Registered scoring component GraphLength
+01:49:06 <INFO> Registered scoring component NumAtomStereoCenters
+01:49:06 <INFO> Registered scoring component HBondAcceptors
+01:49:06 <INFO> Registered scoring component HBondDonors
+01:49:06 <INFO> Registered scoring component NumRotBond
+01:49:06 <INFO> Registered scoring component Csp3
+01:49:06 <INFO> Registered scoring component numsp
+01:49:06 <INFO> Registered scoring component numsp2
+01:49:06 <INFO> Registered scoring component numsp3
+01:49:06 <INFO> Registered scoring component NumHeavyAtoms
+01:49:06 <INFO> Registered scoring component NumHeteroAtoms
+01:49:06 <INFO> Registered scoring component NumRings
+01:49:06 <INFO> Registered scoring component NumAromaticRings
+01:49:06 <INFO> Registered scoring component NumAliphaticRings
+01:49:06 <INFO> Registered scoring component SlogP
+01:49:06 <INFO> Registered scoring component LargestRingSize
+01:49:06 <INFO> Registered scoring component PMI
+01:49:06 <INFO> Registered scoring component RDKitDescriptors
+01:49:06 <INFO> Registered scoring component TanimotoSimilarity
+01:49:06 <INFO> Registered scoring component TanimotoDistance
+01:49:06 <INFO> Registered scoring component TPSA
+01:49:06 <INFO> Registered scoring component SAScore
+01:49:06 <INFO> Registered scoring component Cazp
+01:49:07 <INFO> Registered scoring component ChemProp
+01:49:07 <INFO> Registered scoring component CustomAlerts
+01:49:07 <INFO> Registered scoring component DockStream
+01:49:07 <INFO> Registered scoring component ExternalProcess
+01:49:07 <INFO> Registered scoring component REST
+01:49:07 <INFO> Registered scoring component Icolos
+01:49:07 <INFO> Registered scoring component Maize
+01:49:07 <INFO> Registered scoring component MMP
+01:49:07 <INFO> Registered scoring component Qptuna
+01:49:07 <INFO> Registered scoring component ReactionFilter
+01:49:07 <INFO> Registered scoring component RingPrecedence
+01:49:07 <INFO> Creating filter component custom_alerts
+01:49:07 <INFO> Creating scoring component QED
+01:49:07 <INFO> Creating scoring component TanimotoDistance
+01:49:07 <INFO> Creating scoring component ExternalProcess
+01:49:07 <INFO> Writing tabular data for stage to justmol2mol_4_compounds_staged_2_1.csv
+01:49:07 <INFO> Starting stage 1 <<<
+01:49:07 <INFO> Current GPU memory usage: 403 MiB used, 22171 MiB free

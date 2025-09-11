@@ -1,0 +1,143 @@
+02:21:04 <INFO> Started REINVENT 4.6.22 (C) AstraZeneca 2017, 2023 on 2025-08-31
+02:21:04 <INFO> Command line: /home/a/miniconda3/envs/reinvent4/bin/reinvent --log-filename reinvent.log -f toml config.toml
+02:21:04 <INFO> Reading run configuration from /home/a/REINVENT4/ReinventStudies/pleaseWork/justRnve/graph-dock-3mta9a/node-reinvent/config.toml using format toml
+02:21:04 <INFO> User a on host l4-redo
+02:21:04 <INFO> Python version 3.10.18
+02:21:04 <INFO> PyTorch version 2.7.1+cu128, git e2d141dbde55c2a4370fac5165b0561b6af4798b
+02:21:04 <INFO> PyTorch compiled with CUDA version 12.8
+02:21:04 <INFO> RDKit version 2025.03.5
+02:21:04 <INFO> Platform Linux-6.1.0-38-cloud-amd64-x86_64-with-glibc2.36
+02:21:04 <INFO> CUDA driver version 570.86.10
+02:21:04 <INFO> Number of PyTorch CUDA devices 1
+02:21:04 <WARN> 'use_cuda' is deprecated, use 'device' instead
+02:21:04 <INFO> Using CUDA device:0 NVIDIA L4
+02:21:04 <INFO> GPU memory: 22381 MiB free, 22574 MiB total
+02:21:04 <INFO> Writing TensorBoard summary to /home/a/REINVENT4/ReinventStudies/pleaseWork/justRnve/graph-dock-3mta9a/node-reinvent/tb_logs
+02:21:04 <INFO> Writing JSON config file to /home/a/REINVENT4/ReinventStudies/pleaseWork/justRnve/graph-dock-3mta9a/node-reinvent/_justRnve_staged_learning.json
+02:21:04 <INFO> Starting 1 stage of Reinforcement Learning
+02:21:04 <INFO> /home/a/REINVENT4/ReinventStudies/priors/reinvent.prior has valid hash:
+{ 'comments': [],
+  'creation_date': 0,
+  'date_format': 'UNIX epoch',
+  'hash_id': '173568c36e1fc3d95cab289c7d31ce0b',
+  'hash_id_format': 'xxhash.xxh3_128_hex 3.4.1',
+  'model_id': '55d68f8a81c04f5a86304ebe1723a0ea',
+  'model_id_format': 'uuid.uuid4 3.10.12',
+  'origina_data_source': 'ChEMBL 25',
+  'updates': []}
+02:21:04 <INFO> Number of network parameters: 5,805,602
+02:21:04 <INFO> Network architecture:
+RNN(
+  (_embedding): Embedding(34, 256)
+  (_rnn): LSTM(256, 512, num_layers=3, batch_first=True)
+  (_linear): Linear(in_features=512, out_features=34, bias=True)
+)
+02:21:04 <INFO> /home/a/REINVENT4/ReinventStudies/priors/reinvent.prior has valid hash:
+{ 'comments': [],
+  'creation_date': 0,
+  'date_format': 'UNIX epoch',
+  'hash_id': '173568c36e1fc3d95cab289c7d31ce0b',
+  'hash_id_format': 'xxhash.xxh3_128_hex 3.4.1',
+  'model_id': '55d68f8a81c04f5a86304ebe1723a0ea',
+  'model_id_format': 'uuid.uuid4 3.10.12',
+  'origina_data_source': 'ChEMBL 25',
+  'updates': []}
+02:21:04 <INFO> Number of network parameters: 5,805,602
+02:21:04 <INFO> Network architecture:
+RNN(
+  (_embedding): Embedding(34, 256)
+  (_rnn): LSTM(256, 512, num_layers=3, batch_first=True)
+  (_linear): Linear(in_features=512, out_features=34, bias=True)
+)
+02:21:04 <INFO> Using generator Reinvent
+02:21:04 <INFO> Prior read from /home/a/REINVENT4/ReinventStudies/priors/reinvent.prior
+02:21:04 <INFO> Agent read from /home/a/REINVENT4/ReinventStudies/priors/reinvent.prior
+02:21:04 <INFO> Using reward strategy dap
+02:21:04 <INFO> Using diversity filter IdenticalMurckoScaffold
+02:21:04 <INFO> Diversity filter memories are retained between stages
+02:21:04 <INFO> No SMILES for inception. Populating from first sampled batch.
+02:21:04 <INFO> Global SMILES deduplication for inception memory
+02:21:04 <INFO> Using inception memory
+02:21:04 <INFO> Registered scoring component ROCSSimilarity
+02:21:04 <INFO> Registered scoring component GroupCount
+02:21:04 <INFO> Registered scoring component FragmentQed
+02:21:04 <INFO> Registered scoring component FragmentSlogP
+02:21:04 <INFO> Registered scoring component FragmentMolecularWeight
+02:21:04 <INFO> Registered scoring component FragmentTPSA
+02:21:04 <INFO> Registered scoring component FragmentDistanceMatrix
+02:21:04 <INFO> Registered scoring component FragmentNumAtomStereoCenters
+02:21:04 <INFO> Registered scoring component FragmentHBondAcceptors
+02:21:04 <INFO> Registered scoring component FragmentHBondDonors
+02:21:04 <INFO> Registered scoring component FragmentNumRotBond
+02:21:04 <INFO> Registered scoring component FragmentCsp3
+02:21:04 <INFO> Registered scoring component Fragmentnumsp
+02:21:04 <INFO> Registered scoring component Fragmentnumsp2
+02:21:04 <INFO> Registered scoring component Fragmentnumsp3
+02:21:04 <INFO> Registered scoring component FragmentEffectiveLength
+02:21:04 <INFO> Registered scoring component FragmentGraphLength
+02:21:04 <INFO> Registered scoring component FragmentLengthRatio
+02:21:04 <INFO> Registered scoring component FragmentNumHeavyAtoms
+02:21:04 <INFO> Registered scoring component FragmentNumHeteroAtoms
+02:21:04 <INFO> Registered scoring component FragmentNumRings
+02:21:04 <INFO> Registered scoring component FragmentNumAromaticRings
+02:21:04 <INFO> Registered scoring component FragmentNumAliphaticRings
+02:21:04 <INFO> Registered scoring component FragmentSlogP
+02:21:04 <INFO> Registered scoring component MatchingSubstructure
+02:21:04 <INFO> Registered scoring component MolVolume
+02:21:04 <INFO> Registered scoring component Qed
+02:21:04 <INFO> Registered scoring component LargestRingSize
+02:21:04 <INFO> Registered scoring component MolecularWeight
+02:21:04 <INFO> Registered scoring component GraphLength
+02:21:04 <INFO> Registered scoring component NumAtomStereoCenters
+02:21:04 <INFO> Registered scoring component HBondAcceptors
+02:21:04 <INFO> Registered scoring component HBondDonors
+02:21:04 <INFO> Registered scoring component NumRotBond
+02:21:04 <INFO> Registered scoring component Csp3
+02:21:04 <INFO> Registered scoring component numsp
+02:21:04 <INFO> Registered scoring component numsp2
+02:21:04 <INFO> Registered scoring component numsp3
+02:21:04 <INFO> Registered scoring component NumHeavyAtoms
+02:21:04 <INFO> Registered scoring component NumHeteroAtoms
+02:21:04 <INFO> Registered scoring component NumRings
+02:21:04 <INFO> Registered scoring component NumAromaticRings
+02:21:04 <INFO> Registered scoring component NumAliphaticRings
+02:21:04 <INFO> Registered scoring component SlogP
+02:21:04 <INFO> Registered scoring component LargestRingSize
+02:21:04 <INFO> Registered scoring component PMI
+02:21:04 <INFO> Registered scoring component RDKitDescriptors
+02:21:04 <INFO> Registered scoring component TanimotoSimilarity
+02:21:04 <INFO> Registered scoring component TanimotoDistance
+02:21:04 <INFO> Registered scoring component TPSA
+02:21:04 <INFO> Registered scoring component SAScore
+02:21:04 <INFO> Registered scoring component Cazp
+02:21:05 <INFO> Registered scoring component ChemProp
+02:21:05 <INFO> Registered scoring component CustomAlerts
+02:21:05 <INFO> Registered scoring component DockStream
+02:21:05 <INFO> Registered scoring component ExternalProcess
+02:21:05 <INFO> Registered scoring component REST
+02:21:05 <INFO> Registered scoring component Icolos
+02:21:05 <INFO> Registered scoring component Maize
+02:21:05 <INFO> Registered scoring component MMP
+02:21:05 <INFO> Registered scoring component Qptuna
+02:21:05 <INFO> Registered scoring component ReactionFilter
+02:21:05 <INFO> Registered scoring component RingPrecedence
+02:21:05 <INFO> Creating filter component custom_alerts
+02:21:05 <INFO> Creating scoring component QED
+02:21:05 <INFO> Creating scoring component TanimotoDistance
+02:21:05 <INFO> Creating scoring component ExternalProcess
+02:21:05 <INFO> Writing tabular data for stage to staged_learning_1.csv
+02:21:05 <INFO> Starting stage 1 <<<
+02:21:05 <INFO> Current GPU memory usage: 317 MiB used, 22257 MiB free
+02:21:32 <INFO> Score: 0.26 Agent NLL: 27.70 Valid: 100% Step: 1
+ | Agent Prior Target Score SMILES SMILES_state Scaffold QED QED (raw) TanimotoDistance TanimotoDistance (raw) maize maize (raw) Unwanted SMARTS Unwanted SMARTS (raw) matchting_patterns (Unwanted SMARTS)
+ | 18.9610 18.9610 -3.0493 0.1243101 C=CC(O)CCl 1  0.4073985 0.4074 0.0583942 0.0584 0.1001886 -3.2100 1.0000000 1.0000 []
+ | 22.5978 22.5978 25.7298 0.3775599 CCc1oc2ccccc2c1C(=O)c1ccc(OC)cc1 1 O=C(c1ccccc1)c1coc2ccccc12 0.6711176 0.6711 0.3076923 0.3077 0.3136997 -5.9700 1.0000000 1.0000 []
+ | 40.8345 40.8345 -2.3176 0.3009135 CC(=O)N(c1nnc(Br)c(-c2c(F)cccc2F)n1)C1CCCCCC1 1 c1ccc(-c2cnnc(NC3CCCCCC3)n2)cc1 0.6719726 0.6720 0.2065217 0.2065 0.2430663 -5.2800 1.0000000 1.0000 []
+ | 31.3043 31.3043 -31.3043 0.0000000 CSCCC(NS(=O)(=O)c1ccc(Br)s1)C(=O)NNC(=O)CC(C)C 1 c1ccsc1 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 ['[#7;!n][#7;!n]']
+ | 33.3385 33.3385 -33.3385 0.0000000 CC1CN(C(=O)c2cccc(OC(=O)c3ccccc3)c2)CC(C)N1C(=O)c1ccccc1 1 O=C(Oc1cccc(C(=O)N2CCN(C(=O)c3ccccc3)CC2)c1)c1ccccc1 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 ['C(=[O,S])[O,S]']
+ | 22.3198 22.3198 39.3005 0.4814090 O=C(NCCSCc1ccccc1)Nc1ccccc1Br 1 O=C(NCCSCc1ccccc1)Nc1ccccc1 0.7401907 0.7402 0.2176471 0.2176 0.5774046 -8.1100 1.0000000 1.0000 []
+ | 24.1446 24.1446 40.4532 0.5046703 CS(=O)(=O)CCNCc1ccc(-c2cccc3ccccc23)o1 1 c1coc(-c2cccc3ccccc23)c1 0.7054463 0.7054 0.2215909 0.2216 0.6441804 -8.6600 1.0000000 1.0000 []
+ | 24.7876 24.7876 -24.7876 0.0000000 O=C(NC(=S)N1CCN(c2ccc(Cl)cc2)CC1)c1ccoc1 1 O=C(NC(=S)N1CCN(c2ccccc2)CC1)c1ccoc1 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 ['[#7;!n][C;!$(C(=[O,N])[N,O])][#7;!n]']
+ | 26.8903 26.8903 29.5766 0.4411479 Cc1cc(C)c(C)c(OCCCN(Cc2ccccc2)S(C)(=O)=O)c1 1 c1ccc(CNCCCOc2ccccc2)cc1 0.6712151 0.6712 0.2427746 0.2428 0.4820986 -7.3600 1.0000000 1.0000 []
+ | 31.8221 31.8221 11.6206 0.3393967 COCCN1CCCC1c1cn(CCC(=O)N2CCCC2)cn1 1 O=C(CCn1cnc(C2CCCN2)c1)N1CCCC1 0.7668754 0.7669 0.1375661 0.1376 0.3546476 -6.3300 1.0000000 1.0000 []
+02:21:55 <CRIT> Received exception ('Signal 2'): saving checkpoint and then terminate

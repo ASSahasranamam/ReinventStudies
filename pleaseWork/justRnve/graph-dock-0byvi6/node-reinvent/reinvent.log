@@ -1,0 +1,479 @@
+01:48:16 <INFO> Started REINVENT 4.6.22 (C) AstraZeneca 2017, 2023 on 2025-08-31
+01:48:16 <INFO> Command line: /home/a/miniconda3/envs/reinvent4/bin/reinvent --log-filename reinvent.log -f toml config.toml
+01:48:16 <INFO> Reading run configuration from /home/a/REINVENT4/ReinventStudies/pleaseWork/justRnve/graph-dock-0byvi6/node-reinvent/config.toml using format toml
+01:48:16 <INFO> User a on host l4-redo
+01:48:16 <INFO> Python version 3.10.18
+01:48:16 <INFO> PyTorch version 2.7.1+cu128, git e2d141dbde55c2a4370fac5165b0561b6af4798b
+01:48:16 <INFO> PyTorch compiled with CUDA version 12.8
+01:48:16 <INFO> RDKit version 2025.03.5
+01:48:16 <INFO> Platform Linux-6.1.0-38-cloud-amd64-x86_64-with-glibc2.36
+01:48:16 <INFO> CUDA driver version 570.86.10
+01:48:16 <INFO> Number of PyTorch CUDA devices 1
+01:48:16 <WARN> 'use_cuda' is deprecated, use 'device' instead
+01:48:17 <INFO> Using CUDA device:0 NVIDIA L4
+01:48:17 <INFO> GPU memory: 22381 MiB free, 22574 MiB total
+01:48:17 <INFO> Writing TensorBoard summary to /home/a/REINVENT4/ReinventStudies/pleaseWork/justRnve/graph-dock-0byvi6/node-reinvent/tb_logs
+01:48:17 <INFO> Writing JSON config file to /home/a/REINVENT4/ReinventStudies/pleaseWork/justRnve/graph-dock-0byvi6/node-reinvent/_justRnve_staged_learning.json
+01:48:17 <INFO> Starting 1 stage of Reinforcement Learning
+01:48:17 <INFO> /home/a/REINVENT4/ReinventStudies/priors/reinvent.prior has valid hash:
+{ 'comments': [],
+  'creation_date': 0,
+  'date_format': 'UNIX epoch',
+  'hash_id': '173568c36e1fc3d95cab289c7d31ce0b',
+  'hash_id_format': 'xxhash.xxh3_128_hex 3.4.1',
+  'model_id': '55d68f8a81c04f5a86304ebe1723a0ea',
+  'model_id_format': 'uuid.uuid4 3.10.12',
+  'origina_data_source': 'ChEMBL 25',
+  'updates': []}
+01:48:17 <INFO> Number of network parameters: 5,805,602
+01:48:17 <INFO> Network architecture:
+RNN(
+  (_embedding): Embedding(34, 256)
+  (_rnn): LSTM(256, 512, num_layers=3, batch_first=True)
+  (_linear): Linear(in_features=512, out_features=34, bias=True)
+)
+01:48:17 <INFO> /home/a/REINVENT4/ReinventStudies/priors/reinvent.prior has valid hash:
+{ 'comments': [],
+  'creation_date': 0,
+  'date_format': 'UNIX epoch',
+  'hash_id': '173568c36e1fc3d95cab289c7d31ce0b',
+  'hash_id_format': 'xxhash.xxh3_128_hex 3.4.1',
+  'model_id': '55d68f8a81c04f5a86304ebe1723a0ea',
+  'model_id_format': 'uuid.uuid4 3.10.12',
+  'origina_data_source': 'ChEMBL 25',
+  'updates': []}
+01:48:17 <INFO> Number of network parameters: 5,805,602
+01:48:17 <INFO> Network architecture:
+RNN(
+  (_embedding): Embedding(34, 256)
+  (_rnn): LSTM(256, 512, num_layers=3, batch_first=True)
+  (_linear): Linear(in_features=512, out_features=34, bias=True)
+)
+01:48:17 <INFO> Using generator Reinvent
+01:48:17 <INFO> Prior read from /home/a/REINVENT4/ReinventStudies/priors/reinvent.prior
+01:48:17 <INFO> Agent read from /home/a/REINVENT4/ReinventStudies/priors/reinvent.prior
+01:48:17 <INFO> Using reward strategy dap
+01:48:17 <INFO> Using diversity filter IdenticalMurckoScaffold
+01:48:17 <INFO> Diversity filter memories are retained between stages
+01:48:17 <INFO> No SMILES for inception. Populating from first sampled batch.
+01:48:17 <INFO> Global SMILES deduplication for inception memory
+01:48:17 <INFO> Using inception memory
+01:48:17 <INFO> Registered scoring component ROCSSimilarity
+01:48:17 <INFO> Registered scoring component GroupCount
+01:48:17 <INFO> Registered scoring component FragmentQed
+01:48:17 <INFO> Registered scoring component FragmentSlogP
+01:48:17 <INFO> Registered scoring component FragmentMolecularWeight
+01:48:17 <INFO> Registered scoring component FragmentTPSA
+01:48:17 <INFO> Registered scoring component FragmentDistanceMatrix
+01:48:17 <INFO> Registered scoring component FragmentNumAtomStereoCenters
+01:48:17 <INFO> Registered scoring component FragmentHBondAcceptors
+01:48:17 <INFO> Registered scoring component FragmentHBondDonors
+01:48:17 <INFO> Registered scoring component FragmentNumRotBond
+01:48:17 <INFO> Registered scoring component FragmentCsp3
+01:48:17 <INFO> Registered scoring component Fragmentnumsp
+01:48:17 <INFO> Registered scoring component Fragmentnumsp2
+01:48:17 <INFO> Registered scoring component Fragmentnumsp3
+01:48:17 <INFO> Registered scoring component FragmentEffectiveLength
+01:48:17 <INFO> Registered scoring component FragmentGraphLength
+01:48:17 <INFO> Registered scoring component FragmentLengthRatio
+01:48:17 <INFO> Registered scoring component FragmentNumHeavyAtoms
+01:48:17 <INFO> Registered scoring component FragmentNumHeteroAtoms
+01:48:17 <INFO> Registered scoring component FragmentNumRings
+01:48:17 <INFO> Registered scoring component FragmentNumAromaticRings
+01:48:17 <INFO> Registered scoring component FragmentNumAliphaticRings
+01:48:17 <INFO> Registered scoring component FragmentSlogP
+01:48:17 <INFO> Registered scoring component MatchingSubstructure
+01:48:17 <INFO> Registered scoring component MolVolume
+01:48:17 <INFO> Registered scoring component Qed
+01:48:17 <INFO> Registered scoring component LargestRingSize
+01:48:17 <INFO> Registered scoring component MolecularWeight
+01:48:17 <INFO> Registered scoring component GraphLength
+01:48:17 <INFO> Registered scoring component NumAtomStereoCenters
+01:48:17 <INFO> Registered scoring component HBondAcceptors
+01:48:17 <INFO> Registered scoring component HBondDonors
+01:48:17 <INFO> Registered scoring component NumRotBond
+01:48:17 <INFO> Registered scoring component Csp3
+01:48:17 <INFO> Registered scoring component numsp
+01:48:17 <INFO> Registered scoring component numsp2
+01:48:17 <INFO> Registered scoring component numsp3
+01:48:17 <INFO> Registered scoring component NumHeavyAtoms
+01:48:17 <INFO> Registered scoring component NumHeteroAtoms
+01:48:17 <INFO> Registered scoring component NumRings
+01:48:17 <INFO> Registered scoring component NumAromaticRings
+01:48:17 <INFO> Registered scoring component NumAliphaticRings
+01:48:17 <INFO> Registered scoring component SlogP
+01:48:17 <INFO> Registered scoring component LargestRingSize
+01:48:17 <INFO> Registered scoring component PMI
+01:48:17 <INFO> Registered scoring component RDKitDescriptors
+01:48:17 <INFO> Registered scoring component TanimotoSimilarity
+01:48:17 <INFO> Registered scoring component TanimotoDistance
+01:48:17 <INFO> Registered scoring component TPSA
+01:48:17 <INFO> Registered scoring component SAScore
+01:48:17 <INFO> Registered scoring component Cazp
+01:48:17 <INFO> Registered scoring component ChemProp
+01:48:17 <INFO> Registered scoring component CustomAlerts
+01:48:17 <INFO> Registered scoring component DockStream
+01:48:17 <INFO> Registered scoring component ExternalProcess
+01:48:17 <INFO> Registered scoring component REST
+01:48:17 <INFO> Registered scoring component Icolos
+01:48:17 <INFO> Registered scoring component Maize
+01:48:17 <INFO> Registered scoring component MMP
+01:48:17 <INFO> Registered scoring component Qptuna
+01:48:17 <INFO> Registered scoring component ReactionFilter
+01:48:17 <INFO> Registered scoring component RingPrecedence
+01:48:17 <INFO> Creating filter component custom_alerts
+01:48:17 <INFO> Creating scoring component QED
+01:48:17 <INFO> Creating scoring component TanimotoDistance
+01:48:17 <INFO> Creating scoring component ExternalProcess
+01:48:17 <INFO> Writing tabular data for stage to staged_learning_1.csv
+01:48:17 <INFO> Starting stage 1 <<<
+01:48:17 <INFO> Current GPU memory usage: 317 MiB used, 22257 MiB free
+01:49:26 <INFO> Score: 0.25 Agent NLL: 28.02 Valid: 100% Step: 1
+ | Agent Prior Target Score SMILES SMILES_state Scaffold QED QED (raw) TanimotoDistance TanimotoDistance (raw) maize maize (raw) Unwanted SMARTS Unwanted SMARTS (raw) matchting_patterns (Unwanted SMARTS)
+ | 27.9785 27.9785 -27.9785 0.0000000 NS(=O)(=O)c1ccc(NC(=O)CCCNC(=S)NCCc2ccccc2)cc1 1 O=C(CCCNC(=S)NCCc1ccccc1)Nc1ccccc1 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 ['[#7;!n][C;!$(C(=[O,N])[N,O])][#7;!n]']
+ | 27.3995 27.3995 9.7188 0.2899867 CC(C)CCNC(=O)N1CCN(CC2CC2)c2ncccc2C1 1 c1cnc2c(c1)CNCCN2CC1CC1 0.9084934 0.9085 0.2045455 0.2045 0.1950744 -4.7300 1.0000000 1.0000 []
+ | 44.2914 44.2914 -44.2914 0.0000000 CCc1noc(C)c1C(=O)n1cnc(NC(=O)N(C(=O)Oc2ccccc2)c2ccc(Cl)cc2)c1 1 O=C(Nc1cn(C(=O)c2cnoc2)cn1)N(C(=O)Oc1ccccc1)c1ccccc1 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 ['C(=[O,S])[O,S]']
+ | 25.5885 25.5885 29.9317 0.4337516 COc1cc2c(cc1OC)C(NC(c1ccccc1)c1ccccc1)CC2 1 c1ccc(C(NC2CCc3ccccc32)c2ccccc2)cc1 0.6664028 0.6664 0.2000000 0.2000 0.5153458 -7.6200 1.0000000 1.0000 []
+ | 25.4501 25.4501 39.8799 0.5103903 Cc1c[nH]c(=NCCc2ccccc2)c(C(=O)NCc2ccc(F)cc2)n1 1 O=C(NCc1ccccc1)c1ncc[nH]c1=NCCc1ccccc1 0.7060056 0.7060 0.2459016 0.2459 0.6252015 -8.5000 1.0000000 1.0000 []
+ | 21.5701 21.5701 26.7585 0.3775676 O=C(Nc1cc(N2CCNCC2)cc(C(F)(F)F)c1)c1cccc(C(F)(F)F)c1 1 O=C(Nc1cccc(N2CCNCC2)c1)c1ccccc1 0.7287700 0.7288 0.1875000 0.1875 0.3856502 -6.5900 1.0000000 1.0000 []
+ | 25.2323 25.2323 -25.2323 0.0000000 CC1CN(C(C)CO)C(=O)c2cccc(NS(=O)(=O)c3cccs3)c2OC1CN(C)S(=O)(=O)c1ccccc1 1 O=C1NCCC(CNS(=O)(=O)c2ccccc2)Oc2c(NS(=O)(=O)c3cccs3)cccc21 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 ['[*;r8]']
+ | 22.1166 22.1166 17.0261 0.3058026 CC(c1ccccc1)n1cc2[nH][nH]c(=O)c2c1 1 O=c1[nH][nH]c2cn(Cc3ccccc3)cc12 0.6928922 0.6929 0.1437126 0.1437 0.2963482 -5.8100 1.0000000 1.0000 []
+ | 22.2686 22.2686 7.0135 0.2287663 N=c1[nH]c(O)c(CC(=O)N=c2[nH]ncs2)s1 1 N=c1[nH]cc(CC(=O)N=c2[nH]ncs2)s1 0.5919349 0.5919 0.1084337 0.1084 0.2065688 -4.8700 1.0000000 1.0000 []
+ | 38.2691 38.2691 3.7384 0.3281836 CN1CC2C(=O)NC(Cc3sccc32)C1CO 1 O=C1NC2CNCC1c1ccsc1C2 0.7494438 0.7494 0.1437126 0.1437 nan nan 1.0000000 1.0000 []
+01:50:18 <INFO> Score: 0.31 Agent NLL: 26.52 Valid: 100% Step: 2
+ | Agent Prior Target Score SMILES SMILES_state Scaffold QED QED (raw) TanimotoDistance TanimotoDistance (raw) maize maize (raw) Unwanted SMARTS Unwanted SMARTS (raw) matchting_patterns (Unwanted SMARTS)
+ | 30.4944 30.5564 17.1242 0.3725044 CC(=O)NC(CCS)C(=O)N1CCC(OCc2ccccc2)C1 1 c1ccc(COC2CCNC2)cc1 0.7442444 0.7442 0.2352941 0.2353 0.3315885 -6.1300 1.0000000 1.0000 []
+ | 23.4478 23.2067 47.7364 0.5542425 CN1CCN(c2ccc(S(=O)(=O)N3CCCCC3)cc2NC(=O)COc2ccc(Br)cc2)CC1 1 O=C(COc1ccccc1)Nc1cc(S(=O)(=O)N2CCCCC2)ccc1N1CCNCC1 0.5685454 0.5685 0.2755102 0.2755 0.7761546 -9.9300 1.0000000 1.0000 []
+ | 27.8053 30.2294 -30.2294 0.0000000 Clc1ccc(C(NCN2CCC(c3ccccc3)(c3ccccc3)CC2)c2ccccc2)cc1 1 c1ccc(C(NCN2CCC(c3ccccc3)(c3ccccc3)CC2)c2ccccc2)cc1 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 ['[#7;!n][C;!$(C(=[O,N])[N,O])][#7;!n]']
+ | 25.0029 24.8493 35.5893 0.4721767 CN(C1CCCCC1)S(=O)(=O)c1ccc2oc3c(c2c1)CCCC3 1 O=S(=O)(NC1CCCCC1)c1ccc2oc3c(c2c1)CCCC3 0.8331851 0.8332 0.2386364 0.2386 0.5000000 -7.5000 1.0000000 1.0000 []
+ | 32.6800 32.3338 -32.3338 0.0000000 O=C(O)CCN1CCN(C(=O)Cn2cc(NC(=O)c3cnn4cccnc34)c(-c3nc(Cl)ccc3OC(F)F)n2)CC1 1 O=C(Nc1cn(CC(=O)N2CCNCC2)nc1-c1ccccn1)c1cnn2cccnc12 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 ['C(=[O,S])[O,S]']
+ | 26.6724 25.7754 5.3353 0.2430525 CNC(=NC#N)N1CCN(c2ncnc3[nH]cc(C#N)c23)CC1 1 c1nc(N2CCNCC2)c2cc[nH]c2n1 0.4321980 0.4322 0.1164021 0.1164 0.2633772 -5.4900 1.0000000 1.0000 []
+ | 19.8291 20.4368 19.6886 0.3134796 c1ccc(N=c2[nH]c3ccccc3[nH]2)nc1 1 c1ccc(N=c2[nH]c3ccccc3[nH]2)nc1 0.6347036 0.6347 0.1301775 0.1302 0.3418732 -6.2200 1.0000000 1.0000 []
+ | 28.3105 28.0000 20.0082 0.3750636 COc1ccc(C(=O)CSc2nc(=O)c3c(C)c(C(N)=O)sc3[nH]2)cc1 1 O=C(CSc1nc(=O)c2ccsc2[nH]1)c1ccccc1 0.3798979 0.3799 0.2457143 0.2457 0.4604273 -7.1900 1.0000000 1.0000 []
+ | 24.6852 24.5011 34.2015 0.4586146 CCN(CC)C1CN(C(=O)c2ccc(NS(=O)(=O)c3ccc(F)cc3)cc2)C1 1 O=C(c1ccc(NS(=O)(=O)c2ccccc2)cc1)N1CCC1 0.7691254 0.7691 0.2758621 0.2759 0.4566160 -7.1600 1.0000000 1.0000 []
+ | 26.2537 26.4574 7.9904 0.2691235 COc1ccn(CCCn2cc(C=NO)nn2)c(=O)n1 1 O=c1ncccn1CCCn1ccnn1 0.4429772 0.4430 0.1229050 0.1229 0.3104044 -5.9400 1.0000000 1.0000 []
+01:51:26 <INFO> Score: 0.25 Agent NLL: 31.58 Valid: 100% Step: 3
+ | Agent Prior Target Score SMILES SMILES_state Scaffold QED QED (raw) TanimotoDistance TanimotoDistance (raw) maize maize (raw) Unwanted SMARTS Unwanted SMARTS (raw) matchting_patterns (Unwanted SMARTS)
+ | 23.9948 23.9714 40.0056 0.4998203 Cc1ccc(CNC(=O)C(C)NC(=O)c2ccc(C)cc2)cc1 1 O=C(CNC(=O)c1ccccc1)NCc1ccccc1 0.8919150 0.8919 0.2380952 0.2381 0.5421140 -7.8300 1.0000000 1.0000 []
+ | 39.7775 40.6917 -40.6917 0.0000000 CCCCCCCCCCOC(=O)C[N+]1(C)CCN2c3ccccc3NC21N 1 c1ccc2c(c1)NC1[NH2+]CCN21 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 ['C(=[O,S])[O,S]', '[#7;!n][C;!$(C(=[O,N])[N,O])][#7;!n]']
+ | 52.8821 52.5976 -52.5976 0.0000000 COC(=O)C1(N)CCSC23CC1CC2C(C)=CC(C)O3 1 C1=CC2CC3CCCSC2(C3)OC1 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 ['C(=[O,S])[O,S]', '[#8;!o][C;!$(C(=[O,N])[N,O])][#16;!s]']
+ | 20.5060 21.4728 29.8936 0.4012996 Cc1nc2sc(C(c3ccccc3)N3CCN(c4ccccc4)CC3)c(O)n2n1 1 c1ccc(C(c2cn3ncnc3s2)N2CCN(c3ccccc3)CC2)cc1 0.5608597 0.5609 0.1868687 0.1869 0.4974416 -7.4800 1.0000000 1.0000 []
+ | 23.1496 23.2570 -23.2570 0.0000000 CN1CCC(OC(=O)C2CCN(C(=O)OC(C)(C)C)CC2)CC1 1 O=C(OC1CCNCC1)C1CCNCC1 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 ['C(=[O,S])[O,S]']
+ | 28.2010 28.1625 29.4039 0.4497376 O=C(NCCNc1cc(Cl)cc(Cl)c1)C(Sc1ccccc1)c1ccccc1 1 O=C(NCCNc1ccccc1)C(Sc1ccccc1)c1ccccc1 0.3367966 0.3368 0.2554348 0.2554 0.6895957 -9.0600 1.0000000 1.0000 []
+ | 36.9100 35.8838 -35.8838 0.0000000 CC(C)=CCc1c(O)c(C(=O)C=C(C)CC(=O)O)c2oc(-c3ccccc3)cc(=O)c2c1O 1 O=c1cc(-c2ccccc2)oc2ccccc12 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 ['C(=[O,S])[O,S]']
+ | 37.4087 37.2440 23.4361 0.4740632 CCC(=O)c1cccc(C(=O)NC(Cc2ccc3c(c2)OCCO3)C(O)CNC2(c3ccc(C(C)(C)C)cc3)CC2)c1 1 O=C(NC(CCNC1(c2ccccc2)CC1)Cc1ccc2c(c1)OCCO2)c1ccccc1 0.2698805 0.2699 0.2477477 0.2477 0.8691241 -11.2000 1.0000000 1.0000 []
+ | 19.6292 21.0183 13.7828 0.2718836 Cc1nc2ccsc2cc1CO 1 c1cnc2ccsc2c1 0.7268204 0.7268 0.1233766 0.1234 0.2468517 -5.3200 1.0000000 1.0000 []
+ | 33.3051 32.3293 13.6248 0.3590159 CCCC1CCc2c1c(=O)nc1nc(-c3ccccc3)[nH]n21 1 O=c1nc2nc(-c3ccccc3)[nH]n2c2c1CCC2 0.8075421 0.8075 0.1657459 0.1657 0.3523088 -6.3100 1.0000000 1.0000 []
+01:52:11 <INFO> Score: 0.36 Agent NLL: 27.04 Valid: 100% Step: 4
+ | Agent Prior Target Score SMILES SMILES_state Scaffold QED QED (raw) TanimotoDistance TanimotoDistance (raw) maize maize (raw) Unwanted SMARTS Unwanted SMARTS (raw) matchting_patterns (Unwanted SMARTS)
+ | 29.5817 30.5557 27.6530 0.4547558 Cc1cccc(-c2csc(C34COC(C)CC3CN(C)C(N)=N4)c2)c1 1 C1=NC2(c3cc(-c4ccccc4)cs3)COCCC2CN1 0.8953165 0.8953 0.1881720 0.1882 0.5038376 -7.5300 1.0000000 1.0000 []
+ | 22.2439 22.6441 35.0657 0.4508582 O=C1CCCc2[nH]c(=O)c(C(=O)N3CCN(c4cccc(C(F)(F)F)c4)CC3)cc21 1 O=C1CCCc2[nH]c(=O)c(C(=O)N3CCN(c4ccccc4)CC3)cc21 0.8126383 0.8126 0.2176166 0.2176 0.4833763 -7.3700 1.0000000 1.0000 []
+ | 26.1777 28.3704 18.0009 0.3622759 FC1(F)CN2CCC(OC(c3ccccc3)c3ccccc3)C21 1 c1ccc(C(OC2CCN3CCC23)c2ccccc2)cc1 0.8486905 0.8487 0.1833333 0.1833 0.3327236 -6.1400 1.0000000 1.0000 []
+ | 24.2180 25.9206 11.7754 0.2945002 COc1cccc2c1CC1CNCCN21 1 c1ccc2c(c1)CC1CNCCN21 0.7391592 0.7392 0.1402439 0.1402 0.2693768 -5.5500 1.0000000 1.0000 []
+ | 32.2904 31.8435 20.7792 0.4111145 CCOc1ccccc1CN=c1cc(NC(C)=O)[nH]c(C#N)n1 1 c1ccc(CN=c2cc[nH]cn2)cc1 0.8773359 0.8773 0.2057143 0.2057 0.3978419 -6.6900 1.0000000 1.0000 []
+ | 19.2087 19.9489 37.0864 0.4455884 OCC1OC(c2ccc(Cl)c(Cc3ccc(F)cc3)c2)C(O)C(O)C1O 1 c1ccc(Cc2cccc(C3CCCCO3)c2)cc1 0.6444277 0.6444 0.2303371 0.2303 0.5153458 -7.6200 1.0000000 1.0000 []
+ | 26.5117 27.0942 13.4143 0.3164725 CN(C)c1cc2cccc(C(N)=O)c2[nH]c1=O 1 O=c1ccc2ccccc2[nH]1 0.7977831 0.7978 0.1772152 0.1772 0.2663662 -5.5200 1.0000000 1.0000 []
+ | 22.8904 22.3514 -22.3514 0.0000000 CN1C(=O)C(CC(=O)O)N=C(c2ccccc2)c2cc(Cl)ccc21 1 O=C1CN=C(c2ccccc2)c2ccccc2N1 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 ['C(=[O,S])[O,S]']
+ | 42.5967 42.8574 13.9262 0.4436218 CC(O)Cn1c(=O)c2cc3cc(-c4cccc5ccccc45)ccc3nc2n(C)c1=O 1 O=c1[nH]c(=O)c2cc3cc(-c4cccc5ccccc45)ccc3nc2[nH]1 0.4615173 0.4615 0.2029703 0.2030 0.6430067 -8.6500 1.0000000 1.0000 []
+ | 24.7283 25.5971 30.4936 0.4382090 c1ccc(N2CCN(C(CC3CCCCC3)c3nnnn3C3CCCC3)CC2)cc1 1 c1ccc(N2CCN(C(CC3CCCCC3)c3nnnn3C3CCCC3)CC2)cc1 0.6978661 0.6979 0.1469194 0.1469 0.5997039 -8.2900 1.0000000 1.0000 []
+01:52:53 <INFO> Score: 0.25 Agent NLL: 27.44 Valid:  90% Step: 5
+ | Agent Prior Target Score SMILES SMILES_state Scaffold QED QED (raw) TanimotoDistance TanimotoDistance (raw) maize maize (raw) Unwanted SMARTS Unwanted SMARTS (raw) matchting_patterns (Unwanted SMARTS)
+ | 29.9611 30.0434 -30.0434 0.0000000 C(#N)Cc1c2c(cccc2)n2c(n1)CCC2 0 -- 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 None
+ | 27.0112 26.7573 26.5841 0.4167299 O=C(Nc1cc(C(F)(F)F)cc(C(F)(F)F)c1)C1CCN(C(=O)C=Cc2ccccc2)CC1 1 O=C(Nc1ccccc1)C1CCN(C(=O)C=Cc2ccccc2)CC1 0.4663166 0.4663 0.2435233 0.2435 0.5153458 -7.6200 1.0000000 1.0000 []
+ | 23.1087 23.8791 6.0493 0.2338156 COc1cccc[n+]1C1CCCC1 1 c1cc[n+](C2CCCC2)cc1 0.6319985 0.6320 0.1202532 0.1203 0.1983082 -4.7700 1.0000000 1.0000 []
+ | 21.0916 22.2928 16.0484 0.2995403 Cc1ccc(-c2nc(CCO)no2)cc1 1 c1ccc(-c2ncno2)cc1 0.8241519 0.8242 0.1366460 0.1366 0.2673674 -5.5300 1.0000000 1.0000 []
+ | 34.1098 34.3042 -34.3042 0.0000000 NC(=O)c1cccc(N2CCC(CCOc3ccc(C(=O)N4CCCC4C(=O)O)cc3)CC2)c1 1 O=C(c1ccc(OCCC2CCN(c3ccccc3)CC2)cc1)N1CCCC1 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 ['C(=[O,S])[O,S]']
+ | 28.9716 29.4867 29.8282 0.4633972 c1ccc(Oc2cccc(-c3cn(CC4CCNCC4)c4ccccc34)c2)cc1 1 c1ccc(Oc2cccc(-c3cn(CC4CCNCC4)c4ccccc34)c2)cc1 0.4512425 0.4512 0.1980198 0.1980 0.7183688 -9.3300 1.0000000 1.0000 []
+ | 27.4294 28.4310 16.2060 0.3487267 Cc1[nH]c(=N)[nH]c(=N)c1OCC(N)Cc1c[nH]c2ccccc12 1 N=c1[nH]cc(OCCCc2c[nH]c3ccccc23)c(=N)[nH]1 0.4203253 0.4203 0.1451613 0.1452 0.4923254 -7.4400 1.0000000 1.0000 []
+ | 30.8326 33.4807 4.8370 0.2993573 Cc1ccsc1CN1CCc2ccccc2C(c2nn[nH]n2)C1 1 c1csc(CN2CCc3ccccc3C(c3nn[nH]n3)C2)c1 0.8043205 0.8043 0.1428571 0.1429 0.2643712 -5.5000 1.0000000 1.0000 []
+ | 25.9988 25.4031 -25.4031 0.0000000 CC(C)COC(=O)Nc1scnc1C#N 1 c1cscn1 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 ['C(=[O,S])[O,S]']
+ | 25.8528 27.2260 25.2342 0.4098448 CN(C)CCCc1ccc2[nH]c(=NC3CCN(C)CC3)sc2c1 1 c1ccc2sc(=NC3CCNCC3)[nH]c2c1 0.9134853 0.9135 0.1576087 0.1576 0.4426883 -7.0500 1.0000000 1.0000 []
+01:53:48 <INFO> Score: 0.34 Agent NLL: 30.48 Valid: 100% Step: 6
+ | Agent Prior Target Score SMILES SMILES_state Scaffold QED QED (raw) TanimotoDistance TanimotoDistance (raw) maize maize (raw) Unwanted SMARTS Unwanted SMARTS (raw) matchting_patterns (Unwanted SMARTS)
+ | 26.7024 27.7231 -27.7231 0.0000000 NCC1CCCCN1C(=O)C1CSSC1 1 O=C(C1CSSC1)N1CCCCC1 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 ['[#16][#16]']
+ | 31.7790 30.8786 39.3066 0.5483216 CC1(NC(=O)CC2Cc3ccccc3CN2)CCN(Cc2ccccc2)C1=O 1 O=C(CC1Cc2ccccc2CN1)NC1CCN(Cc2ccccc2)C1=O 0.8411732 0.8412 0.2446809 0.2447 0.6627168 -8.8200 1.0000000 1.0000 []
+ | 51.7218 50.8144 -20.1006 0.2399512 CCCC(C=O)(CC)NC(=O)C1CCCCC1NCC(O)C1CN(C(=N)N)C1 1 C1CCC(NCCC2CNC2)CC1 0.2088991 0.2089 0.1443299 0.1443 0.3315885 -6.1300 1.0000000 1.0000 []
+ | 23.9419 23.8319 31.4686 0.4320352 O=C(Nc1ccccc1Cl)c1cnn(C2CCCCC2)c1 1 O=C(Nc1ccccc1)c1cnn(C2CCCCC2)c1 0.9189246 0.9189 0.1828571 0.1829 0.4553468 -7.1500 1.0000000 1.0000 []
+ | 24.6952 26.5729 39.5778 0.5168021 O=C(NCCc1ccc(F)cc1)c1cccc(CN2CCC(Cc3ccccc3)CC2)c1 1 O=C(NCCc1ccccc1)c1cccc(CN2CCC(Cc3ccccc3)CC2)c1 0.5291824 0.5292 0.2525253 0.2525 0.7306232 -9.4500 1.0000000 1.0000 []
+ | 20.7289 23.0191 32.4792 0.4335811 Cc1ccc(NC(=O)c2cccs2)c(C(=O)Nc2ccccc2)c1 1 O=C(Nc1ccccc1C(=O)Nc1ccccc1)c1cccs1 0.7335195 0.7335 0.2272727 0.2273 0.4604273 -7.1900 1.0000000 1.0000 []
+ | 37.0308 38.5842 -38.5842 0.0000000 CN1CCN(C(=O)n2nnnc2C2C(c3ccccc3)=NN2C)CC1 1 O=C(N1CCNCC1)n1nnnc1C1NN=C1c1ccccc1 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 ['[#7;!n][#7;!n]']
+ | 34.2410 33.4398 19.0217 0.4098559 O=c1[nH]c2ccc([N+](=O)[O-])cc2cc1C1C2CCCCC2=Nc2ncnn21 1 O=c1[nH]c2ccccc2cc1C1C2CCCCC2=Nc2ncnn21 0.5537304 0.5537 0.1725888 0.1726 0.5433839 -7.8400 1.0000000 1.0000 []
+ | 27.9246 26.3715 20.9172 0.3694432 S=c1[nH][nH]cc1N=Nc1ccc2ccccc2c1 1 S=c1[nH][nH]cc1N=Nc1ccc2ccccc2c1 0.5076345 0.5076 0.1578947 0.1579 0.4820986 -7.3600 1.0000000 1.0000 []
+ | 25.9953 25.3970 32.4116 0.4516298 CC(C)N1CCC(N(C)c2ccc(Cc3ccccc3)cc2)CC1 1 c1ccc(Cc2ccc(NC3CCNCC3)cc2)cc1 0.7944093 0.7944 0.2241379 0.2241 0.4833763 -7.3700 1.0000000 1.0000 []
+01:55:04 <INFO> Score: 0.32 Agent NLL: 25.25 Valid: 100% Step: 7
+ | Agent Prior Target Score SMILES SMILES_state Scaffold QED QED (raw) TanimotoDistance TanimotoDistance (raw) maize maize (raw) Unwanted SMARTS Unwanted SMARTS (raw) matchting_patterns (Unwanted SMARTS)
+ | 25.3425 23.2498 24.5139 0.3731539 O=C1C=C(c2cccc([N+](=O)[O-])c2)C(=O)c2c(O)cccc21 1 O=C1C=C(c2ccccc2)C(=O)c2ccccc21 0.6782384 0.6782 0.1828571 0.1829 0.3953929 -6.6700 1.0000000 1.0000 []
+ | 24.9064 28.0913 11.3778 0.3083527 CC(=O)N1CCCn2c(cc3ccc(C(=O)N=c4cc[nH]cc4)cc32)C1=O 1 O=C(N=c1cc[nH]cc1)c1ccc2cc3n(c2c1)CCCNC3=O 0.7190619 0.7191 0.2611111 0.2611 0.2194319 -5.0200 1.0000000 1.0000 []
+ | 12.8612 19.1532 5.8744 0.1955285 CC(C)CCN1CCNCC1 1 C1CNCCN1 0.6539186 0.6539 0.0774194 0.0774 0.1699156 -4.4000 1.0000000 1.0000 []
+ | 23.1164 24.6940 17.1926 0.3272390 N=C(N)c1ccc(CC(N)COc2ccc(C(=N)N)cc2)cc1 1 c1ccc(CCCOc2ccccc2)cc1 0.3876102 0.3876 0.1976744 0.1977 0.3868632 -6.6000 1.0000000 1.0000 []
+ | 18.7972 21.1270 28.4059 0.3869754 COc1ccc(CNC(=NO)c2ccc(C)nc2OCc2ccccc2)cc1 1 N=C(NCc1ccccc1)c1cccnc1OCc1ccccc1 0.2826132 0.2826 0.2432432 0.2432 0.5711499 -8.0600 1.0000000 1.0000 []
+ | 25.0887 25.2747 -25.2747 0.0000000 Cc1cc(C)[nH]c(=NC(=S)NCCn2ccc3ccccc32)c1 1 S=C(N=c1cccc[nH]1)NCCn1ccc2ccccc21 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 ['[#7;!n][C;!$(C(=[O,N])[N,O])][#7;!n]']
+ | 32.4801 30.6626 21.9773 0.4112490 C=CC(=O)NC1CCC(CN=c2ccc(-c3ccc(F)c(C(F)(F)F)c3)c[nH]2)CC1 1 c1ccc(-c2ccc(=NCC3CCCCC3)[nH]c2)cc1 0.5380740 0.5381 0.2275132 0.2275 0.4833763 -7.3700 1.0000000 1.0000 []
+ | 32.6327 30.7901 28.6796 0.4646071 CCN(CC)C(=O)c1cc2ccc(C(F)(F)F)cc2[nH]c1=NCC1CCC2(CC1)CC2 1 c1ccc2[nH]c(=NCC3CCC4(CC3)CC4)ccc2c1 0.6613076 0.6613 0.2000000 0.2000 0.5935467 -8.2400 1.0000000 1.0000 []
+ | 19.4314 18.2683 25.6076 0.3427807 Cc1ccc(Nc2c(C)cc(C)cc2C)c(C)c1 1 c1ccc(Nc2ccccc2)cc1 0.7796196 0.7796 0.1445783 0.1446 0.3499772 -6.2900 1.0000000 1.0000 []
+ | 37.8774 40.4655 15.3736 0.4362425 COc1cccc2c3c(ccc12)C(=O)C1(O)c2ccccc2CC(N)C31 1 O=C1c2ccc3ccccc3c2C2CCc3ccccc3C12 0.7112526 0.7113 0.2362637 0.2363 0.4642431 -7.2200 1.0000000 1.0000 []
+01:56:55 <INFO> Score: 0.32 Agent NLL: 28.28 Valid: 100% Step: 8
+ | Agent Prior Target Score SMILES SMILES_state Scaffold QED QED (raw) TanimotoDistance TanimotoDistance (raw) maize maize (raw) Unwanted SMARTS Unwanted SMARTS (raw) matchting_patterns (Unwanted SMARTS)
+ | 34.8275 35.3373 16.6233 0.4059417 CCOc1ccccc1NC(=O)C1CNCC1C(=O)NC(CCCCN)Cc1ccccc1 1 O=C(NCCc1ccccc1)C1CNCC1C(=O)Nc1ccccc1 0.3707345 0.3707 0.2626263 0.2626 0.5281130 -7.7200 1.0000000 1.0000 []
+ | 47.9007 49.2239 -49.2239 0.0000000 CNC(=S)N1CCC2(CC1)COC1C2CCCN1C(=O)NOC 1 C1CNC2OCC3(CCNCC3)C2C1 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 ['[#7;!n][C;!$(C(=[O,N])[N,O])][#7;!n]', '[#7;!n][C;!$(C(=[O,N])[N,O])][#8;!o]']
+ | 25.4910 29.0041 27.8057 0.4438266 O=C(NCc1ccc2c(c1)CCNCC2)c1ccc2ccccc2c1 1 O=C(NCc1ccc2c(c1)CCNCC2)c1ccc2ccccc2c1 0.7720827 0.7721 0.2000000 0.2000 0.5012792 -7.5100 1.0000000 1.0000 []
+ | 24.2441 28.4626 34.9693 0.4955617 CC(=O)NC(C)c1ccc(OC2CCN(c3cccc(N4CC(=O)C4)n3)C2)cc1 1 O=C1CN(c2cccc(N3CCC(Oc4ccccc4)C3)n2)C1 0.8106036 0.8106 0.2960894 0.2961 0.5012792 -7.5100 1.0000000 1.0000 []
+ | 22.0906 23.6228 38.5485 0.4857130 CC(C(=O)Nc1cccc(S(N)(=O)=O)c1)c1ccccc1 1 O=C(Cc1ccccc1)Nc1ccccc1 0.9058650 0.9059 0.2181818 0.2182 0.5306626 -7.7400 1.0000000 1.0000 []
+ | 25.3259 34.0290 5.9877 0.3126312 CC1C(NCc2ccc(C(F)(F)F)cc2)=Nc2ccccc2CN1C 1 c1ccc(CNC2=Nc3ccccc3CNC2)cc1 0.8740904 0.8741 0.1923077 0.1923 0.2383900 -5.2300 1.0000000 1.0000 []
+ | 31.9859 36.0690 6.9144 0.3358085 CCCCCCCCN1CC(C=C(CCCCCCC)c2cccc(Cl)c2)CC1CO 1 C(=CC1CCNC1)c1ccccc1 0.2583266 0.2583 0.1690821 0.1691 0.5395727 -7.8100 1.0000000 1.0000 []
+ | 28.0863 37.0736 11.8803 0.3824530 CCCCCN(c1ccc(C(C)C(=O)NCc2ccc(C(C)(C)C)cc2)cc1)C(c1ccccc1)c1ccccc1 1 O=C(Cc1ccc(NC(c2ccccc2)c2ccccc2)cc1)NCc1ccccc1 0.1796681 0.1797 0.2142857 0.2143 0.7454593 -9.6000 1.0000000 1.0000 []
+ | 16.8949 18.6260 -18.6260 0.0000000 CN1C2CCC1CC(OC(=O)N(Cc1ccccc1)c1ccccc1)C2 1 O=C(OC1CC2CCC(C1)N2)N(Cc1ccccc1)c1ccccc1 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 ['C(=[O,S])[O,S]']
+ | 25.9759 27.8231 16.3749 0.3452968 Cc1[nH]c(=NC(=O)Cc2n[nH]c(=NCCO)s2)sc1C 1 N=c1[nH]nc(CC(=O)N=c2[nH]ccs2)s1 0.7416227 0.7416 0.1436782 0.1437 0.3652567 -6.4200 1.0000000 1.0000 []
+01:57:12 <INFO> Score: 0.10 Agent NLL: 26.31 Valid: 100% Step: 9
+ | Agent Prior Target Score SMILES SMILES_state Scaffold QED QED (raw) TanimotoDistance TanimotoDistance (raw) maize maize (raw) Unwanted SMARTS Unwanted SMARTS (raw) matchting_patterns (Unwanted SMARTS)
+ | 36.1984 37.9401 -37.9401 0.0000000 CCCCC1CC=NC2C1CCN2CCO 1 C1=NC2NCCC2CC1 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 ['[#7;!n][C;!$(C(=[O,N])[N,O])][#7;!n]']
+ | 27.9687 28.0472 -28.0472 0.0000000 CC(=O)c1c[nH]c(C(=O)Nc2ccccc2C(=O)NCCC(=O)O)c1 1 O=C(Nc1ccccc1)c1ccc[nH]1 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 ['C(=[O,S])[O,S]']
+ | 28.5172 25.0037 23.6280 0.3799355 Cc1ccsc1CN(C(=O)c1ccncc1)C1CCCS(=O)(=O)C1 1 O=C(c1ccncc1)N(Cc1cccs1)C1CCCS(=O)(=O)C1 0.8364323 0.8364 0.2033898 0.2034 0.3499772 -6.2900 1.0000000 1.0000 []
+ | 26.6579 28.8091 -28.8091 0.0000000 O=C(c1ccccc1)N1COC(CCN2Cc3ccccc3C2)(c2ccc(Cl)c(Cl)c2)C1 1 O=C(c1ccccc1)N1COC(CCN2Cc3ccccc3C2)(c2ccccc2)C1 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 ['[#7;!n][C;!$(C(=[O,N])[N,O])][#8;!o]']
+ | 21.3390 24.5753 -24.5753 0.0000000 CC(=O)NCSc1ccc(C(F)(F)F)cc1 1 c1ccccc1 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 ['[#7;!n][C;!$(C(=[O,N])[N,O])][#16;!s]']
+ | 15.9110 20.3066 28.0477 0.3777685 CCN=c1cc(-c2[nH]c(SC)nc2-c2ccc(F)cc2)cc[nH]1 1 N=c1cc(-c2[nH]cnc2-c2ccccc2)cc[nH]1 0.7147277 0.7147 0.1977401 0.1977 0.3796066 -6.5400 1.0000000 1.0000 []
+ | 29.5744 34.1631 -34.1631 0.0000000 CCC1CC2c3[nH]c4ccccc4c3CCN2CC1CNC(=O)CCC(=O)O 1 c1ccc2c3c([nH]c2c1)C1CCCCN1CC3 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 ['C(=[O,S])[O,S]']
+ | 28.5998 27.1640 -27.1640 0.0000000 CC1(Cc2ccccc2Cl)SC(=O)C(C)(C)C1=O 1 O=C1CC(=O)C(Cc2ccccc2)S1 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 ['C(=[O,S])[O,S]']
+ | 28.2858 30.9102 -30.9102 0.0000000 O=C(O)c1ccccc1C(=O)NCc1ccc(C2CCOCC2)cc1 1 O=C(NCc1ccc(C2CCOCC2)cc1)c1ccccc1 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 ['C(=[O,S])[O,S]']
+ | 20.0950 20.5288 4.4455 0.1951113 C=C(C)CSc1n[nH]c(=N)s1 1 N=c1[nH]ncs1 0.5578092 0.5578 0.0855263 0.0855 0.1742899 -4.4600 1.0000000 1.0000 []
+01:58:08 <INFO> Score: 0.24 Agent NLL: 22.78 Valid:  90% Step: 10
+ | Agent Prior Target Score SMILES SMILES_state Scaffold QED QED (raw) TanimotoDistance TanimotoDistance (raw) maize maize (raw) Unwanted SMARTS Unwanted SMARTS (raw) matchting_patterns (Unwanted SMARTS)
+ | 16.8524 17.4706 2.9637 0.1596435 C[N+]1(C)C2CCCC1CC2 1 C1CC2CCC(C1)[NH2+]2 0.4498658 0.4499 0.0718954 0.0719 0.1417131 -3.9800 1.0000000 1.0000 []
+ | 16.4319 23.3721 -1.9249 0.1675564 CC1CNCCc2ncn(C)c21 1 c1nc2c([nH]1)CCNCC2 0.6120564 0.6121 0.0807453 0.0807 0.1262896 -3.7200 1.0000000 1.0000 []
+ | 16.0938 21.1303 18.1457 0.3068441 CCCNCC1(c2ccccc2)CCCCC1 1 c1ccc(C2CCCCC2)cc1 0.7581234 0.7581 0.1575758 0.1576 0.2724086 -5.5800 1.0000000 1.0000 []
+ | 35.9137 41.9610 -41.9610 0.0000000 CCN(CC)C(=O)c1nc2cccnc2[nH]c1=NCC1CCC2(CO1)OC(=O)N(C)c1ccccc12 1 O=C1Nc2ccccc2C2(CCC(CN=c3cnc4cccnc4[nH]3)OC2)O1 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 ['C(=[O,S])[O,S]']
+ | 13.3368 18.9781 23.8599 0.3346717 CN1CCC2(CC1)C(=O)Nc1ccccc12 1 O=C1Nc2ccccc2C12CCNCC2 0.7141531 0.7142 0.1533742 0.1534 0.3384278 -6.1900 1.0000000 1.0000 []
+ | 17.2235 21.1281 38.6904 0.4673314 COc1ccc(S(=O)(=O)N2CCN(C(c3ccccc3)c3ccccc3)CC2)cc1 1 O=S(=O)(c1ccccc1)N1CCN(C(c2ccccc2)c2ccccc2)CC1 0.6065014 0.6065 0.2566845 0.2567 0.5535212 -7.9200 1.0000000 1.0000 []
+ | 13.3047 19.4942 13.9123 0.2609880 Cc1cnc2[nH]cc(C)c2c1 1 c1cnc2[nH]ccc2c1 0.6059279 0.6059 0.0897436 0.0897 0.2920981 -5.7700 1.0000000 1.0000 []
+ | 22.9914 28.4821 16.8630 0.3542590 CC(=O)N1CCCC1C(=O)N=C(CCCNC(=N)N)C(=O)NCc1ccccc1 1 O=C(C=NC(=O)C1CCCN1)NCc1ccccc1 0.2863811 0.2864 0.2234043 0.2234 0.4961624 -7.4700 1.0000000 1.0000 []
+ | 34.0543 48.5581 -48.5581 0.0000000 N=c1[nH]c(-n2[nH]c3c(c2=NC(=O)OCc2ccccc2)CCC3)nc1 0 -- 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 None
+ | 41.6427 38.1092 8.9031 0.3672836 N#Cc1c(-c2ccc(-c3ccc(OC(F)(F)F)cc3)cc2)sc2c3c(ccc12)CCN3 1 c1ccc(-c2ccc(-c3cc4ccc5c(c4s3)NCC5)cc2)cc1 0.3770533 0.3771 0.2121212 0.2121 0.4769904 -7.3200 1.0000000 1.0000 []
+01:59:03 <INFO> Score: 0.28 Agent NLL: 24.63 Valid: 100% Step: 11
+ | Agent Prior Target Score SMILES SMILES_state Scaffold QED QED (raw) TanimotoDistance TanimotoDistance (raw) maize maize (raw) Unwanted SMARTS Unwanted SMARTS (raw) matchting_patterns (Unwanted SMARTS)
+ | 38.6306 34.6244 12.8682 0.3710358 COc1cc2c(cc1C)C(c1ccco1)C(C(=O)CC=C(C)C)C(=N)O2 1 N=C1CC(c2ccco2)c2ccccc2O1 0.7949043 0.7949 0.2457143 0.2457 0.3115007 -5.9500 1.0000000 1.0000 []
+ | 6.0966 24.8049 -24.8049 0.0000000 CC1CN(C(C)CO)C(=O)c2cccc(NS(=O)(=O)c3cccs3)c2OC1CN(C)S(=O)(=O)c1ccccc1 1 O=C1NCCC(CNS(=O)(=O)c2ccccc2)Oc2c(NS(=O)(=O)c3cccs3)cccc21 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 ['[*;r8]']
+ | 24.2439 30.1058 27.7019 0.4516221 CCn1cc(CCN=c2[nH]c(=NCc3ccccc3)c3sccc3[nH]2)c2ccccc21 1 c1ccc(CN=c2[nH]c(=NCCc3c[nH]c4ccccc34)[nH]c3ccsc23)cc1 0.3919421 0.3919 0.1857143 0.1857 0.7559912 -9.7100 1.0000000 1.0000 []
+ | 28.2780 32.6050 -32.6050 0.0000000 CCCN1CC2OC3(CN4CCC3CC4)N(C)C2C1 1 C1NCC2OC3(CN4CCC3CC4)NC12 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 ['[#7;!n][C;!$(C(=[O,N])[N,O])][#8;!o]']
+ | 30.1446 32.4003 22.5415 0.4292325 CSc1ccc(CN=c2nc(-c3sccc3C)[nH]c3ccsc23)cc1 1 c1ccc(CN=c2nc(-c3cccs3)[nH]c3ccsc23)cc1 0.4738368 0.4738 0.2076503 0.2077 0.5873601 -8.1900 1.0000000 1.0000 []
+ | 32.8720 32.8815 -32.8815 0.0000000 Cc1ccc(C(=O)CCc2cc(CC(=O)O)cc3c2CCC3)cc1 1 O=C(CCc1cccc2c1CCC2)c1ccccc1 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 ['C(=[O,S])[O,S]']
+ | 15.4836 17.2766 32.2036 0.3865636 C(=Cc1ccnc2ccccc12)c1ccccc1 1 C(=Cc1ccnc2ccccc12)c1ccccc1 0.6364476 0.6364 0.2048193 0.2048 0.4138806 -6.8200 1.0000000 1.0000 []
+ | 13.9384 15.9095 21.4814 0.2921166 O=c1ccc2ccccc2[nH]1 1 O=c1ccc2ccccc2[nH]1 0.5986881 0.5987 0.1168831 0.1169 0.3225792 -6.0500 1.0000000 1.0000 []
+ | 27.3696 25.9123 29.8495 0.4356394 Cc1cnn(C2CCCN(C(=O)c3ccc(C)c(-n4cnnn4)c3)C2)c1 1 O=C(c1cccc(-n2cnnn2)c1)N1CCCC(n2cccn2)C1 0.7202978 0.7203 0.1546392 0.1546 0.5686414 -8.0400 1.0000000 1.0000 []
+ | 29.2086 30.5544 19.1855 0.3885928 CN(Cc1ccccc1)Cc1c[nH]c(=N)c2[nH]c(-c3cccs3)nc12 1 N=c1[nH]cc(CNCc2ccccc2)c2nc(-c3cccs3)[nH]c12 0.5136074 0.5136 0.1623037 0.1623 0.5230096 -7.6800 1.0000000 1.0000 []
+02:00:32 <INFO> Score: 0.28 Agent NLL: 21.37 Valid: 100% Step: 12
+ | Agent Prior Target Score SMILES SMILES_state Scaffold QED QED (raw) TanimotoDistance TanimotoDistance (raw) maize maize (raw) Unwanted SMARTS Unwanted SMARTS (raw) matchting_patterns (Unwanted SMARTS)
+ | 26.0667 27.7543 -27.7543 0.0000000 COc1ccc(CNCC(O)c2ccc(OC)c(OC(C)=O)c2)cc1 1 c1ccc(CCNCc2ccccc2)cc1 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 ['C(=[O,S])[O,S]']
+ | 58.1596 63.3246 -18.4603 0.3505027 CC(Cc1[nH]c(=N)[nH]c(=N)c1CCCNC(=O)C1NCCc2c1nnn2Cc1cc(F)ccc1F)OCc1ccco1 1 N=c1[nH]c(CCOCc2ccco2)c(CCCNC(=O)C2NCCc3c2nnn3Cc2ccccc2)c(=N)[nH]1 0.1394312 0.1394 0.2456140 0.2456 0.6638596 -8.8300 1.0000000 1.0000 []
+ | 19.9994 28.1313 -28.1313 0.0000000 CC=CCC1NC(=O)C(CCCCNC(=O)OC(C)(C)C)NC1=O 1 O=C1CNC(=O)CN1 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 ['C(=[O,S])[O,S]']
+ | 9.6190 17.0661 15.1336 0.2515603 CCC(=O)c1ccccc1 1 c1ccccc1 0.5669311 0.5669 0.1398601 0.1399 0.2247357 -5.0800 1.0000000 1.0000 []
+ | 15.7841 23.3572 -2.8651 0.1600948 CCCN1CCC2CCC(C1)N2 1 C1CC2CCC(CN1)N2 0.6667665 0.6668 0.0802469 0.0802 0.1108035 -3.4300 1.0000000 1.0000 []
+ | 18.1573 25.2390 22.4885 0.3728710 CCNC(=O)N1CCC2(CC1)CN(C)S(=O)(=O)c1ccccc12 1 O=S1(=O)NCC2(CCNCC2)c2ccccc21 0.8416719 0.8417 0.2366864 0.2367 0.3115007 -5.9500 1.0000000 1.0000 []
+ | 17.5608 25.6841 31.4163 0.4460973 CCOc1ccccc1NC(=O)CN1CCN(Cc2ccccc2)C1=O 1 O=C(CN1CCN(Cc2ccccc2)C1=O)Nc1ccccc1 0.8323855 0.8324 0.2711864 0.2712 0.4188542 -6.8600 1.0000000 1.0000 []
+ | 16.2216 22.0647 15.1240 0.2905367 CCOc1ccc2[nH]ccc(=N)c2c1 1 N=c1cc[nH]c2ccccc12 0.7440483 0.7440 0.1455696 0.1456 0.2564874 -5.4200 1.0000000 1.0000 []
+ | 9.1403 30.8711 34.4588 0.5103903 Cc1c[nH]c(=NCCc2ccccc2)c(C(=O)NCc2ccc(F)cc2)n1 1 O=C(NCc1ccccc1)c1ncc[nH]c1=NCCc1ccccc1 0.7060056 0.7060 0.2459016 0.2459 0.6252015 -8.5000 1.0000000 1.0000 []
+ | 23.0091 26.4222 24.2704 0.3960362 CC(N)C(=O)NC(Cc1ccccc1)C(=O)NCC1CCCCN1 1 O=C(CCc1ccccc1)NCC1CCCCN1 0.5780933 0.5781 0.2171429 0.2171 0.4426883 -7.0500 1.0000000 1.0000 []
+02:01:54 <INFO> Score: 0.23 Agent NLL: 26.63 Valid: 100% Step: 13
+ | Agent Prior Target Score SMILES SMILES_state Scaffold QED QED (raw) TanimotoDistance TanimotoDistance (raw) maize maize (raw) Unwanted SMARTS Unwanted SMARTS (raw) matchting_patterns (Unwanted SMARTS)
+ | 37.6152 38.6664 -38.6664 0.0000000 CC#CC1(O)CCC2C(c3ccc(C(C)(C)C)cc3)C(C=O)=C(c3ccc4ncccc4c3)CC21C 1 C1=C(c2ccc3ncccc3c2)CC2CCCC2C1c1ccccc1 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 ['C#C']
+ | 34.7639 35.8115 21.1291 0.4448486 CC(=O)NC(C)C(=O)Nc1ccc(Oc2ccnc3ccc(N)cc23)cc1 1 c1ccc(Oc2ccnc3ccccc23)cc1 0.6033521 0.6034 0.2569832 0.2570 0.5025584 -7.5200 1.0000000 1.0000 []
+ | 17.3429 20.7069 -20.7069 0.0000000 CC(=O)NCC1CN(c2ccc(C(=O)CF)cc2)C(=O)O1 1 O=C1OCCN1c1ccccc1 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 ['C(=[O,S])[O,S]']
+ | 21.5649 29.3301 14.6590 0.3436648 CCC(=O)c1ccc(C(C)n2cc(Cl)cn2)cc1 1 c1ccc(Cn2cccn2)cc1 0.7870274 0.7870 0.1739130 0.1739 0.3192339 -6.0200 1.0000000 1.0000 []
+ | 26.1139 34.5283 -34.5283 0.0000000 CCCCCCCCCCCCCNC(=S)N1CCc2[nH]c(=NCC)nc(C)c2C1 1 N=c1ncc2c([nH]1)CCNC2 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 ['[#7;!n][C;!$(C(=[O,N])[N,O])][#7;!n]']
+ | 19.6188 23.3149 -0.3569 0.1793595 CCOc1c(C)ncc[n+]1[O-] 1 c1c[nH+]ccn1 0.4579402 0.4579 0.0921053 0.0921 0.1566398 -4.2100 1.0000000 1.0000 []
+ | 37.2730 42.9822 -11.7687 0.2438550 CCCC(NC(=O)CCC(N)=O)C(=O)NC1CCN(C(CC(N)=O)C(=O)NC(Cc2ccccc2)C(N)=O)C1=O 1 O=C(CN1CCCC1=O)NCCc1ccccc1 0.1294336 0.1294 0.2129630 0.2130 0.3581687 -6.3600 1.0000000 1.0000 []
+ | 18.4739 19.9496 35.3103 0.4317177 O=C(NCc1ccccc1Cl)Nc1ccccc1 1 O=C(NCc1ccccc1)Nc1ccccc1 0.8687861 0.8688 0.2111801 0.2112 0.4351278 -6.9900 1.0000000 1.0000 []
+ | 26.9945 25.9930 18.9007 0.3507320 Cc1ccnn1CCC(=O)N1CCCC1c1cccs1 1 O=C(CCn1cccn1)N1CCCC1c1cccs1 0.8675144 0.8675 0.1676301 0.1676 0.3225792 -6.0500 1.0000000 1.0000 []
+ | 26.5449 30.2947 14.3177 0.3485342 FC(F)(F)c1cc(N=c2nccc[nH]2)cc(-c2ccsc2)c1 1 c1cnc(=Nc2cccc(-c3ccsc3)c2)[nH]c1 0.7470447 0.7470 0.1500000 0.1500 0.3628873 -6.4000 1.0000000 1.0000 []
+02:02:27 <INFO> Score: 0.27 Agent NLL: 29.70 Valid:  80% Step: 14
+ | Agent Prior Target Score SMILES SMILES_state Scaffold QED QED (raw) TanimotoDistance TanimotoDistance (raw) maize maize (raw) Unwanted SMARTS Unwanted SMARTS (raw) matchting_patterns (Unwanted SMARTS)
+ | 27.7665 27.4739 24.9754 0.4097600 Cc1c(Cl)nnc(N2CCN(Cc3cccc(F)c3)CC2)c1C 1 c1ccc(CN2CCN(c3cccnn3)CC2)cc1 0.8624846 0.8625 0.1787709 0.1788 0.4275973 -6.9300 1.0000000 1.0000 []
+ | 58.8662 69.8412 -69.8412 0.0000000 CCC=CC1C=CC23CC(=O)NCC24CCNC(C1N3)C4(O)OCC 1 O=C1CC23C=CCC(N2)C2CC3(CCN2)CN1 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 ['[#8;!o][C;!$(C(=[O,N])[N,O])][#8;!o]']
+ | 18.2532 26.6895 18.0333 0.3493967 CCCc1ccc2cccc(CC)c2n1 1 c1ccc2ncccc2c1 0.7332761 0.7333 0.2185430 0.2185 0.3049546 -5.8900 1.0000000 1.0000 []
+ | 25.6144 27.9485 15.1461 0.3366760 CCN(CC)c1ccc(Sc2ccc(OC)cc2N)cc1 1 c1ccc(Sc2ccccc2)cc1 0.8085654 0.8086 0.2048193 0.2048 0.2785360 -5.6400 1.0000000 1.0000 []
+ | 18.7831 25.4676 23.8528 0.3853159 Cc1c(-c2ccc(F)cc2)[nH]c2ccc(N3CCN(C)CC3)cc12 1 c1ccc(-c2cc3cc(N4CCNCC4)ccc3[nH]2)cc1 0.7689379 0.7689 0.2067039 0.2067 0.3724036 -6.4800 1.0000000 1.0000 []
+ | 20.3354 26.2699 17.3484 0.3407681 CN=c1[nH]cccc1C(=O)c1cc(C)cc(C)c1 1 N=c1[nH]cccc1C(=O)c1ccccc1 0.8048126 0.8048 0.1566265 0.1566 0.3270679 -6.0900 1.0000000 1.0000 []
+ | 31.3774 31.6516 -31.6516 0.0000000 O=c1cc(N2CCNCC2)nc2c3c([nH]c(=O)c12)cc(C)cc3 0 -- 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 None
+ | 36.0478 32.5502 21.7384 0.4241293 CC(C)(C)C(=O)N=c1[nH]n(CC(=O)N2CCOCC2)cc1-c1ccccc1 1 N=c1[nH]n(CC(=O)N2CCOCC2)cc1-c1ccccc1 0.8949138 0.8949 0.1989247 0.1989 0.4263454 -6.9200 1.0000000 1.0000 []
+ | 32.2100 33.3304 30.6699 0.5000026 O=C(NCC(Cc1ccccc1)c1ccccc1)C1CNCC1c1ccc(F)c(F)c1 1 O=C(NCC(Cc1ccccc1)c1ccccc1)C1CNCC1c1ccccc1 0.5945413 0.5945 0.2461538 0.2462 0.6535069 -8.7400 1.0000000 1.0000 []
+ | 27.7808 32.5593 -32.5593 0.0000000 c1cccc2cccc1C2=Nn1c(=O)[nH]c2ccccc2c1=O 0 -- 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 None
+02:03:17 <INFO> Score: 0.26 Agent NLL: 26.52 Valid: 100% Step: 15
+ | Agent Prior Target Score SMILES SMILES_state Scaffold QED QED (raw) TanimotoDistance TanimotoDistance (raw) maize maize (raw) Unwanted SMARTS Unwanted SMARTS (raw) matchting_patterns (Unwanted SMARTS)
+ | 24.8329 25.9068 -25.9068 0.0000000 O=C(N=C1NN=C(c2ccccc2)CS1)C1CCCCC1 1 O=C(N=C1NN=C(c2ccccc2)CS1)C1CCCCC1 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 ['[#7;!n][#7;!n]']
+ | 25.9420 25.5385 24.9586 0.3945084 FC(F)(F)c1cccc(C(Cc2ccccc2)NCc2ccccc2)c1 1 c1ccc(CNC(Cc2ccccc2)c2ccccc2)cc1 0.5909946 0.5910 0.1614583 0.1615 0.5038376 -7.5300 1.0000000 1.0000 []
+ | 27.2653 33.3745 -33.3745 0.0000000 CC#CCN1CC2NC1CC2c1ccccn1 1 c1ccc(C2CC3NCC2N3)nc1 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 ['C#C', '[#7;!n][C;!$(C(=[O,N])[N,O])][#7;!n]']
+ | 16.3870 27.9341 32.1149 0.4691326 CC(C)CCNC(=O)N1CCCC1c1nc2ccccc2s1 1 c1ccc2sc(C3CCCN3)nc2c1 0.9187608 0.9188 0.2883436 0.2883 0.4275973 -6.9300 1.0000000 1.0000 []
+ | 25.1175 29.1264 2.4764 0.2468967 CCCOc1cnc(C)cc1C(=O)NC 1 c1ccncc1 0.8161269 0.8161 0.1688312 0.1688 0.1642198 -4.3200 1.0000000 1.0000 []
+ | 38.1549 44.6660 -1.4892 0.3373191 CCN(CC(=O)N(CC)CC)CC1C(C#N)C(=O)C=C2Oc3cccc(O)c3C(=O)C21 1 O=C1C=C2Oc3ccccc3C(=O)C2CC1 0.7111348 0.7111 0.2000000 0.2000 0.3017108 -5.8600 1.0000000 1.0000 []
+ | 28.9443 35.2142 23.1542 0.4560035 CCNC(=O)N1CCC2(CC1)C(=O)N(c1ccc(C)cc1)C(=O)N2Cc1ccccc1C 1 O=C1N(c2ccccc2)C(=O)C2(CCNCC2)N1Cc1ccccc1 0.7434868 0.7435 0.2698413 0.2698 0.4642431 -7.2200 1.0000000 1.0000 []
+ | 21.2704 26.5443 24.3042 0.3972541 CCOc1cccc(CNc2ccc3[nH]ccc3c2)c1 1 c1ccc(CNc2ccc3[nH]ccc3c2)cc1 0.7266089 0.7266 0.1965318 0.1965 0.4176092 -6.8500 1.0000000 1.0000 []
+ | 19.5034 20.6519 -20.6519 0.0000000 COc1ccc(C2=NN(C(C)=O)C(c3ccc(N(C)C)cc3)C2)cc1OC 1 c1ccc(C2=NNC(c3ccccc3)C2)cc1 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 ['[#7;!n][#7;!n]']
+ | 37.7338 40.5698 2.9611 0.3400852 O=C1Nc2ccccc2C(=O)C12C(c1ccc([N+](=O)[O-])cc1)C2C(c1ccccc1)c1ccc(Br)cc1 1 O=C1Nc2ccccc2C(=O)C12C(c1ccccc1)C2C(c1ccccc1)c1ccccc1 0.1687888 0.1688 0.2083333 0.2083 0.6167716 -8.4300 1.0000000 1.0000 []
+02:05:29 <INFO> Score: 0.26 Agent NLL: 25.58 Valid: 100% Step: 16
+ | Agent Prior Target Score SMILES SMILES_state Scaffold QED QED (raw) TanimotoDistance TanimotoDistance (raw) maize maize (raw) Unwanted SMARTS Unwanted SMARTS (raw) matchting_patterns (Unwanted SMARTS)
+ | 26.6491 28.6250 27.5676 0.4390050 Cc1ccccc1NC(=O)C1C2CCC(C2)C1c1ccccc1 1 O=C(Nc1ccccc1)C1C2CCC(C2)C1c1ccccc1 0.8697352 0.8697 0.2215909 0.2216 nan nan 1.0000000 1.0000 []
+ | 8.7594 17.0273 19.0180 0.2816037 CC(=O)NCCc1ccccc1 1 c1ccccc1 0.7159421 0.7159 0.1632653 0.1633 0.2319480 -5.1600 1.0000000 1.0000 []
+ | 23.0805 24.8272 5.6837 0.2383663 CCc1nccn1C(C)C(N)=O 1 c1c[nH]cn1 0.7118275 0.7118 0.0980392 0.0980 0.2150812 -4.9700 1.0000000 1.0000 []
+ | 36.7560 44.7558 -15.7664 0.2264795 CCCCCCCCCCCCCCC(=O)NC(CCC(C)N)C(=O)NCC(=O)NC(Cc1ccccc1)C(=O)NC(Cc1ccccc1)C(=O)NCc1ccccc1 1 O=C(CCc1ccccc1)NC(Cc1ccccc1)C(=O)NCc1ccccc1 0.0415842 0.0416 0.1833910 0.1834 0.5873601 -8.1900 1.0000000 1.0000 []
+ | 28.1796 35.2977 17.6564 0.4137037 CC(C)n1cc(N=c2cc(-n3ccc4cc(C(=O)NC5CC5)ccc43)[nH]cc2C(=O)NCC(F)C(C)(C)O)cn1 1 O=C(NC1CC1)c1ccc2c(ccn2-c2cc(=Nc3cn[nH]c3)cc[nH]2)c1 0.2546566 0.2547 0.2761905 0.2762 0.6453525 -8.6700 1.0000000 1.0000 []
+ | 28.8084 31.5852 26.9507 0.4573116 CC1(C)CCCC(CNC(=O)C2CCCN(Cc3cccs3)C2)C1 1 O=C(NCC1CCCCC1)C1CCCN(Cc2cccs2)C1 0.8606008 0.8606 0.1857923 0.1858 0.5230096 -7.6800 1.0000000 1.0000 []
+ | 41.6291 43.5737 3.7225 0.3695011 CCC1CCC2c3nc(C(F)(F)F)c(-c4ccccc4)c(=O)n3CC(C)N2C1 1 O=c1c(-c2ccccc2)cnc2n1CCN1CCCCC21 0.7569099 0.7569 0.1894737 0.1895 0.3605247 -6.3800 1.0000000 1.0000 []
+ | 27.0355 32.9783 -32.9783 0.0000000 CCCc1cccc2[nH]c(C3CCCCN3CC(=O)O)nc(=O)c12 1 O=c1nc(C2CCCCN2)[nH]c2ccccc12 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 ['C(=[O,S])[O,S]']
+ | 11.1385 24.2325 3.6897 0.2181420 CN1CC2C(=O)NCC21 1 O=C1NCC2NCC12 0.4534554 0.4535 0.0965517 0.0966 0.2274215 -5.1100 1.0000000 1.0000 []
+ | 23.7858 28.2558 -28.2558 0.0000000 COc1ccc(CN=c2[nH]c(N3CC(C)CC(C)C3)nc3sc(C(=O)O)c(C)c23)cc1 1 c1ccc(CN=c2[nH]c(N3CCCCC3)nc3sccc23)cc1 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 ['C(=[O,S])[O,S]']
+02:06:27 <INFO> Score: 0.29 Agent NLL: 20.18 Valid: 100% Step: 17
+ | Agent Prior Target Score SMILES SMILES_state Scaffold QED QED (raw) TanimotoDistance TanimotoDistance (raw) maize maize (raw) Unwanted SMARTS Unwanted SMARTS (raw) matchting_patterns (Unwanted SMARTS)
+ | 19.0714 26.2660 17.0882 0.3387054 CCC(NC(C)=O)C(=O)NC(Cc1ccccc1)C(N)=O 1 c1ccccc1 0.6644350 0.6644 0.2160494 0.2160 0.3027899 -5.8700 1.0000000 1.0000 []
+ | 18.6340 32.2926 -32.2926 0.0000000 CC(=O)SCCCNC(=O)N1CCN(c2ccccc2)C1=O 1 O=C1NCCN1c1ccccc1 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 ['C(=[O,S])[O,S]']
+ | 13.7321 26.5986 -26.5986 0.0000000 CC(C)CCNC(=O)N1CCNC(=O)C1CC(=O)O 1 O=C1CNCCN1 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 ['C(=[O,S])[O,S]']
+ | 23.0165 32.5390 18.2481 0.3967737 CCC(=O)N=c1cc(C(c2ccccc2)c2cccs2)cc[nH]1 1 N=c1cc(C(c2ccccc2)c2cccs2)cc[nH]1 0.7722336 0.7722 0.2241379 0.2241 0.3784024 -6.5300 1.0000000 1.0000 []
+ | 25.4135 32.2965 27.1441 0.4643791 CCN(CC)CCn1ccc(N=c2cc(-c3cccc(C(N)=O)c3)cc[nH]2)cc1=O 1 O=c1cc(N=c2cc(-c3ccccc3)cc[nH]2)cc[nH]1 0.6026154 0.6026 0.2102564 0.2103 0.6058297 -8.3400 1.0000000 1.0000 []
+ | 26.9494 30.5335 15.5886 0.3603287 CCON=C1Cc2cc(OC)c(OC)c(OC)c2-c2ccc3c(c21)C=CC(C)(C)O3 1 N=C1Cc2ccccc2-c2ccc3c(c21)C=CCO3 0.6602741 0.6603 0.1938776 0.1939 0.3628873 -6.4000 1.0000000 1.0000 []
+ | 17.1799 23.3139 -23.3139 0.0000000 COC(=O)C1=COC(=O)C2CCC1N2C 1 O=C1OC=CC2CCC1N2 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 ['C(=[O,S])[O,S]']
+ | 18.3907 30.5116 37.2945 0.5297354 CC1CCN(S(=O)(=O)c2ccc(N3CCN(C)CC3)c(NC(=O)NCc3ccccc3)c2)CC1 1 O=C(NCc1ccccc1)Nc1cc(S(=O)(=O)N2CCCCC2)ccc1N1CCNCC1 0.6565815 0.6566 0.2562814 0.2563 0.6840929 -9.0100 1.0000000 1.0000 []
+ | 19.4770 26.8809 19.7589 0.3643732 CN1CCN(c2ccc3[nH]c(-c4nc(=O)o[nH]4)c(Br)c(=O)c3c2)CC1 1 O=c1nc(-c2cc(=O)c3cc(N4CCNCC4)ccc3[nH]2)[nH]o1 0.6676842 0.6677 0.1657754 0.1658 0.3990684 -6.7000 1.0000000 1.0000 []
+ | 19.9222 39.8789 23.2406 0.4931215 CC(=O)N(C(=O)Nc1cn(C(=O)c2cccc(C)c2)cn1)c1ccccc1 1 O=C(Nc1ccccc1)Nc1cn(C(=O)c2ccccc2)cn1 0.7731596 0.7732 0.2375691 0.2376 0.5673858 -8.0300 1.0000000 1.0000 []
+02:07:44 <INFO> Score: 0.36 Agent NLL: 26.09 Valid: 100% Step: 18
+ | Agent Prior Target Score SMILES SMILES_state Scaffold QED QED (raw) TanimotoDistance TanimotoDistance (raw) maize maize (raw) Unwanted SMARTS Unwanted SMARTS (raw) matchting_patterns (Unwanted SMARTS)
+ | 32.7809 37.8778 -37.8778 0.0000000 COc1cc2c(cc1OC)C1N=C3NC(=O)C=CN3C1OC2=CCCC(C)=O 1 C=C1OC2C(N=C3NC(=O)C=CN32)c2ccccc21 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 ['[#7;!n][C;!$(C(=[O,N])[N,O])][#8;!o]']
+ | 12.4679 25.9391 38.0639 0.5000235 CC(=O)NC(C)c1ccc(OC2CCN(c3cccc(N4CC(C)(C)C4)n3)C2)cc1 1 c1ccc(OC2CCN(c3cccc(N4CCC4)n3)C2)cc1 0.7882717 0.7883 0.2857143 0.2857 0.5268377 -7.7100 1.0000000 1.0000 []
+ | 11.5031 29.7785 17.9020 0.3725044 CC(=O)NC(CCS)C(=O)N1CCC(OCc2ccccc2)C1 1 c1ccc(COC2CCNC2)cc1 0.7442444 0.7442 0.2352941 0.2353 0.3315885 -6.1300 1.0000000 1.0000 []
+ | 32.9758 40.6712 7.4585 0.3760130 CCCN1C(=O)C(NC(=O)C(NC(=O)c2cc(F)cc(C(F)(F)F)c2)C(C)C)CNc2ccccc21 1 O=C(CNC(=O)c1ccccc1)NC1CNc2ccccc2NC1=O 0.4943532 0.4944 0.2806122 0.2806 0.3796066 -6.5400 1.0000000 1.0000 []
+ | 29.2757 40.8549 13.6420 0.4257569 CCCCCCC(=O)N(CC(=O)NCc1ccc(F)cc1)c1ccc(C(C)CC)cc1 1 O=C(CNc1ccccc1)NCc1ccccc1 0.4258477 0.4258 0.2688172 0.2688 0.5357568 -7.7800 1.0000000 1.0000 []
+ | 14.8340 20.7719 25.7875 0.3637453 CCN=c1[nH]c(=Nc2ccc(F)cc2)[nH]c2ccccc12 1 N=c1[nH]c(=Nc2ccccc2)[nH]c2ccccc12 0.7260241 0.7260 0.2105263 0.2105 0.3384278 -6.1900 1.0000000 1.0000 []
+ | 19.3931 23.5774 35.2366 0.4594845 Cn1c(=O)ccc2cc(S(=O)(=O)N=c3cccc[nH]3)ccc21 1 O=c1ccc2cc(S(=O)(=O)N=c3cccc[nH]3)ccc2[nH]1 0.7698256 0.7698 0.2235294 0.2235 0.5089536 -7.5700 1.0000000 1.0000 []
+ | 26.3765 28.6495 26.1455 0.4280861 O=C(CCCCn1c(=O)[nH]c2[nH]c3ccccc3c2c1=O)NCc1cccs1 1 O=C(CCCCn1c(=O)[nH]c2[nH]c3ccccc3c2c1=O)NCc1cccs1 0.4188576 0.4189 0.2124352 0.2124 0.6143498 -8.4100 1.0000000 1.0000 []
+ | 38.8613 40.9696 -3.6789 0.2913331 Cc1ccc(N2C(=O)COc3nc(-c4ccc(C(F)(F)F)cc4[N+](=O)[O-])ccc3C2=O)cc1 1 O=C1COc2nc(-c3ccccc3)ccc2C(=O)N1c1ccccc1 0.3248650 0.3249 0.2160804 0.2161 0.3203470 -6.0300 1.0000000 1.0000 []
+ | 42.4368 42.4093 4.2201 0.3642927 Cc1cscc1-c1nc(CCNS(=O)(=O)c2c(C)n[nH]c2C)c(-c2nccs2)s1 1 O=S(=O)(NCCc1nc(-c2ccsc2)sc1-c1nccs1)c1cn[nH]c1 0.4266891 0.4267 0.1794872 0.1795 0.4795440 -7.3400 1.0000000 1.0000 []
+02:08:31 <INFO> Score: 0.29 Agent NLL: 22.35 Valid: 100% Step: 19
+ | Agent Prior Target Score SMILES SMILES_state Scaffold QED QED (raw) TanimotoDistance TanimotoDistance (raw) maize maize (raw) Unwanted SMARTS Unwanted SMARTS (raw) matchting_patterns (Unwanted SMARTS)
+ | 18.5520 29.6381 36.6144 0.5175973 CC(=O)NC(C)c1ccc(C2=CC3(CCNCC3)c3ccccc32)cc1 1 C1=C(c2ccccc2)c2ccccc2C12CCNCC2 0.8834363 0.8834 0.2458101 0.2458 0.5749056 -8.0900 1.0000000 1.0000 []
+ | 18.8214 23.9211 8.6766 0.2546695 CC(C)Cn1c(=O)[nH]c2c(ncn2C2OC(CO)C(O)C2O)c1=N 1 N=c1[nH]c(=O)[nH]c2c1ncn2C1CCCO1 0.4468353 0.4468 0.1297297 0.1297 0.2693768 -5.5500 1.0000000 1.0000 []
+ | 20.4948 24.3792 -24.3792 0.0000000 CCC(=O)Oc1cc(C)ccc1[N+](=O)[O-] 1 c1ccccc1 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 ['C(=[O,S])[O,S]']
+ | 21.9701 27.0437 16.4944 0.3401412 CCCCN(CC)C(=O)CN1C(=O)CCc2ccccc21 1 O=C1CCc2ccccc2N1 0.8070827 0.8071 0.1929825 0.1930 0.2931572 -5.7800 1.0000000 1.0000 []
+ | 25.6083 33.1776 17.6103 0.3967805 CCNC(=O)C1=CC(C)(C)c2c1cccc2-c1ccc(O)cc1 1 C1=Cc2cccc(-c3ccccc3)c2C1 0.9040829 0.9041 0.2151163 0.2151 0.3569932 -6.3500 1.0000000 1.0000 []
+ | 29.9017 30.8612 10.7703 0.3252461 CN=c1[nH]c(N)c(NC(=O)CCC2CCCCC2)s1 1 N=c1[nH]cc(NC(=O)CCC2CCCCC2)s1 0.7924565 0.7925 0.1395349 0.1395 0.3181230 -6.0100 1.0000000 1.0000 []
+ | 21.0886 24.1461 17.0476 0.3218255 COc1cc(-c2cscc2-c2ccc(F)c(F)c2)cc(OC)c1OC 1 c1ccc(-c2cscc2-c2ccccc2)cc1 0.6093099 0.6093 0.2203390 0.2203 0.2826676 -5.6800 1.0000000 1.0000 []
+ | 27.7625 30.2835 20.2829 0.3950494 Cc1cc(O)cc(Cc2ccc(SCc3ccccc3)cc2)c1O 1 c1ccc(CSc2ccc(Cc3ccccc3)cc2)cc1 0.4911749 0.4912 0.1933702 0.1934 0.5063957 -7.5500 1.0000000 1.0000 []
+ | 19.0357 20.9474 -20.9474 0.0000000 CC1(C)CNC(CC(=O)Nc2ccccc2)C(=O)O1 1 O=C(CC1NCCOC1=O)Nc1ccccc1 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 ['C(=[O,S])[O,S]']
+ | 20.2226 20.9424 26.3977 0.3698448 Cc1nc(C)n(CC2CCCCN2Cc2nc3ccccc3[nH]2)n1 1 c1ccc2[nH]c(CN3CCCCC3Cn3cncn3)nc2c1 0.8014175 0.8014 0.1465969 0.1466 0.3990684 -6.7000 1.0000000 1.0000 []
+02:09:42 <INFO> Score: 0.32 Agent NLL: 21.60 Valid: 100% Step: 20
+ | Agent Prior Target Score SMILES SMILES_state Scaffold QED QED (raw) TanimotoDistance TanimotoDistance (raw) maize maize (raw) Unwanted SMARTS Unwanted SMARTS (raw) matchting_patterns (Unwanted SMARTS)
+ | 21.7155 22.7877 -22.7877 0.0000000 CC(=O)OC(C)(C)CCC=C(C)CCC=C(C)C 1  0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 ['C(=[O,S])[O,S]']
+ | 21.8498 36.0201 10.3139 0.3619843 CCCNC(=O)N1CCN(C)C(=O)C12CCN(Cc1sccc1C)CC2 1 O=C1NCCNC12CCN(Cc1cccs1)CC2 0.8745583 0.8746 0.1967213 0.1967 0.3159071 -5.9900 1.0000000 1.0000 []
+ | 18.3979 20.7242 13.4559 0.2670325 CCOc1ccc2c(c1)=C(c1ccccc1)NCC(=O)N=2 1 O=C1CNC(c2ccccc2)=c2ccccc2=N1 0.9120026 0.9120 0.2176471 0.2176 0.1600493 -4.2600 1.0000000 1.0000 []
+ | 13.2547 17.4180 16.2005 0.2626446 CCn1c(-c2ccccc2)c[nH]c1=N 1 N=c1[nH]cc(-c2ccccc2)[nH]1 0.7218341 0.7218 0.1187500 0.1187 0.2356142 -5.2000 1.0000000 1.0000 []
+ | 21.5986 36.7657 -7.3073 0.2301435 CN1CC2CN(C(=O)c3ccsc3)CC2CN(Cc2cccs2)C1=O 1 O=C1NCC2CN(C(=O)c3ccsc3)CC2CN1Cc1cccs1 0.8275353 0.8275 0.2087912 0.2088 0.1274231 -3.7400 1.0000000 1.0000 []
+ | 31.3475 37.6838 22.0708 0.4668331 CN1CCN(c2cc(Oc3ccc(F)cc3)[nH]c(=Nc3ccc(C#N)cc3)c2S(C)(=O)=O)CC1 1 c1ccc(N=c2cc(N3CCNCC3)cc(Oc3ccccc3)[nH]2)cc1 0.6005732 0.6006 0.2361809 0.2362 0.5786527 -8.1200 1.0000000 1.0000 []
+ | 19.0249 29.2513 33.3274 0.4888967 Cc1c(Sc2ccccc2)[nH]c(=N)c(C(=O)NCCc2ccccc2)c1C 1 N=c1[nH]c(Sc2ccccc2)ccc1C(=O)NCCc1ccccc1 0.6014761 0.6015 0.2216216 0.2216 0.6546646 -8.7500 1.0000000 1.0000 []
+ | 18.9553 20.8927 29.7147 0.3953707 Cc1c(C(=O)NCc2ccco2)oc2ccccc12 1 O=C(NCc1ccco1)c1cc2ccccc2o1 0.7810660 0.7811 0.2360248 0.2360 0.3640711 -6.4100 1.0000000 1.0000 []
+ | 19.6383 20.5261 36.8978 0.4486247 O=C(N=c1[nH]c(-c2ccccc2)cs1)Nc1ccc(F)cc1 1 O=C(N=c1[nH]c(-c2ccccc2)cs1)Nc1ccccc1 0.7375116 0.7375 0.1931818 0.1932 0.5332106 -7.7600 1.0000000 1.0000 []
+ | 30.1754 48.1343 -12.7405 0.2765138 Cc1ccccc1C1C2C(=O)NC(Cc3ccco3)C(CO)N1C(=O)c1ccccc12 1 O=C1NC(Cc2ccco2)CN2C(=O)c3ccccc3C1C2c1ccccc1 0.6851092 0.6851 0.2604167 0.2604 0.1810170 -4.5500 1.0000000 1.0000 []
+02:10:16 <INFO> Score: 0.32 Agent NLL: 22.45 Valid: 100% Step: 21
+ | Agent Prior Target Score SMILES SMILES_state Scaffold QED QED (raw) TanimotoDistance TanimotoDistance (raw) maize maize (raw) Unwanted SMARTS Unwanted SMARTS (raw) matchting_patterns (Unwanted SMARTS)
+ | 36.2656 51.2286 -51.2286 0.0000000 CC(=NC(=O)C(=NC(N)=S)C(C)C(=O)NCC1CCCCC1)c1cccs1 1 N=C(CC(=O)NCC1CCCCC1)C(=O)N=Cc1cccs1 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 ['[#7;!n][C;!$(C(=[O,N])[N,O])][#7;!n]']
+ | 27.6106 33.4057 28.7897 0.4859019 CCC(C)c1cccc(Cc2cc3cc(F)ccc3[nH]c2=O)c1 1 O=c1[nH]c2ccccc2cc1Cc1ccccc1 0.7394648 0.7395 0.2383721 0.2384 0.5623552 -7.9900 1.0000000 1.0000 []
+ | 18.0467 27.7651 25.3096 0.4146460 CC(C)(C)c1cc(C(=O)N2CC(=O)Nc3ccccc32)cc(C(F)(F)F)c1 1 O=C1CN(C(=O)c2ccccc2)c2ccccc2N1 0.7907007 0.7907 0.2222222 0.2222 0.4101617 -6.7900 1.0000000 1.0000 []
+ | 10.1024 17.7295 17.9186 0.2785009 CC(c1ccccc1)n1ccnc1 1 c1ccc(Cn2ccnc2)cc1 0.6801327 0.6801 0.1354839 0.1355 0.2555128 -5.4100 1.0000000 1.0000 []
+ | 20.8586 28.2527 28.1895 0.4409543 CCCc1nc2cccc(C(N)=O)c2nc1-c1ccccc1 1 c1ccc(-c2cnc3ccccc3n2)cc1 0.8010960 0.8011 0.2380952 0.2381 0.4452147 -7.0700 1.0000000 1.0000 []
+ | 21.1366 28.1554 23.2409 0.4015333 CN1CCN(c2ccc([N+](=O)[O-])c(Sc3nc(C(C)(C)C)cs3)c2)CC1 1 c1cc(Sc2nccs2)cc(N2CCNCC2)c1 0.5724505 0.5725 0.1923077 0.1923 0.4859324 -7.3900 1.0000000 1.0000 []
+ | 21.5267 28.8421 -28.8421 0.0000000 COc1ccccc1C=NNC(=O)c1ccccc1C(=O)NCc1ccccc1 1 O=C(NCc1ccccc1)c1ccccc1C(=O)NN=Cc1ccccc1 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 ['[#7;!n][#7;!n]']
+ | 15.2337 21.8653 28.7899 0.3957438 COc1ccccc1CCNC(=O)COc1ccccc1 1 O=C(COc1ccccc1)NCCc1ccccc1 0.8496705 0.8497 0.2469880 0.2470 0.3418732 -6.2200 1.0000000 1.0000 []
+ | 23.3333 24.0153 34.3987 0.4563596 COc1cc2c(cc1OC)CC(NS(=O)(=O)c1ccccc1)CC2 1 O=S(=O)(NC1CCc2ccccc2C1)c1ccccc1 0.9026814 0.9027 0.2369942 0.2370 0.4502755 -7.1100 1.0000000 1.0000 []
+ | 30.3844 37.5131 6.8415 0.3465203 CC(C)(C)c1cc2c(cc1C(F)(F)F)C(c1cccnc1)=NCC2 1 c1cncc(C2=NCCc3ccccc32)c1 0.7368252 0.7368 0.1731844 0.1732 0.3361404 -6.1700 1.0000000 1.0000 []
+02:10:37 <INFO> Score: 0.25 Agent NLL: 22.51 Valid:  90% Step: 22
+ | Agent Prior Target Score SMILES SMILES_state Scaffold QED QED (raw) TanimotoDistance TanimotoDistance (raw) maize maize (raw) Unwanted SMARTS Unwanted SMARTS (raw) matchting_patterns (Unwanted SMARTS)
+ | 20.1400 27.4665 17.1444 0.3485224 C=CCc1cc(S(N)(=O)=O)ccc1NC(C)=O 1 c1ccccc1 0.7860244 0.7860 0.1730769 0.1731 0.3293243 -6.1100 1.0000000 1.0000 []
+ | 20.4014 27.1739 35.1540 0.4869363 CN1CCN(c2ccc(S(=O)(=O)c3cccc(S(N)(=O)=O)c3)cc2)CC1 1 O=S(=O)(c1ccccc1)c1ccc(N2CCNCC2)cc1 0.8261291 0.8261 0.2191011 0.2191 0.5573116 -7.9500 1.0000000 1.0000 []
+ | 23.9077 31.4415 3.2883 0.2713268 CN1CCc2c(Cc3cccc(Cl)c3)nn(C)c2CC1 1 c1ccc(Cc2n[nH]c3c2CCNCC3)cc1 0.8475129 0.8475 0.1666667 0.1667 0.1958790 -4.7400 1.0000000 1.0000 []
+ | 13.8048 19.8615 -19.8615 0.0000000 CN=c1[nH]c(C)cc(=NN)[nH]1 1 N=c1cc[nH]c(=N)[nH]1 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 ['[#7;!n][#7;!n]']
+ | 14.7269 20.0634 21.2899 0.3230732 COc1ccc2[nH]c3cc(Cl)ccc3c(=O)c2c1 1 O=c1c2ccccc2[nH]c2ccccc12 0.6812245 0.6812 0.2187500 0.2188 0.2703850 -5.5600 1.0000000 1.0000 []
+ | 25.5730 37.7798 -37.7798 0.0000000 N=c1sc(=NC(=O)CNCc2ccccc2)[nH]c1C 0 -- 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 None
+ | 29.0317 34.4189 -34.4189 0.0000000 CC(C)(C)NC(=O)C1CN(Cc2ccccn2)CCN1CC(O)C(Cc1ccccc1)NC(=O)C(NC(=O)OCc1ccccc1)C(=O)NCc1ccccc1 1 O=C(NC(C(=O)NCc1ccccc1)C(=O)NC(CCN1CCN(Cc2ccccn2)CC1)Cc1ccccc1)OCc1ccccc1 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 ['C(=[O,S])[O,S]']
+ | 22.5857 22.8603 17.7803 0.3175045 Fc1ccc2sc(-c3ccc(-c4ccccc4)cc3)nc2c1 1 c1ccc(-c2ccc(-c3nc4ccccc4s3)cc2)cc1 0.4579483 0.4579 0.1977401 0.1977 0.3349994 -6.1600 1.0000000 1.0000 []
+ | 19.9857 22.3676 27.7742 0.3917325 C(=Cc1ncc2ccccc2n1)c1ccccc1 1 C(=Cc1ncc2ccccc2n1)c1ccccc1 0.6712441 0.6712 0.1976048 0.1976 0.4213473 -6.8800 1.0000000 1.0000 []
+ | 34.9714 38.7011 9.3051 0.3750484 Cc1ccnn1C1COC(c2ccccc2C#N)C1 1 c1ccc(C2CC(n3cccn3)CO2)cc1 0.8265107 0.8265 0.1569767 0.1570 0.3905106 -6.6300 1.0000000 1.0000 []
+02:11:57 <INFO> Score: 0.40 Agent NLL: 18.41 Valid: 100% Step: 23
+ | Agent Prior Target Score SMILES SMILES_state Scaffold QED QED (raw) TanimotoDistance TanimotoDistance (raw) maize maize (raw) Unwanted SMARTS Unwanted SMARTS (raw) matchting_patterns (Unwanted SMARTS)
+ | 5.1596 23.3590 15.7837 0.3058026 CC(c1ccccc1)n1cc2[nH][nH]c(=O)c2c1 1 O=c1[nH][nH]c2cn(Cc3ccccc3)cc12 0.6928922 0.6929 0.1437126 0.1437 0.2963482 -5.8100 1.0000000 1.0000 []
+ | 25.8943 27.9648 33.4434 0.4797522 CCN(c1ccccc1)S(=O)(=O)c1ccc(NC(=O)Nc2cccc(F)c2)cc1 1 O=C(Nc1ccccc1)Nc1ccc(S(=O)(=O)Nc2ccccc2)cc1 0.6156211 0.6156 0.2432432 0.2432 0.5947807 -8.2500 1.0000000 1.0000 []
+ | 15.1997 22.1008 38.9216 0.4767373 CCc1noc(C)c1C(=O)NCCc1ccc(S(N)(=O)=O)cc1 1 O=C(NCCc1ccccc1)c1cnoc1 0.8206057 0.8206 0.2335329 0.2335 0.5191788 -7.6500 1.0000000 1.0000 []
+ | 39.1645 44.0372 6.4896 0.3947399 CN1C(N)=NC23CCC(Cc4ccccc4)(CC12)c1ccc2c(F)cccc2c13 1 C1=NC23CCC(Cc4ccccc4)(CC2N1)c1ccc2ccccc2c13 0.7066238 0.7066 0.2205128 0.2205 nan nan 1.0000000 1.0000 []
+ | 18.9934 22.2458 25.1667 0.3704107 Cc1occc1C(=O)Nc1ccccc1N1CCN(C)CC1 1 O=C(Nc1ccccc1N1CCNCC1)c1ccoc1 0.9461804 0.9462 0.1885714 0.1886 0.3248196 -6.0700 1.0000000 1.0000 []
+ | 8.1004 28.5938 42.6085 0.5562681 CC1CCN(S(=O)(=O)c2ccc(N3CCN(C)CC3)c(NC(=O)COc3ccc(Br)cc3)c2)CC1 1 O=C(COc1ccccc1)Nc1cc(S(=O)(=O)N2CCCCC2)ccc1N1CCNCC1 0.5525115 0.5525 0.2857143 0.2857 0.7788103 -9.9600 1.0000000 1.0000 []
+ | 13.2711 20.7052 13.2259 0.2650864 CN1CCN(c2ccc3[nH]c(=S)[nH]c3n2)CC1 1 S=c1[nH]c2ccc(N3CCNCC3)nc2[nH]1 0.7495887 0.7496 0.0971429 0.0971 0.2604101 -5.4600 1.0000000 1.0000 []
+ | 22.8601 30.2708 18.1573 0.3783444 CN1CCN(c2cccc(C(=O)N3CCN(Cc4c[nH]cn4)c4ccccc4C3)c2)CC1 1 O=C(c1cccc(N2CCNCC2)c1)N1CCN(Cc2c[nH]cn2)c2ccccc2C1 0.6898781 0.6899 0.2315271 0.2315 0.3581687 -6.3600 1.0000000 1.0000 []
+ | 13.5251 26.5086 23.8138 0.3931434 Cc1c[nH]c(=O)cc1C(=O)NCc1ccc(F)cc1 1 O=C(NCc1ccccc1)c1cc[nH]c(=O)c1 0.8828162 0.8828 0.1951220 0.1951 0.3724036 -6.4800 1.0000000 1.0000 []
+ | 21.9752 26.8459 19.9537 0.3656224 Cc1ccc(CN(CCc2ccccc2)C(=O)CCS)cc1 1 c1ccc(CCNCc2ccccc2)cc1 0.7690858 0.7691 0.2248521 0.2249 0.3214620 -6.0400 1.0000000 1.0000 []
+02:12:39 <INFO> Score: 0.27 Agent NLL: 19.27 Valid: 100% Step: 24
+ | Agent Prior Target Score SMILES SMILES_state Scaffold QED QED (raw) TanimotoDistance TanimotoDistance (raw) maize maize (raw) Unwanted SMARTS Unwanted SMARTS (raw) matchting_patterns (Unwanted SMARTS)
+ | 11.6329 27.6495 29.8919 0.4495420 CC(=O)NC(C)c1ccc(OC2CCN(c3cccc(N4CC(F)(F)C4)c3F)C2)cc1 1 c1ccc(OC2CCN(c3cccc(N4CCC4)c3)C2)cc1 0.7440668 0.7441 0.2967033 0.2967 0.4301040 -6.9500 1.0000000 1.0000 []
+ | 28.4073 36.3608 -36.3608 0.0000000 COC(=O)c1ccccc1NC(=O)c1sc2c(c1C)c(=O)n(CC(C)C)c(=O)n2CCC1=CCCCC1 1 O=C(Nc1ccccc1)c1cc2c(=O)[nH]c(=O)n(CCC3=CCCCC3)c2s1 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 ['C(=[O,S])[O,S]']
+ | 9.4102 25.2684 13.8744 0.3058026 CC(c1ccccc1)n1cc2[nH][nH]c(=O)c2c1 1 O=c1[nH][nH]c2cn(Cc3ccccc3)cc12 0.6928922 0.6929 0.1437126 0.1437 0.2963482 -5.8100 1.0000000 1.0000 []
+ | 22.1446 29.3865 7.8859 0.2911904 CC1(C)CC(=O)C(=Cc2ccccc2)c2ccccc2C1=O 1 O=C1CCC(=O)c2ccccc2C1=Cc1ccccc1 0.5756582 0.5757 0.2163743 0.2164 0.2402531 -5.2500 1.0000000 1.0000 []
+ | 21.6145 27.7735 16.7762 0.3480440 CCN(CC)C(=O)N(C)c1cccc(S(C)(=O)=O)c1 1 c1ccccc1 0.8492807 0.8493 0.2115385 0.2115 0.2857906 -5.7100 1.0000000 1.0000 []
+ | 18.9801 25.8188 7.7716 0.2624253 CCN=c1[nH]cc(-c2ccccc2N)s1 1 N=c1[nH]cc(-c2ccccc2)s1 0.7477384 0.7477 0.1151515 0.1152 0.2346939 -5.1900 1.0000000 1.0000 []
+ | 27.2852 38.9719 3.9384 0.3352367 CCNC(=O)C1CN(CC2=Cc3ccccc3Nc3ccc(F)cc32)C1 1 C1=C(CN2CCC2)c2ccccc2Nc2ccccc21 0.8862360 0.8862 0.2430939 0.2431 0.2421260 -5.2700 1.0000000 1.0000 []
+ | 14.1314 22.8873 20.3139 0.3375090 CN1CCN(c2ccc3c(c2)[nH]c2ccccc23)CC1 1 c1ccc2c(c1)[nH]c1cc(N3CCNCC3)ccc12 0.7302462 0.7302 0.1638418 0.1638 0.3293243 -6.1100 1.0000000 1.0000 []
+ | 15.3463 18.8442 -18.8442 0.0000000 CNC(=S)Nc1ccc(S(N)(=O)=O)cc1 1 c1ccccc1 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 ['[#7;!n][C;!$(C(=[O,N])[N,O])][#7;!n]']
+ | 23.7750 27.5238 21.9394 0.3864311 Cc1ncc(C(=O)C=Cc2ccc(O)cc2)c(C)c1C 1 O=C(C=Cc1ccccc1)c1cccnc1 0.6823949 0.6824 0.1715976 0.1716 0.4363859 -7.0000 1.0000000 1.0000 []
+02:13:59 <INFO> Score: 0.36 Agent NLL: 20.65 Valid: 100% Step: 25
+ | Agent Prior Target Score SMILES SMILES_state Scaffold QED QED (raw) TanimotoDistance TanimotoDistance (raw) maize maize (raw) Unwanted SMARTS Unwanted SMARTS (raw) matchting_patterns (Unwanted SMARTS)
+ | 52.0523 55.7893 -55.7893 0.0000000 CC(=O)OC1C2C(C=CC3=CC(=O)C=CC32C)C12CCC2C(C)=CN=C(N)N 1 O=C1C=CC2C(=C1)C=CC1C2CC12CCC2 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 ['C(=[O,S])[O,S]']
+ | 12.4142 32.7191 28.3852 0.4773776 CCN(CC)C1CN(C(=O)c2ccc(NS(=O)(=O)c3ccccc3F)cc2)C1 1 O=C(c1ccc(NS(=O)(=O)c2ccccc2)cc1)N1CCC1 0.7691254 0.7691 0.2742857 0.2743 0.4961624 -7.4700 1.0000000 1.0000 []
+ | 16.2353 20.4754 31.6283 0.4070602 CCOc1ccc(C(=O)NCCc2ccccc2)cc1OCC 1 O=C(NCCc1ccccc1)c1ccccc1 0.8117004 0.8117 0.2470588 0.2471 0.3700148 -6.4600 1.0000000 1.0000 []
+ | 19.3225 36.3714 25.1378 0.4805410 CC1CN(Cc2ccccc2N2CCN(C(=O)Cc3cccs3)CC2)CCN1C 1 O=C(Cc1cccs1)N1CCN(c2ccccc2CN2CCNCC2)CC1 0.7554993 0.7555 0.2303665 0.2304 0.5535212 -7.9200 1.0000000 1.0000 []
+ | 13.0116 26.8666 36.7526 0.4970247 CN1CCN(c2nc3ccccc3cc2C(=O)NCc2ccc(F)cc2)CC1 1 O=C(NCc1ccccc1)c1cc2ccccc2nc1N1CCNCC1 0.7581428 0.7581 0.2817680 0.2818 0.5344839 -7.7700 1.0000000 1.0000 []
+ | 12.3593 16.2896 10.5439 0.2096368 COc1cccc(N)c1 1 c1ccccc1 0.5706914 0.5707 0.1276596 0.1277 0.1628200 -4.3000 1.0000000 1.0000 []
+ | 14.5263 20.9038 24.1355 0.3518696 COc1cccc2c1ccc1ccccc12 1 c1ccc2c(c1)ccc1ccccc12 0.5490574 0.5491 0.1937500 0.1938 0.3796066 -6.5400 1.0000000 1.0000 []
+ | 26.5314 35.6401 22.7814 0.4564179 Cc1cccc(C)c1N1CCN(CCCC(CNC(=O)c2ccc3ccccc3c2)c2ccccc2)CC1 1 O=C(NCC(CCCN1CCN(c2ccccc2)CC1)c1ccccc1)c1ccc2ccccc2c1 0.2793477 0.2793 0.2262443 0.2262 0.8286361 -10.5800 1.0000000 1.0000 []
+ | 12.7789 17.9502 26.5119 0.3473603 O=C(N=c1[nH]c2ccccc2[nH]1)c1ccccc1 1 O=C(N=c1[nH]c2ccccc2[nH]1)c1ccccc1 0.6695260 0.6695 0.1588235 0.1588 0.3700148 -6.4600 1.0000000 1.0000 []
+ | 27.2764 28.5428 22.0221 0.3950388 CC(C(=O)NCc1ccc(C(F)(F)F)nc1-c1ccc(F)cc1)c1ccsc1 1 O=C(Cc1ccsc1)NCc1cccnc1-c1ccccc1 0.5755589 0.5756 0.2500000 0.2500 0.4114003 -6.8000 1.0000000 1.0000 []
+02:14:49 <INFO> Score: 0.35 Agent NLL: 19.23 Valid: 100% Step: 26
+ | Agent Prior Target Score SMILES SMILES_state Scaffold QED QED (raw) TanimotoDistance TanimotoDistance (raw) maize maize (raw) Unwanted SMARTS Unwanted SMARTS (raw) matchting_patterns (Unwanted SMARTS)
+ | 18.3274 32.3147 20.6673 0.4139220 CC(C)(N)CC(=O)NC1(C)CCN(Cc2ccccc2)C1=O 1 O=C1CCCN1Cc1ccccc1 0.8636042 0.8636 0.2228916 0.2229 0.3905106 -6.6300 1.0000000 1.0000 []
+ | 18.5567 26.0171 13.7421 0.3106189 CCOc1ccc(Cc2[nH]c(=N)sc2C)cc1 1 N=c1[nH]c(Cc2ccccc2)cs1 0.8584627 0.8585 0.1835443 0.1835 0.2430663 -5.2800 1.0000000 1.0000 []
+ | 23.7601 38.0343 4.2901 0.3306598 COc1cccc2c1CC1C(CCN1c1ccc(S(N)(=O)=O)cc1)CN2C 1 c1ccc(N2CCC3CNc4ccccc4CC32)cc1 0.8740722 0.8741 0.2444444 0.2444 0.2365370 -5.2100 1.0000000 1.0000 []
+ | 22.2980 37.8131 -1.1842 0.2861632 CN1CC2CN(c3nc4ccccc4s3)CC2CN(CC2CC2)C1=O 1 O=C1NCC2CN(c3nc4ccccc4s3)CC2CN1CC1CC1 0.8482168 0.8482 0.2333333 0.2333 0.1840711 -4.5900 1.0000000 1.0000 []
+ | 5.8392 25.3078 45.6352 0.5542425 CN1CCN(c2ccc(S(=O)(=O)N3CCCCC3)cc2NC(=O)COc2ccc(Br)cc2)CC1 1 O=C(COc1ccccc1)Nc1cc(S(=O)(=O)N2CCCCC2)ccc1N1CCNCC1 0.5685454 0.5685 0.2755102 0.2755 0.7761546 -9.9300 1.0000000 1.0000 []
+ | 29.3697 40.9296 -40.9296 0.0000000 COc1ccc(NN=C2C(C)N(C)C3c4ccccc4C=CN23)cc1 1 C1=CN2C(=NNc3ccccc3)CNC2c2ccccc21 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 ['[#7;!n][#7;!n]', '[#7;!n][C;!$(C(=[O,N])[N,O])][#7;!n]']
+ | 20.8004 28.0405 12.5699 0.3172681 COc1cccc2c1-c1cccc(C(F)(F)F)c1CN2 1 c1ccc2c(c1)CNc1ccccc1-2 0.8396501 0.8397 0.1834320 0.1834 0.2564874 -5.4200 1.0000000 1.0000 []
+ | 12.1672 20.5893 33.6906 0.4240617 Cc1ccccc1NC(=O)N1CCN(c2ccccn2)CC1 1 O=C(Nc1ccccc1)N1CCN(c2ccccn2)CC1 0.9267451 0.9267 0.2151163 0.2151 0.4027553 -6.7300 1.0000000 1.0000 []
+ | 17.6634 18.2084 34.6478 0.4129390 O=C(N=c1[nH]c(-c2ccccc2)cs1)c1ccccc1 1 O=C(N=c1[nH]c(-c2ccccc2)cs1)c1ccccc1 0.7670834 0.7671 0.1657143 0.1657 0.4782671 -7.3300 1.0000000 1.0000 []
+ | 23.5483 30.2329 29.8393 0.4693142 O=C(CN1CCN(Cc2ccccc2)CC1)Nc1csc2c(=Nc3cccc(Br)c3)[nH]cnc12 1 O=C(CN1CCN(Cc2ccccc2)CC1)Nc1csc2c(=Nc3ccccc3)[nH]cnc12 0.3831115 0.3831 0.2296651 0.2297 0.7425356 -9.5700 1.0000000 1.0000 []
+02:15:55 <INFO> Score: 0.37 Agent NLL: 18.67 Valid:  90% Step: 27
+ | Agent Prior Target Score SMILES SMILES_state Scaffold QED QED (raw) TanimotoDistance TanimotoDistance (raw) maize maize (raw) Unwanted SMARTS Unwanted SMARTS (raw) matchting_patterns (Unwanted SMARTS)
+ | 13.0454 22.9070 48.8939 0.5609442 O=C(COc1ccc(Br)cc1)Nc1cc(S(=O)(=O)N2CCCCC2)ccc1N1CCOCC1 1 O=C(COc1ccccc1)Nc1cc(S(=O)(=O)N2CCCCC2)ccc1N1CCOCC1 0.5811953 0.5812 0.2783505 0.2784 0.7823160 -10.0000 1.0000000 1.0000 []
+ | 15.4360 20.5603 22.4355 0.3359050 CCCCN=c1[nH]c(O)c(Cc2ccccc2)s1 1 N=c1[nH]cc(Cc2ccccc2)s1 0.7992962 0.7993 0.1676647 0.1677 0.3082181 -5.9200 1.0000000 1.0000 []
+ | 26.7295 30.7070 18.5383 0.3847286 CCN(Cc1c(C(=O)N=c2[nH]ccs2)nc2ccc(Cl)cn12)c1ccccc1 1 O=C(N=c1[nH]ccs1)c1nc2ccccn2c1CNc1ccccc1 0.5362338 0.5362 0.2157895 0.2158 0.4351278 -6.9900 1.0000000 1.0000 []
+ | 15.4644 21.5571 12.5235 0.2662550 CCn1cnc2ccc([N+](=O)[O-])cc21 1 c1ccc2[nH]cnc2c1 0.5381063 0.5381 0.1194969 0.1195 0.2795654 -5.6500 1.0000000 1.0000 []
+ | 8.0611 27.0710 40.8928 0.5309670 Cc1ccccc1OCC(=O)Nc1cc(S(=O)(=O)N2CCC(C)CC2)ccc1N1CCN(C)CC1 1 O=C(COc1ccccc1)Nc1cc(S(=O)(=O)N2CCCCC2)ccc1N1CCNCC1 0.6289466 0.6289 0.2463054 0.2463 0.7162938 -9.3100 1.0000000 1.0000 []
+ | 27.8206 35.2270 23.0808 0.4555292 CNC(=O)N1CCC(n2c(=O)[nH]c3cnc4ccc(-c5ccc(S(C)(=O)=O)cc5F)cc4c32)CC1 1 O=c1[nH]c2cnc3ccc(-c4ccccc4)cc3c2n1C1CCNCC1 0.4512325 0.4512 0.2938144 0.2938 0.5698961 -8.0500 1.0000000 1.0000 []
+ | 14.1704 18.5651 25.4833 0.3441283 Cc1cc(=NCCN(C)C)c2ccccc2[nH]1 1 N=c1cc[nH]c2ccccc12 0.8565476 0.8565 0.1301775 0.1302 0.3546476 -6.3300 1.0000000 1.0000 []
+ | 23.6352 42.5200 -42.5200 0.0000000 Cc1c[nH]c(=NC(=O)CN2C(=O)C(c3cccs3)(CC)NC2=O)c1C 0 -- 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 None
+ | 16.8187 22.7993 31.5500 0.4246043 Cc1ccc(S(=O)(=O)Nc2cccc3c2CNC3=O)cc1 1 O=C1NCc2c(NS(=O)(=O)c3ccccc3)cccc21 0.9107601 0.9108 0.2071006 0.2071 0.4151223 -6.8300 1.0000000 1.0000 []
+ | 25.5540 21.8935 34.3897 0.4397128 O=C1CCN(Cc2ccccc2)CC1=Cc1ccccc1Br 1 O=C1CCN(Cc2ccccc2)CC1=Cc1ccccc1 0.7642982 0.7643 0.2196532 0.2197 0.4718870 -7.2800 1.0000000 1.0000 []
+02:16:31 <INFO> Score: 0.26 Agent NLL: 20.11 Valid:  70% Step: 28
+ | Agent Prior Target Score SMILES SMILES_state Scaffold QED QED (raw) TanimotoDistance TanimotoDistance (raw) maize maize (raw) Unwanted SMARTS Unwanted SMARTS (raw) matchting_patterns (Unwanted SMARTS)
+ | 11.9054 21.6131 30.6050 0.4079537 CSc1nc(-c2ccc(F)cc2)c(-c2cc[nH]c(=NCC(C)C)c2)[nH]1 1 N=c1cc(-c2[nH]cnc2-c2ccccc2)cc[nH]1 0.6619017 0.6619 0.2111111 0.2111 0.4452147 -7.0700 1.0000000 1.0000 []
+ | 35.8295 44.4743 -44.4743 0.0000000 CCCN(CCc1ccccc1)C(=c1c(O)c(O)c2cccc(C)c2c1C)c1ccccc1 0 -- 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 None
+ | 24.8730 29.6366 7.3151 0.2886848 CCc1ccccc1NC(=O)CN(CC)CC(O)CO 1 c1ccccc1 0.6602902 0.6603 0.1726190 0.1726 0.2468517 -5.3200 1.0000000 1.0000 []
+ | 13.6366 20.8737 6.6198 0.2147928 CCN(CC)C(=O)n1cccc1 1 c1cc[nH]c1 0.6572627 0.6573 0.1275168 0.1275 0.1593626 -4.2500 1.0000000 1.0000 []
+ | 13.0556 34.2591 32.2473 0.5195812 CCN=c1nc(C(=O)NCc2ccc(F)cc2)c(C(=O)NCc2ccc(F)cc2)c[nH]1 1 N=c1nc(C(=O)NCc2ccccc2)c(C(=O)NCc2ccccc2)c[nH]1 0.5423048 0.5423 0.2918919 0.2919 0.6785380 -8.9600 1.0000000 1.0000 []
+ | 16.1522 24.7611 -24.7611 0.0000000 CCN=c1ccc2n(cc[nH]2)c1 0 -- 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 None
+ | 28.8343 48.4709 -48.4709 0.0000000 CN1CCN(c2ccc3[nH]c(-c4cnc5[nH]cc(C(F)(F)F)c5cc4)c(C(=O)C)c(=O)c3c2)CC1 0 -- 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 None
+ | 20.3367 29.5375 11.9732 0.3243020 Cc1cccc(N)c1C(c1ccccc1)c1ccc(F)cc1 1 c1ccc(C(c2ccccc2)c2ccccc2)cc1 0.5390120 0.5390 0.1828571 0.1829 0.3349994 -6.1600 1.0000000 1.0000 []
+ | 26.0982 36.7523 22.7344 0.4647397 CC(=O)N1CC(C)(C(=O)Nc2ccccc2C)Cc2cc(C)c(C)cc21 1 O=C(Nc1ccccc1)C1CNc2ccccc2C1 0.8837611 0.8838 0.2247191 0.2247 0.4846543 -7.3800 1.0000000 1.0000 []
+ | 10.3536 27.1837 26.1577 0.4167299 O=C(Nc1cc(C(F)(F)F)cc(C(F)(F)F)c1)C1CCN(C(=O)C=Cc2ccccc2)CC1 1 O=C(Nc1ccccc1)C1CCN(C(=O)C=Cc2ccccc2)CC1 0.4663166 0.4663 0.2435233 0.2435 0.5153458 -7.6200 1.0000000 1.0000 []
+02:17:08 <INFO> Score: 0.34 Agent NLL: 19.01 Valid: 100% Step: 29
+ | Agent Prior Target Score SMILES SMILES_state Scaffold QED QED (raw) TanimotoDistance TanimotoDistance (raw) maize maize (raw) Unwanted SMARTS Unwanted SMARTS (raw) matchting_patterns (Unwanted SMARTS)
+ | 24.4586 22.7911 52.1505 0.5854816 Cc1ccc2c(CC(=O)Nc3cccc(S(=O)(=O)N4CCCCC4)c3)coc2c1 1 O=C(Cc1coc2ccccc12)Nc1cccc(S(=O)(=O)N2CCCCC2)c1 0.6842922 0.6843 0.2688172 0.2688 0.7992400 -10.2000 1.0000000 1.0000 []
+ | 19.3359 30.9491 13.6042 0.3480723 CCN=c1cc(Nc2cccc(C(F)(F)F)c2)[nH]c2ccnn12 1 N=c1cc(Nc2ccccc2)[nH]c2ccnn12 0.7771250 0.7771 0.1521739 0.1522 0.3523088 -6.3100 1.0000000 1.0000 []
+ | 14.1583 24.6096 20.3704 0.3514057 CN1CCN(c2ccc3c(=O)[nH]ncc3c2)CC1 1 O=c1[nH]ncc2cc(N3CCNCC3)ccc12 0.8010245 0.8010 0.1329480 0.1329 0.3784024 -6.5300 1.0000000 1.0000 []
+ | 16.7490 21.9947 15.6193 0.2938595 CN=c1cc(C(F)(F)F)[nH]c(-c2ccccc2)n1 1 N=c1cc[nH]c(-c2ccccc2)n1 0.8334848 0.8335 0.1445783 0.1446 0.2487592 -5.3400 1.0000000 1.0000 []
+ | 20.6082 30.7196 37.6882 0.5344359 CNC(=O)c1cccc(NC(=O)N2CCC(c3ccc(Br)cc3)C2)c1 1 O=C(Nc1ccccc1)N1CCC(c2ccccc2)C1 0.8200241 0.8200 0.2732558 0.2733 0.6033832 -8.3200 1.0000000 1.0000 []
+ | 16.4895 19.0420 16.2494 0.2757137 COc1ccccc1N1CCN(C(C)C)CC1 1 c1ccc(N2CCNCC2)cc1 0.7973571 0.7974 0.1604938 0.1605 0.2125010 -4.9400 1.0000000 1.0000 []
+ | 11.3316 18.1912 23.3829 0.3247974 Cc1nc2sc3c(c2c(=O)[nH]1)CCCC3 1 O=c1[nH]cnc2sc3c(c12)CCCC3 0.7392357 0.7392 0.1341463 0.1341 0.3349994 -6.1600 1.0000000 1.0000 []
+ | 24.4742 33.2612 15.4412 0.3804878 FC(F)(F)c1cccc(C(F)(F)F)c1CNC1CCCc2c1[nH]c1ccccc21 1 c1ccc(CNC2CCCc3c2[nH]c2ccccc32)cc1 0.4807096 0.4807 0.1836735 0.1837 0.4872106 -7.4000 1.0000000 1.0000 []
+ | 19.6561 21.8865 -21.8865 0.0000000 O=C(COC(=O)Cc1c[nH]c2ccccc12)NCc1ccc(F)cc1 1 O=C(COC(=O)Cc1c[nH]c2ccccc12)NCc1ccccc1 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 0.0000000 0.0000 ['C(=[O,S])[O,S]']
+ | 22.8083 23.9340 17.2815 0.3219966 O=c1nc(N2CCOCC2)[nH]c2sc(-c3cccs3)cc12 1 O=c1nc(N2CCOCC2)[nH]c2sc(-c3cccs3)cc12 0.7884920 0.7885 0.1366120 0.1366 0.3159071 -5.9900 1.0000000 1.0000 []
+02:18:32 <CRIT> Received exception ('Signal 2'): saving checkpoint and then terminate

@@ -1,0 +1,36 @@
+Traceback (most recent call last):
+  File "/home/a/miniconda3/envs/reinvent4/bin/reinvent", line 8, in <module>
+    sys.exit(main_script())
+  File "/home/a/miniconda3/envs/reinvent4/lib/python3.10/site-packages/reinvent/Reinvent.py", line 194, in main_script
+    main(args)
+  File "/home/a/miniconda3/envs/reinvent4/lib/python3.10/site-packages/reinvent/Reinvent.py", line 163, in main
+    runner(
+  File "/home/a/miniconda3/envs/reinvent4/lib/python3.10/site-packages/reinvent/runmodes/RL/run_staged_learning.py", line 366, in run_staged_learning
+    terminate = optimize(package.terminator)
+  File "/home/a/miniconda3/envs/reinvent4/lib/python3.10/site-packages/reinvent/runmodes/RL/learning.py", line 135, in optimize
+    results = self.score()
+  File "/home/a/miniconda3/envs/reinvent4/lib/python3.10/site-packages/reinvent/runmodes/RL/learning.py", line 207, in score
+    results = self.scoring_function(
+  File "/home/a/miniconda3/envs/reinvent4/lib/python3.10/site-packages/reinvent/scoring/scorer.py", line 154, in compute_results
+    transform_result = compute_component_score(
+  File "/home/a/miniconda3/envs/reinvent4/lib/python3.10/site-packages/reinvent/scoring/scorer.py", line 76, in compute_component_score
+    transform_result = compute_transform(
+  File "/home/a/miniconda3/envs/reinvent4/lib/python3.10/site-packages/reinvent/scoring/compute_scores.py", line 143, in compute_transform
+    component_results = compute_component_scores(
+  File "/home/a/miniconda3/envs/reinvent4/lib/python3.10/site-packages/reinvent/scoring/compute_scores.py", line 93, in compute_component_scores
+    component_results=scoring_function(smilies_to_score), smiles=index_smiles_to_score
+  File "/home/a/miniconda3/envs/reinvent4/lib/python3.10/site-packages/reinvent_plugins/components/comp_external_process.py", line 90, in __call__
+    result = run_command([_executable] + _args, input=smiles_input)
+  File "/home/a/miniconda3/envs/reinvent4/lib/python3.10/site-packages/reinvent_plugins/components/run_program.py", line 26, in run_command
+    result = sp.run(command, **args)
+  File "/home/a/miniconda3/envs/reinvent4/lib/python3.10/subprocess.py", line 505, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+  File "/home/a/miniconda3/envs/reinvent4/lib/python3.10/subprocess.py", line 1154, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+  File "/home/a/miniconda3/envs/reinvent4/lib/python3.10/subprocess.py", line 2021, in _communicate
+    ready = selector.select(timeout)
+  File "/home/a/miniconda3/envs/reinvent4/lib/python3.10/selectors.py", line 416, in select
+    fd_event_list = self._selector.poll(timeout)
+  File "/home/a/miniconda3/envs/reinvent4/lib/python3.10/site-packages/reinvent/runmodes/handler.py", line 142, in _signal_handler
+    raise StageInterruptedUncontrolled(f"Signal {signum}")
+reinvent.runmodes.handler.StageInterruptedUncontrolled: Signal 2

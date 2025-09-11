@@ -1,0 +1,48 @@
+### REINVENT4 TOML input ###
+
+### Transfer Learning (TL) Run Mode ###
+
+# General Options
+
+run_type = "transfer_learning"
+
+use_cuda = true
+
+tb_logdir = "TensoBoard_TL"
+
+json_out_config = "TL_input.json"
+
+[parameters]
+
+# TL Parameters
+
+num_epochs = 1000
+
+save_every_n_epochs = 200
+
+batch_size = 128
+
+num_refs = 50
+
+sample_batch_size = 100
+
+# Mol2Mol molecule generator
+
+input_model_file = "priors/reinvent.prior"
+
+smiles_file = "mols/Rad51/cam833_compounds.smi"
+
+output_model_file = "priors/TL_Rad51_reinvent.model"
+
+#validation_smiles_file = "mols/Rad51/cam833_compounds.smi"
+
+# Type of similarity and its parameters
+pairs.type = "Tanimoto"
+
+pairs.upper_threshold = 1.0
+
+pairs.lower_threshold = 0.7
+
+pairs.min_cardinality = 1
+
+pairs.max_cardinality = 199

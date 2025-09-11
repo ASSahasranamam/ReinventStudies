@@ -65,7 +65,7 @@ wd
 # ### Write config file
 
 # +
-prior_filename = os.path.abspath(os.path.join(reinvent.__path__[0], "..", "priors", "reinvent.prior"))
+prior_filename = os.path.abspath(os.path.join(reinvent.__path__[0], "..", "priors", "mol2mol_similarity.prior"))
 agent_filename = prior_filename
 
 

@@ -1,23 +1,48 @@
-# Transfer learning on a set of related active compounds
+### REINVENT4 TOML input ###
+
+### Transfer Learning (TL) Run Mode ###
+
+# General Options
 
 run_type = "transfer_learning"
-device = "cuda:0"  # set torch device e.g. "cpu"
-tb_logdir = "tb_TL"  # name of the TensorBoard logging directory
-json_out_config = "json_transfer_learning.json"  # write this TOML to JSON
 
+use_cuda = true
+
+tb_logdir = "TensoBoard_TL"
+
+json_out_config = "TL_input.json"
 
 [parameters]
 
-num_epochs = 10  # number of steps to run
-save_every_n_epochs = 3  # save checkpoint model file very N steps
-batch_size = 50
-num_refs = 100  # number of reference molecules randomly chosen for similarity
-                # set this to zero for large datasets (>200 molecules)!
-sample_batch_size = 128  # number of sampled molecules to compute sample loss
-# Uncomment one of the comment blocks below.  Each generator needs a model
-# file and possibly a SMILES file with seed structures.
+# TL Parameters
+
+num_epochs = 1000
+
+save_every_n_epochs = 200
+
+batch_size = 128
+
+num_refs = 50
+
+sample_batch_size = 100
+
+# Mol2Mol molecule generator
 
 input_model_file = "priors/mol2mol_similarity.prior"
-smiles_file = "mols/Rad51/bdb.smi"
-output_model_file = "priors/Rad51_bdb_mol2mol.model"
-validation_smiles_file = "mols/Rad51/bdb.smi"
+
+smiles_file = "mols/Rad51/cam833.smi"
+
+output_model_file = "priors/TL_Cam833_Mol2Mol.model"
+
+#validation_smiles_file = "mols/Rad51/cam833.smi"
+
+# Type of similarity and its parameters
+pairs.type = "Tanimoto"
+
+pairs.upper_threshold = 1.0
+
+pairs.lower_threshold = 0.99
+
+pairs.min_cardinality = 1
+
+pairs.max_cardinality = 199

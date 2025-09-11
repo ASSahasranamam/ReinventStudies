@@ -1,0 +1,69 @@
+{
+    "run_type": "scoring",
+    "device": "cuda",
+    "use_cuda": true,
+    "tb_logdir": null,
+    "json_out_config": "scoringData/dockedData/Scoring_input.json",
+    "seed": null,
+    "parameters": {
+        "smiles_file": "scoringData/smilesToScore.smi",
+        "output_csv": "scoringData/dockedData/scoredData.csv",
+        "smiles_column": "SMILES",
+        "standardize_smiles": true
+    },
+    "scoring": {
+        "type": "geometric_mean",
+        "parallel": true,
+        "component": [
+            {
+                "SAScore": {
+                    "endpoint": [
+                        {
+                            "name": "SAScore",
+                            "weight": 0.5,
+                            "transform": {
+                                "type": "Sigmoid",
+                                "low": 50.0,
+                                "high": 100.0,
+                                "k": 0.5
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "Maize": {
+                    "endpoint": [
+                        {
+                            "name": "DockingScore",
+                            "weight": 0.5,
+                            "transform": {
+                                "type": "reverse_sigmoid",
+                                "high": -3,
+                                "low": -9.5,
+                                "k": 0.5
+                            },
+                            "params": {
+                                "executable": "/home/a/miniconda3/envs/maize-dev/bin/python",
+                                "workflow": "/home/a/REINVENT4/ReinventStudies/run_reinvent_maize_dockingOnly.py",
+                                "debug": true,
+                                "keep": true,
+                                "config": "/home/a/REINVENT4/ReinventStudies/configs/Maize/maize-mol2mol-config_2.toml",
+                                "log": "/home/a/REINVENT4/ReinventStudies/scoringData/dockedData/maize.log",
+                                "n_variants": 10
+                            }
+                        }
+                    ]
+                }
+            }
+        ],
+        "filename": null
+    },
+    "scheduler": null,
+    "responder": null,
+    "filter": null,
+    "stage": null,
+    "learning_strategy": null,
+    "diversity_filter": null,
+    "inception": null
+}

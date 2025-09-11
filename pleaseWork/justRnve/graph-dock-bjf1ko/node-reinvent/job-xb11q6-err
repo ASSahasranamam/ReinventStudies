@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "/home/a/miniconda3/envs/reinvent4/bin/reinvent", line 8, in <module>
+    sys.exit(main_script())
+  File "/home/a/miniconda3/envs/reinvent4/lib/python3.10/site-packages/reinvent/Reinvent.py", line 194, in main_script
+    main(args)
+  File "/home/a/miniconda3/envs/reinvent4/lib/python3.10/site-packages/reinvent/Reinvent.py", line 163, in main
+    runner(
+  File "/home/a/miniconda3/envs/reinvent4/lib/python3.10/site-packages/reinvent/runmodes/RL/run_staged_learning.py", line 366, in run_staged_learning
+    terminate = optimize(package.terminator)
+  File "/home/a/miniconda3/envs/reinvent4/lib/python3.10/site-packages/reinvent/runmodes/RL/learning.py", line 129, in optimize
+    self.sampled = self.sampling_model.sample(self.seed_smilies)
+  File "/home/a/miniconda3/envs/reinvent4/lib/python3.10/site-packages/reinvent/runmodes/samplers/mol2mol.py", line 33, in sample
+    smilies = [conversions.convert_to_standardized_smiles(smile) for smile in smilies]
+TypeError: 'NoneType' object is not iterable

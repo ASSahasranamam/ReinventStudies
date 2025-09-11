@@ -1,0 +1,119 @@
+# REINVENT4 TOML input example for reinforcement/curriculum learning
+#
+#
+# Curriculum learning in REINVENT4 is a multi-stage reinforcement learning
+# run.  One or more stages (auto CL) can be defined.  But it is also
+# possible to continue a run from any checkpoint file that is generated
+# during the run (manual CL).  Currently checkpoints are written at the end
+# of a run also when the run is forcefully terminated with Ctrl-C.
+
+run_type = "staged_learning"
+device = "cuda"  # set torch device e.g. "cpu"
+tb_logdir = "tb_logs"  # name of the TensorBoard logging directory
+json_out_config = "_staged_learning.json"  # write this TOML to JSON
+
+[parameters]
+
+# Uncomment one of the comment blocks below.  Each generator needs a model
+# file and possibly a SMILES file with seed structures.  If the run is to
+# be continued after termination, the agent_file would have to be replaced
+# with the checkpoint file.
+
+summary_csv_prefix = "staged_learning"  # prefix for the CSV file
+use_checkpoint = true  # if true read diversity filter from agent_file
+purge_memories = false  # if true purge all diversity filter memories after each stage
+
+### Reinvent
+#prior_file = "priors/reinvent.prior"
+#agent_file = "priors/reinvent.prior"
+
+## LibInvent
+#prior_file = "priors/libinvent.prior"
+#agent_file = "priors/libinvent.prior"
+#smiles_file = "scaffolds.smi"  # 1 scaffold per line with attachment points
+
+## LinkInvent
+#prior_file = "priors/linkinvent.prior"
+#agent_file = "priors/linkinvent.prior"
+#smiles_file = "warheads.smi"  # 2 warheads per line separated with '|'
+#
+## Mol2Mol
+#prior_file = "priors/mol2mol_similarity.prior"
+#agent_file = "priors/mol2mol_similarity.prior"
+#smiles_file = "/home/adi_sahasranamam/workspace/reinventstudies/mols/Rad51/cam833.smi"  # 1 compound per line
+#sample_strategy = "multinomial"  # multinomial or beamsearch (deterministic)
+#distance_threshold = 100
+
+## Pepinvent
+#prior_file = "priors/pepinvent.prior"
+#agent_file = "priors/pepinvent.prior"
+#smiles_file = "pepinvent.smi"
+#sample_strategy = "multinomial"  # multinomial or beamsearch (deterministic)
+#distance_threshold = 100
+
+batch_size = 4          # network
+unique_sequences = true  # if true remove all duplicates raw sequences in each step
+                         # only here for backward compatibility
+randomize_smiles = true  # if true shuffle atoms in SMILES randomly
+tb_isim = true  # track iSIM similarity in TensorBoard
+
+
+[learning_strategy]
+
+type = "dap"      # dap: only one supported
+sigma = 128       # sigma of the RL reward function
+rate = 0.001     # for torch.optim
+
+
+#[diversity_filter]  # optional, comment section out or remove if unneeded
+#                    # NOTE: also memorizes all seen SMILES
+#type = "IdenticalMurckoScaffold"      # ScaffoldSimilarity, PenalizeSameSmiles
+#bucket_size = 100                 # memory size in number of compounds
+#minscore = 0.4                   # only memorize if this threshold is exceeded
+##minsimilarity = 0.4              # minimum similarity for ScaffoldSimilarity
+##penalty_multiplier = 0.5         # penalty factor for PenalizeSameSmiles
+#
+
+# Reinvent only: guide RL in the initial phase
+# Reinvent only: guide RL in the initial phase
+[inception]  # optional, comment sectionout or remove if unneeded
+smiles_file = "mols/ChemBL_Rad51_SM.smi"  # "good" SMILES for guidance
+memory_size = 100  # number of total SMILES held in memory
+sample_size = 10  # number of SMILES randomly chosen each epoch
+
+
+
+### Stage 1
+### Note that stages must always be a list i.e. double brackets
+[[stage]]
+
+chkpt_file = 'test1.chkpt'  # name of the checkpoint file, can be reused as agent
+
+termination = "simple"  # termination criterion fot this stage
+min_steps = 5  # run for at least this number of steps
+max_steps = 10  # terminate entire run when exceeded
+
+# Optionally, a DF can be set for each stage but note that the global DF
+# section above will always overwrite the stage section and you need to
+# delete [diversity_filter] to avoid this
+#
+# Diversity Filter Parameters (S1)
+
+#[stage.diversity_filter]
+#
+#type = "IdenticalMurckoScaffold"
+#
+#bucket_size = 25
+#
+#minscore = 0.4
+
+[stage.scoring]
+type = "geometric_mean"  # aggregation function
+parallel = true  #
+
+[[stage.scoring.component]]
+[stage.scoring.component.QED]
+
+[[stage.scoring.component.QED.endpoint]]
+name = "QED"
+weight = 1

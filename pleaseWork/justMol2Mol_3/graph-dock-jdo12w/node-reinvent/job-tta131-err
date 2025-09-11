@@ -1,0 +1,48 @@
+Traceback (most recent call last):
+  File "/home/a/miniconda3/envs/reinvent4/bin/reinvent", line 8, in <module>
+    sys.exit(main_script())
+  File "/home/a/miniconda3/envs/reinvent4/lib/python3.10/site-packages/reinvent/Reinvent.py", line 194, in main_script
+    main(args)
+  File "/home/a/miniconda3/envs/reinvent4/lib/python3.10/site-packages/reinvent/Reinvent.py", line 163, in main
+    runner(
+  File "/home/a/miniconda3/envs/reinvent4/lib/python3.10/site-packages/reinvent/runmodes/RL/run_staged_learning.py", line 366, in run_staged_learning
+    terminate = optimize(package.terminator)
+  File "/home/a/miniconda3/envs/reinvent4/lib/python3.10/site-packages/reinvent/runmodes/RL/learning.py", line 129, in optimize
+    self.sampled = self.sampling_model.sample(self.seed_smilies)
+  File "/home/a/miniconda3/envs/reinvent4/lib/python3.10/site-packages/reinvent/runmodes/samplers/mol2mol.py", line 60, in sample
+    sampled = self.model.sample(src, src_mask, self.sample_strategy)
+  File "/home/a/miniconda3/envs/reinvent4/lib/python3.10/site-packages/reinvent/models/model_factory/transformer_adapter.py", line 54, in sample
+    sampled = self.model.sample(src, src_mask, decode_type)
+  File "/home/a/miniconda3/envs/reinvent4/lib/python3.10/site-packages/torch/utils/_contextlib.py", line 116, in decorate_context
+    return func(*args, **kwargs)
+  File "/home/a/miniconda3/envs/reinvent4/lib/python3.10/site-packages/reinvent/models/transformer/transformer.py", line 176, in sample
+    beamsearch(node, beam_size, stop_criterion)
+  File "/home/a/miniconda3/envs/reinvent4/lib/python3.10/site-packages/reinvent/models/transformer/core/network/module/search.py", line 236, in beamsearch
+    a = node.get_actions()
+  File "/home/a/miniconda3/envs/reinvent4/lib/python3.10/site-packages/reinvent/models/transformer/core/network/module/search.py", line 137, in get_actions
+    out = self.model.decode(x, x_mask, y, y_mask)
+  File "/home/a/miniconda3/envs/reinvent4/lib/python3.10/site-packages/reinvent/models/transformer/core/network/encode_decode/model.py", line 68, in decode
+    return self.decoder(self.tgt_embed(tgt), memory, src_mask, tgt_mask)
+  File "/home/a/miniconda3/envs/reinvent4/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/a/miniconda3/envs/reinvent4/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/a/miniconda3/envs/reinvent4/lib/python3.10/site-packages/reinvent/models/transformer/core/network/encode_decode/decoder.py", line 18, in forward
+    x = layer(x, memory, src_mask, tgt_mask)
+  File "/home/a/miniconda3/envs/reinvent4/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/a/miniconda3/envs/reinvent4/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/a/miniconda3/envs/reinvent4/lib/python3.10/site-packages/reinvent/models/transformer/core/network/encode_decode/decoder_layer.py", line 26, in forward
+    x = self.sublayer[1](x, lambda x: self.src_attn(x, m, m, src_mask))
+  File "/home/a/miniconda3/envs/reinvent4/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/a/miniconda3/envs/reinvent4/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/a/miniconda3/envs/reinvent4/lib/python3.10/site-packages/reinvent/models/transformer/core/network/encode_decode/sublayer_connection.py", line 19, in forward
+    return x + self.dropout(sublayer(self.norm(x)))
+  File "/home/a/miniconda3/envs/reinvent4/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1927, in __getattr__
+    def __getattr__(self, name: str) -> Union[Tensor, "Module"]:
+  File "/home/a/miniconda3/envs/reinvent4/lib/python3.10/site-packages/reinvent/runmodes/handler.py", line 142, in _signal_handler
+    raise StageInterruptedUncontrolled(f"Signal {signum}")
+reinvent.runmodes.handler.StageInterruptedUncontrolled: Signal 2
