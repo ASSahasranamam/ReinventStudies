@@ -1,0 +1,82 @@
+### REINVENT4 TOML input ###
+
+### Scoring Run Mode ###
+
+# General Input
+
+run_type = "scoring"
+
+device = "cuda"  # set torch device e.g. "cpu"
+
+json_out_config = "scoringData/sampledDockingData/Scoring_input.json"
+
+# Parameters for Calculation
+
+[parameters]
+
+#smiles_file = "scoringData/scoringSmiles.smi"
+smiles_file = "scoringData/SmilesForDocking_reduced.smi"
+
+output_csv = "scoringData/sampledDockingData/scoredData.csv"
+
+# Scoring Components Parameters
+
+[scoring]
+
+type = "geometric_mean"
+
+parallel = true
+
+# SAScore: Score that estimates ease of synthesis (synthetic accessibility) of molecules. The higher it is, the more difficult is to synthetize
+
+[[scoring.component]]
+[scoring.component.SAScore]
+[[scoring.component.SAScore.endpoint]]
+
+name = "SAScore"
+
+weight = 0.5
+
+transform.type = "Sigmoid"
+
+transform.low = 0.0
+
+transform.high = 10.0
+
+transform.k = 0.25
+
+[[scoring.component]]
+[scoring.component.Maize]
+[[scoring.component.Maize.endpoint]]
+
+name = "DockingScore"
+weight = 0.5
+
+# Lower is better because we're docking
+transform.type = "reverse_sigmoid"
+transform.high = -3
+transform.low = -15
+transform.k = 0.25
+
+# Path to the maize executable
+params.executable = "/home/a/miniconda3/envs/maize-dev/bin/python"
+
+# Path to the maize workflow
+params.workflow = "/home/a/REINVENT4/ReinventStudies/run_reinvent_maize_dockingOnly.py"
+
+# Debug mode
+params.debug = true
+
+# Keep graph data
+params.keep = true
+
+# Config to use
+params.config = "/home/a/REINVENT4/ReinventStudies/configs/Maize/maize-mol2mol-config_2.toml"  # optional
+
+# Additional workflow parameters, these will override
+# values specified in the workflow definition
+# params.grid_file = "/home/a/REINVENT4/ReinventStudies/mols/Rad51/maps/rad51_receptor.maps.fld"
+
+# Logs
+params.log = "/home/a/REINVENT4/ReinventStudies/scoringData/sampledDockingData/maize.log"
+params.n_variants = 10

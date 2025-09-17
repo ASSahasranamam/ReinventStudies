@@ -186,7 +186,7 @@ class SaveLibraryEveryEpoch(Node):
         mols = self.inp.receive()
         base = self.base_path.value
         for i, mol in enumerate(mols):
-            file = base.with_name(f"{base.name}{i}.sdf")
+            file = base.with_name(f"{base.name}{i:04}.sdf")
             mol.to_sdf(file)
         try:
             self.logger.info(f"Saved molecules to {base}_*.sdf")
@@ -198,7 +198,7 @@ class SaveLibraryEveryEpoch(Node):
 
 flow = Workflow(name="dock", level="debug", cleanup_temp=False)
 flow.config.update(Path("/home/a/REINVENT4/ReinventStudies/configs/Maize/maize-mol2mol-config_2.toml"))
-flow.config.scratch = (Path("/home/a/REINVENT4/ReinventStudies/scoringData/dockedData/"))
+flow.config.scratch = (Path("/home/a/REINVENT4/ReinventStudies/scoringData/sampledDockingData/"))
 
 
 rnvEntry = flow.add(ReinventEntry)
@@ -256,7 +256,7 @@ dock.nrun.set(50)
 dock.population_size.set(300)
 dock.lsit.set(600)
 dock.grid_file.set(Path("/home/a/REINVENT4/ReinventStudies/mols/Rad51/maps/rad51_receptor.maps.fld"))
-
+dock.constraints.set(False)
 # flow.inp = flow.map_port(rnvEntry.data)
 # flow.out = flow.map_port(rnvExit.data)
 
@@ -267,7 +267,7 @@ load.path.set(Path("/home/a/REINVENT4/ReinventStudies/mols/Rad51/Cam833HMdsRad51
 logt.tag.set("rmsd")
 
 runName = "justmol2mol_4_compounds_Mols"
-scratchLocation =f"/home/a/REINVENT4/ReinventStudies/scoringData/dockedData/{runName}"
+scratchLocation =f"/home/a/REINVENT4/ReinventStudies/scoringData/sampledDockingData/{runName}"
 
 logger.base_path.set(Path(scratchLocation))
 

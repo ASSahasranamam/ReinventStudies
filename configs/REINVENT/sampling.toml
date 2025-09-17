@@ -1,0 +1,33 @@
+### REINVENT4 TOML input ###
+
+### Sampling Run Mode ###
+
+# General Options
+
+run_type = "sampling"
+
+use_cuda = true
+
+json_out_config = "scoringData/samplingData/beamsearch/cam833_beamsearch_Sampling_Input.json"
+
+[parameters]
+
+# Generic Parameters
+
+output_file = "scoringData/samplingData/beamsearch/cam833_beamsearch_Sampling.csv"
+
+num_smiles = 1000
+
+unique_molecules = true
+
+randomize_smiles = true
+
+# Mol2Mol Generator Parameters
+
+model_file = "priors/justmol2mol_4_compounds_staged_learning_1.chkpt"
+
+smiles_file = "mols/Rad51/cam833.smi"
+
+sample_strategy = "beamsearch"
+
+#distance_threshold = 100
